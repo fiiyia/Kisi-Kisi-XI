@@ -1346,8 +1346,20 @@
               </div>
             </div>
 
-            <!-- Action Buttons (Print PDF & Re-edit) -->
+            <!-- Action Buttons (Print PDF, Sync Supabase & Re-edit) -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 no-print">
+              <button
+                type="button"
+                id="btnSyncSupabase"
+                onclick="syncSubmissionToSupabase()"
+                class="px-4 py-3 rounded-xl border-2 border-matriks-600 bg-matriks-50 hover:bg-matriks-100 text-matriks-900 text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+              >
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                </svg>
+                <span id="btnSyncSupabaseText">Simpan ke Cloud</span>
+              </button>
+
               <button
                 type="button"
                 onclick="window.print()"
@@ -1367,6 +1379,15 @@
                 Perbaiki Jawaban
               </button>
             </div>
+          </div>
+
+          <!-- Supabase Cloud Persistence Status Banner -->
+          <div id="supabaseStatusBanner" class="mt-4 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-slate-700 flex items-center justify-between gap-3 no-print">
+            <div class="flex items-center gap-2.5">
+              <span id="supabaseStatusDot" class="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0"></span>
+              <span id="supabaseStatusMessage">Menyiapkan koneksi penyimpanan permanen Supabase...</span>
+            </div>
+            <span id="supabaseLastSyncedTime" class="text-xs font-mono text-slate-500 tabular-nums shrink-0"></span>
           </div>
 
           <!-- Score Breakdown Grid -->
@@ -1485,6 +1506,13 @@
     const STORAGE_KEY = 'kisi_uas_math_lanjut_xi_v1';
     const ALLOWED_CLASSES = ['XI-1', 'XI-2'];
     const EXAM_DURATION_SECONDS = 120 * 60; // 120 minutes
+
+    // Konfigurasi Supabase REST API (anon key bersifat publik & dilindungi RLS)
+    const SUPABASE_CONFIG = {
+      restUrl: 'https://qovcvptlrzgbmcrwrwiq.supabase.co/rest/v1',
+      table: 'hasil_latihan_uas',
+      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvdmN2cHRscnpnYm1jcndyd2lxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjQ4NTQsImV4cCI6MjExMDk0MDg1NH0.Ew5-LClB6JSG4bNciUSC1HRvfWL_KOwn9KOyuSwiFdw'
+    };
 
     // 1. DATA KISI-KISI UAS (20 BUTIR SOAL)
     const KISI_KISI_DATA = [
@@ -2050,8 +2078,14 @@
     ];
 
     // 5. DEFAULT APPLICATION STATE
+    function generateSessionId() {
+      return `uas_xi_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    }
+
     function getDefaultState() {
       return {
+        sessionId: generateSessionId(),
+        lastSyncedAt: null,
         student: {
           nama: '',
           kelas: '', // Restricted to 'XI-1' or 'XI-2'
@@ -2077,6 +2111,7 @@
 
     let appState = getDefaultState();
     let timerIntervalId = null;
+    let supabaseSyncTimeoutId = null;
 
     // 6. LOCALSTORAGE PERSISTENCE
     function loadStateFromStorage() {
@@ -2087,6 +2122,7 @@
         appState = {
           ...getDefaultState(),
           ...parsed,
+          sessionId: parsed.sessionId || generateSessionId(),
           student: { ...getDefaultState().student, ...(parsed.student || {}) },
           timer: { ...getDefaultState().timer, ...(parsed.timer || {}) },
           answers: {
@@ -2835,6 +2871,126 @@
       appState.answers.bagian3Rubric[rubricId] = Boolean(isChecked);
       saveStateToStorage();
       updateScoreSummaryCards();
+
+      if (appState.isSubmitted) {
+        if (supabaseSyncTimeoutId) clearTimeout(supabaseSyncTimeoutId);
+        supabaseSyncTimeoutId = setTimeout(() => {
+          syncSubmissionToSupabase();
+        }, 700);
+      }
+    }
+
+    // 14B. INTEGRASI SUPABASE (PENYIMPANAN PERMANEN)
+    function updateSupabaseStatusUI(state, message) {
+      const banner = document.getElementById('supabaseStatusBanner');
+      const dot = document.getElementById('supabaseStatusDot');
+      const msgEl = document.getElementById('supabaseStatusMessage');
+      const timeEl = document.getElementById('supabaseLastSyncedTime');
+      const btn = document.getElementById('btnSyncSupabase');
+      const btnText = document.getElementById('btnSyncSupabaseText');
+      if (!banner || !dot || !msgEl) return;
+
+      if (state === 'loading') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-brand-200 bg-brand-50 text-xs sm:text-sm font-semibold text-brand-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-brand-600 animate-pulse shrink-0';
+        msgEl.textContent = message || 'Menyimpan data jawaban ke Supabase...';
+        if (btn) btn.disabled = true;
+        if (btnText) btnText.textContent = 'Menyimpan...';
+      } else if (state === 'success') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm font-semibold text-emerald-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0';
+        msgEl.textContent = message || 'Seluruh data isian & skor berhasil tersimpan permanen di Supabase.';
+        if (timeEl) timeEl.textContent = appState.lastSyncedAt ? `Sinkron: ${appState.lastSyncedAt}` : '';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Sinkronkan Ulang';
+      } else if (state === 'error') {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-red-300 bg-red-50 text-xs sm:text-sm font-semibold text-red-900 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-red-600 shrink-0';
+        msgEl.textContent = message || 'Gagal menyimpan ke Supabase. Pastikan tabel SQL sudah dibuat dan internet aktif.';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Coba Simpan Lagi';
+      } else {
+        banner.className = 'mt-4 p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-semibold text-slate-700 flex items-center justify-between gap-3 no-print';
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0';
+        msgEl.textContent = message || 'Data tersimpan di perangkat. Klik "Simpan ke Cloud" untuk mengirim ke Supabase.';
+        if (timeEl) timeEl.textContent = appState.lastSyncedAt ? `Sinkron: ${appState.lastSyncedAt}` : '';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.textContent = 'Simpan ke Cloud';
+      }
+    }
+
+    function buildSupabasePayload() {
+      const scores = calculateScores();
+      return {
+        session_id: appState.sessionId || generateSessionId(),
+        nama_lengkap: appState.student.nama,
+        kelas: appState.student.kelas,
+        mode_latihan: appState.student.mode,
+        skor_bagian_1: scores.b1Score,
+        skor_bagian_2: scores.b2Score,
+        skor_bagian_3: scores.b3Score,
+        total_skor: scores.totalScore,
+        skor_polinomial: scores.topicStats['Polinomial'].earned,
+        skor_matriks: scores.topicStats['Operasi Matriks'].earned,
+        skor_translasi: scores.topicStats['Translasi'].earned,
+        jawaban_bagian_1: appState.answers.bagian1,
+        jawaban_bagian_2: appState.answers.bagian2,
+        jawaban_bagian_3_teks: appState.answers.bagian3Text,
+        jawaban_bagian_3_rubrik: appState.answers.bagian3Rubric,
+        waktu_mulai: appState.student.startedAt || new Date().toISOString(),
+        waktu_selesai: new Date().toISOString()
+      };
+    }
+
+    async function syncSubmissionToSupabase() {
+      if (!appState.student.nama || !ALLOWED_CLASSES.includes(appState.student.kelas)) {
+        return false;
+      }
+
+      if (!appState.sessionId) {
+        appState.sessionId = generateSessionId();
+        saveStateToStorage();
+      }
+
+      updateSupabaseStatusUI('loading', 'Menyimpan data isian & skor ke Supabase...');
+
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?on_conflict=session_id`;
+        const payload = buildSupabasePayload();
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`,
+            Prefer: 'resolution=merge-duplicates,return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errText = await response.text();
+          throw new Error(`HTTP ${response.status}: ${errText}`);
+        }
+
+        appState.lastSyncedAt = new Date().toLocaleTimeString('id-ID', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+        saveStateToStorage();
+        updateSupabaseStatusUI('success', 'Seluruh data isian & skor murid berhasil tersimpan permanen di Supabase.');
+        return true;
+      } catch (err) {
+        console.error('Supabase sync error:', err);
+        updateSupabaseStatusUI(
+          'error',
+          'Gagal mengirim ke Supabase. Pastikan skema SQL tabel hasil_latihan_uas sudah dijalankan & koneksi internet aktif.'
+        );
+        return false;
+      }
     }
 
     // 15. SUBMIT & RENDER EVALUATION RESULTS
@@ -2858,6 +3014,7 @@
       }
 
       switchTab('hasil');
+      syncSubmissionToSupabase();
     }
 
     function getReadinessPredicate(score) {
@@ -2963,6 +3120,7 @@
       document.getElementById('printTimestamp').textContent = `Dicetak: ${appState.student.completedAt || new Date().toLocaleString('id-ID')}`;
 
       updateScoreSummaryCards();
+      updateSupabaseStatusUI(appState.lastSyncedAt ? 'success' : 'idle');
 
       const rubricContainer = document.getElementById('selfAssessmentRubricContainer');
       rubricContainer.innerHTML = BAGIAN3_QUESTIONS.map((q) => {
