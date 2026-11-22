@@ -199,13 +199,21 @@
       padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
     }
 
-    /* Print Layout Stylesheet */
+    /* Print Layout Stylesheet — Compact 1-2 Page A4 Official Report */
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm;
+    }
+
     @media print {
-      body {
+      html, body {
         background: #ffffff !important;
         background-image: none !important;
-        color: #000000 !important;
-        font-size: 10.5pt;
+        color: #0f172a !important;
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       .no-print {
         display: none !important;
@@ -213,21 +221,41 @@
       .print-only {
         display: block !important;
       }
-      .print-break-inside-avoid {
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-      .print-card {
-        border: 1px solid #cbd5e1 !important;
-        box-shadow: none !important;
+      #lmsAppShell,
+      #lmsMainColumn,
+      main,
+      #view-hasil {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: auto !important;
         background: #ffffff !important;
       }
-      #lmsAppShell {
-        display: block !important;
+      .print-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8.5pt;
       }
-      #lmsMainColumn {
-        margin-left: 0 !important;
-        padding: 0 !important;
+      .print-table th,
+      .print-table td {
+        border: 1px solid #94a3b8;
+        padding: 4px 7px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .print-table th {
+        background-color: #f1f5f9 !important;
+        font-weight: 700;
+        color: #0f172a;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .print-section-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
       }
     }
   </style>
@@ -1347,22 +1375,8 @@
         <!-- ========================================== -->
         <section id="view-hasil" class="hidden space-y-6">
 
-          <!-- Print Header (Visible Only When Printing PDF) -->
-          <div class="hidden print-only border-b-2 border-slate-900 pb-4 mb-6">
-            <div class="flex items-start justify-between">
-              <div>
-                <h1 class="text-xl font-bold text-slate-950">
-                  LAPORAN BUKTI LATIHAN PERSIAPAN UAS MATEMATIKA TINGKAT LANJUT
-                </h1>
-                <p class="text-sm text-slate-700">
-                  Jenjang SMA Kelas XI (XI-1 / XI-2) &bull; Cakupan: Polinomial (30%), Operasi Matriks (50%), Translasi (20%)
-                </p>
-              </div>
-              <div class="text-right text-xs text-slate-700 tabular-nums">
-                <div id="printTimestamp"></div>
-              </div>
-            </div>
-          </div>
+          <!-- Compact Official A4 Print Report (Visible ONLY When Printing PDF) -->
+          <div id="printOfficialReport" class="hidden print-only"></div>
 
           <!-- Not Submitted Notice -->
           <div id="notSubmittedNotice" class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 no-print">
@@ -1383,8 +1397,8 @@
             </button>
           </div>
 
-          <!-- Results & Evaluation Wrapper -->
-          <div id="resultsContentWrapper" class="hidden space-y-6">
+          <!-- Interactive Screen-Only Results & Evaluation Wrapper -->
+          <div id="resultsContentWrapper" class="hidden space-y-6 no-print">
 
             <!-- Summary Score & Identity Card -->
             <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card print-card print-break-inside-avoid">
@@ -2517,6 +2531,7 @@
       appState.answers.bagian3Rubric[rubricId] = Boolean(isChecked);
       saveStateToStorage();
       updateScoreSummaryCards();
+      renderPrintOfficialReport();
       scheduleAutoSaveToSupabase(700);
     }
 
@@ -2742,10 +2757,10 @@
       document.getElementById('resultModeName').textContent =
         appState.student.mode === 'simulasi' ? 'Mode Simulasi UAS (120 Menit)' : 'Mode Belajar Mandiri';
       document.getElementById('resultCompletedAt').textContent = appState.student.completedAt || '-';
-      document.getElementById('printTimestamp').textContent = `Dicetak: ${appState.student.completedAt || new Date().toLocaleString('id-ID')}`;
 
       updateScoreSummaryCards();
       updateSupabaseStatusUI(appState.lastSyncedAt ? 'success' : 'idle');
+      renderPrintOfficialReport();
 
       const rubricContainer = document.getElementById('selfAssessmentRubricContainer');
       rubricContainer.innerHTML = BAGIAN3_QUESTIONS.map((q) => {
@@ -2833,6 +2848,194 @@
 
       objContainer.innerHTML = b1Html + b2Html;
       triggerMathRender(wrapperEl);
+    }
+
+    function renderPrintOfficialReport() {
+      const container = document.getElementById('printOfficialReport');
+      if (!container) return;
+
+      const scores = calculateScores();
+      const nama = escapeHtml(appState.student.nama || '-');
+      const kelas = escapeHtml(appState.student.kelas || '-');
+      const absen = escapeHtml(appState.student.noAbsen || '-');
+      const modeText = appState.student.mode === 'simulasi' ? 'Simulasi SAS/UAS (120 Menit)' : 'Mode Belajar Mandiri';
+      const waktuSelesai = escapeHtml(appState.student.completedAt || new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }));
+      const predikat = getReadinessPredicate(scores.totalScore);
+
+      // Tabel Rekap Bagian I (No. 1-10)
+      const b1Rows = BAGIAN1_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian1[q.no] || '').trim();
+        const ok = isBagian1Correct(q.no);
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td style="font-family:monospace;">${userAns ? escapeHtml(userAns) : '-'}</td>
+            <td style="font-family:monospace;">${escapeHtml(q.displayAnswer)}</td>
+            <td style="text-align:center; font-weight:700; color:${ok ? '#15803d' : '#b91c1c'};">${ok ? 'Benar (+2)' : 'Salah (0)'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Rekap Bagian II (No. 11-15)
+      const b2Rows = BAGIAN2_QUESTIONS.map((q) => {
+        const userAns = (appState.answers.bagian2[q.no] || '').trim();
+        const ok = isBagian2Correct(q.no);
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td style="text-align:center; font-family:monospace;">${userAns || '-'}</td>
+            <td style="text-align:center; font-family:monospace;">${q.correctOption}</td>
+            <td style="text-align:center; font-weight:700; color:${ok ? '#15803d' : '#b91c1c'};">${ok ? 'Benar (+3)' : 'Salah (0)'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Rekap Bagian III (No. 16-20)
+      const b3Rows = BAGIAN3_QUESTIONS.map((q) => {
+        const earned = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
+        const filledCount = q.subQuestions.filter((sub) => (appState.answers.bagian3Text[`${q.no}_${sub.id}`] || '').trim() !== '').length;
+        const checkedCount = q.rubricItems.filter((r) => appState.answers.bagian3Rubric[r.id]).length;
+        return `
+          <tr>
+            <td style="text-align:center; font-weight:700;">${q.no}</td>
+            <td>${q.topik}</td>
+            <td>${filledCount}/3 sub-soal diisi</td>
+            <td style="text-align:center;">${checkedCount}/${q.rubricItems.length} kriteria</td>
+            <td style="text-align:center; font-weight:700;">${earned} / ${q.skor} pt</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Analisis Topik
+      const topicRows = ['Polinomial', 'Operasi Matriks', 'Translasi'].map((name) => {
+        const st = scores.topicStats[name];
+        const pct = Math.round((st.earned / st.max) * 100);
+        const status = pct >= 75 ? 'Tuntas / Kuat' : pct >= 55 ? 'Perlu Latihan Tambahan' : 'Prioritas Dipelajari Ulang';
+        return `
+          <tr>
+            <td style="font-weight:700;">${name}</td>
+            <td style="text-align:center;">${st.correctItems} / ${st.totalItems} soal</td>
+            <td style="text-align:center; font-weight:700;">${st.earned} / ${st.max} pt</td>
+            <td style="text-align:center; font-weight:700;">${pct}%</td>
+            <td>${status}</td>
+          </tr>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div style="font-family:'Plus Jakarta Sans',system-ui,sans-serif; color:#0f172a;">
+          <!-- Kop Laporan Resmi -->
+          <div style="border-bottom:2px solid #0f172a; padding-bottom:8px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:flex-end;">
+            <div>
+              <div style="font-size:13pt; font-weight:800; letter-spacing:-0.01em;">LAPORAN BUKTI LATIHAN SAS / UAS MATEMATIKA TINGKAT LANJUT</div>
+              <div style="font-size:8.5pt; color:#334155; margin-top:2px;">SMA Kelas XI-1 &amp; XI-2 &bull; Polinomial (30%) &bull; Operasi Matriks (50%) &bull; Translasi (20%)</div>
+            </div>
+            <div style="text-align:right; font-size:8pt; color:#475569;">
+              <div><strong>MathLab XI</strong></div>
+              <div>Dicetak: ${waktuSelesai}</div>
+            </div>
+          </div>
+
+          <!-- Identitas & Skor Ringkas -->
+          <div class="print-section-avoid" style="display:grid; grid-template-columns: 1.35fr 1fr; gap:10px; margin-bottom:12px;">
+            <table class="print-table">
+              <tbody>
+                <tr><th style="width:36%;">Nama Panggilan</th><td style="font-weight:700;">${nama}</td></tr>
+                <tr><th>Kelas / No. Absen</th><td style="font-weight:700;">${kelas} / Absen ${absen}</td></tr>
+                <tr><th>Mode Latihan</th><td>${modeText}</td></tr>
+                <tr><th>Waktu Selesai</th><td>${waktuSelesai}</td></tr>
+              </tbody>
+            </table>
+
+            <table class="print-table">
+              <tbody>
+                <tr>
+                  <th style="width:55%;">Total Skor Akhir</th>
+                  <td style="font-size:12pt; font-weight:800; text-align:center; background:#f8fafc;">${scores.totalScore} / 100</td>
+                </tr>
+                <tr><th>Bagian I (Isian LKPD)</th><td style="text-align:center;">${scores.b1Score} / 20 (${scores.b1CorrectCount}/10 benar)</td></tr>
+                <tr><th>Bagian II (Menjodohkan)</th><td style="text-align:center;">${scores.b2Score} / 15 (${scores.b2CorrectCount}/5 benar)</td></tr>
+                <tr><th>Bagian III (Rubrik HOTS)</th><td style="text-align:center;">${scores.b3Score} / 65</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Predikat & Analisis Topik -->
+          <div class="print-section-avoid" style="margin-bottom:12px;">
+            <div style="font-size:9pt; font-weight:800; margin-bottom:4px;">1. Analisis Penguasaan Materi Per Topik &nbsp;<span style="font-weight:500; color:#334155;">(Predikat: ${predikat})</span></div>
+            <table class="print-table">
+              <thead>
+                <tr>
+                  <th>Topik Materi</th>
+                  <th style="text-align:center; width:16%;">Butir Dikuasai</th>
+                  <th style="text-align:center; width:18%;">Skor Poin</th>
+                  <th style="text-align:center; width:12%;">Persentase</th>
+                  <th>Rekomendasi Belajar</th>
+                </tr>
+              </thead>
+              <tbody>${topicRows}</tbody>
+            </table>
+          </div>
+
+          <!-- Rekap 20 Soal (2 Kolom Kompak agar muat 1 halaman A4) -->
+          <div class="print-section-avoid" style="margin-bottom:10px;">
+            <div style="font-size:9pt; font-weight:800; margin-bottom:4px;">2. Rincian Hasil Pengerjaan Bagian I (No. 1–10) &amp; Bagian II (No. 11–15)</div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; align-items:start;">
+              <table class="print-table">
+                <thead>
+                  <tr>
+                    <th style="width:10%; text-align:center;">No</th>
+                    <th>Topik</th>
+                    <th style="width:20%;">Jawab</th>
+                    <th style="width:20%;">Kunci</th>
+                    <th style="width:24%; text-align:center;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>${b1Rows}</tbody>
+              </table>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <table class="print-table">
+                  <thead>
+                    <tr>
+                      <th style="width:10%; text-align:center;">No</th>
+                      <th>Topik</th>
+                      <th style="width:16%; text-align:center;">Jawab</th>
+                      <th style="width:16%; text-align:center;">Kunci</th>
+                      <th style="width:26%; text-align:center;">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>${b2Rows}</tbody>
+                </table>
+
+                <div>
+                  <div style="font-size:8.5pt; font-weight:800; margin-bottom:3px;">3. Rekap Bagian III — Uraian HOTS (No. 16–20)</div>
+                  <table class="print-table">
+                    <thead>
+                      <tr>
+                        <th style="width:10%; text-align:center;">No</th>
+                        <th>Topik</th>
+                        <th>Catatan</th>
+                        <th style="text-align:center;">Rubrik</th>
+                        <th style="text-align:center;">Skor</th>
+                      </tr>
+                    </thead>
+                    <tbody>${b3Rows}</tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer Verifikasi -->
+          <div class="print-section-avoid" style="margin-top:10px; padding-top:8px; border-top:1px dashed #94a3b8; display:flex; justify-content:space-between; font-size:8pt; color:#475569;">
+            <div>ID Sesi: <span style="font-family:monospace;">${escapeHtml(appState.sessionId || '-')}</span> &bull; Dokumen resmi bukti latihan mandiri siswa.</div>
+            <div>Paraf Guru: _______________________</div>
+          </div>
+        </div>
+      `;
     }
 
     function escapeHtml(str) {
