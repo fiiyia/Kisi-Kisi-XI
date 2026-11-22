@@ -1574,40 +1574,40 @@
 
     // 1. DATA KISI-KISI UAS (20 BUTIR SOAL)
     const KISI_KISI_DATA = [
-      { no: 1, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menentukan koefisien hasil perkalian dua polinomial berderajat satu pada pemodelan luas alas akuarium.', konteks: 'Wacana 1: Luas alas akuarium L(x) = (2x + 1)(x - 1)', level: 'L1', skor: 2 },
-      { no: 2, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menentukan koefisien suku berderajat satu pada perkalian polinomial berderajat tiga untuk rumus volume balok.', konteks: 'Wacana 1: Volume akuarium V(x) = L(x)(x + 2)', level: 'L2', skor: 2 },
-      { no: 3, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menghitung nilai polinomial V(x) untuk nilai parameter variabel x tertentu dalam konteks volume akuarium.', konteks: 'Wacana 1: Evaluasi kapasitas volume V(3)', level: 'L2', skor: 2 },
-      { no: 4, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan elemen hasil penjumlahan dua matriks berordo 2x2 dari data penjualan dua gerai toko roti.', konteks: 'Wacana 2: Penjumlahan matriks penjualan Sabtu & Minggu (T = S + M)', level: 'L1', skor: 2 },
-      { no: 5, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan elemen hasil pengurangan matriks 2x2 untuk menganalisis kenaikan penjualan akhir pekan.', konteks: 'Wacana 2: Selisih matriks penjualan Minggu terhadap Sabtu (D = M - S)', level: 'L1', skor: 2 },
-      { no: 6, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menghitung elemen hasil perkalian skalar dengan matriks 2x2 untuk menentukan target penjualan.', konteks: 'Wacana 2: Target penjualan dua kali lipat (K = 2T)', level: 'L2', skor: 2 },
-      { no: 7, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan ordo matriks hasil perkalian antara matriks penjualan 2x2 dengan matriks kolom harga 2x1.', konteks: 'Wacana 2: Ordo matriks pendapatan R = T(2x2) . H(2x1)', level: 'L1', skor: 2 },
-      { no: 8, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menghitung total pendapatan sebuah gerai melalui operasi perkalian matriks 2x2 dengan matriks 2x1.', konteks: 'Wacana 2: Pendapatan kotor Gerai 1 (elemen r_11)', level: 'L2', skor: 2 },
-      { no: 9, topik: 'Translasi', bentuk: 'Isian Singkat', indikator: 'Menentukan absis bayangan titik setelah mengalami translasi tahap pertama T_1 pada koordinat Kartesius.', konteks: 'Wacana 3: Pergerakan robot logistik gudang dari A(4, -3) oleh T_1 = (-6, 8)', level: 'L1', skor: 2 },
-      { no: 10, topik: 'Translasi', bentuk: 'Isian Singkat', indikator: 'Menentukan ordinat bayangan akhir titik setelah mengalami komposisi dua translasi berurutan T_1 dilanjutkan T_2.', konteks: 'Wacana 3: Pergerakan lanjutan robot logistik oleh T_2 = (9, -2)', level: 'L2', skor: 2 },
-      { no: 11, topik: 'Polinomial', bentuk: 'Menjodohkan', indikator: 'Menentukan sisa pembagian polinomial berderajat tiga oleh pembagi linear (x + a) menggunakan Teorema Sisa.', konteks: 'Sisa pembagian P(x) = 2x^3 + 5x^2 - 4x + 3 oleh (x + 2)', level: 'L2', skor: 3 },
-      { no: 12, topik: 'Polinomial', bentuk: 'Menjodohkan', indikator: 'Menentukan nilai koefisien yang belum diketahui pada polinomial menggunakan Teorema Faktor.', konteks: 'Mencari koefisien m jika (x - 1) faktor dari F(x) = x^3 - 4x^2 + mx + 6', level: 'L2', skor: 3 },
-      { no: 13, topik: 'Operasi Matriks', bentuk: 'Menjodohkan', indikator: 'Menghitung nilai determinan matriks berordo 2x2 yang memuat elemen bilangan bulat positif dan negatif.', konteks: 'Determinan matriks K = [[4, -3], [2, -5]]', level: 'L1', skor: 3 },
-      { no: 14, topik: 'Operasi Matriks', bentuk: 'Menjodohkan', indikator: 'Menentukan nilai ekspresi aljabar variabel dari persamaan kesamaan dua matriks berordo 2x2.', konteks: 'Mencari nilai p + q dari kesamaan dua matriks 2x2', level: 'L2', skor: 3 },
-      { no: 15, topik: 'Translasi', bentuk: 'Menjodohkan', indikator: 'Menentukan persamaan bayangan garis lurus ax + by + c = 0 yang ditranslasikan oleh vektor T = (a, b).', konteks: 'Bayangan garis 3x + y - 4 = 0 oleh translasi T = (-2, 3)', level: 'L2', skor: 3 },
-      { no: 16, topik: 'Polinomial', bentuk: 'Uraian HOTS', indikator: 'Menentukan hasil bagi, memfaktorkan secara lengkap, dan mencari seluruh akar persamaan polinomial berderajat tiga.', konteks: 'Pembagian Horner P(x) = x^3 - 4x^2 + x + 6 oleh (x + 1) & evaluasi akar', level: 'L3', skor: 10 },
-      { no: 17, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Memodelkan masalah kontekstual SPLDV ke dalam persamaan matriks dan menyelesaikannya dengan invers matriks / Cramer.', konteks: 'Pemodelan harga Paket Hemat & Paket Spesial katering sekolah', level: 'L3', skor: 14 },
-      { no: 18, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Menentukan matriks X dari persamaan A . X = B menggunakan invers matriks serta membuktikan sifat non-komutatif perkalian matriks.', konteks: 'Penyelesaian X = A^(-1)B dengan det(A) = 1 dan perbandingan AB vs BA', level: 'L3', skor: 11 },
-      { no: 19, topik: 'Translasi', bentuk: 'Uraian HOTS', indikator: 'Menganalisis bayangan bangun datar segitiga dan persamaan garis akibat komposisi dua translasi beserta sifat invariansi luasnya.', konteks: 'Pergeseran zona parkir segitiga siku-siku PQR dan jalur pedestrian garis h', level: 'L3', skor: 12 },
-      { no: 20, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Menentukan determinan, kofaktor, adjoin, dan invers matriks berordo 3x3 (det = 1) untuk mendekripsi sandi pesan.', konteks: 'Dekripsi pesan rahasia P = M^(-1)C menggunakan matriks kunci 3x3', level: 'L3', skor: 18 }
+      { no: 1, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menentukan koefisien hasil perkalian dua polinomial berderajat satu pada pemodelan luas alas akuarium.', konteks: 'Wacana 1: Luas alas akuarium $L(x) = (2x + 1)(x - 1)$', level: 'L1', skor: 2 },
+      { no: 2, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menentukan koefisien suku berderajat satu pada perkalian polinomial berderajat tiga untuk rumus volume balok.', konteks: 'Wacana 1: Volume akuarium $V(x) = L(x)(x + 2)$', level: 'L2', skor: 2 },
+      { no: 3, topik: 'Polinomial', bentuk: 'Isian Singkat', indikator: 'Menghitung nilai polinomial $V(x)$ untuk nilai parameter variabel $x$ tertentu dalam konteks volume akuarium.', konteks: 'Wacana 1: Evaluasi kapasitas volume $V(3)$', level: 'L2', skor: 2 },
+      { no: 4, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan elemen hasil penjumlahan dua matriks berordo $2 \\times 2$ dari data penjualan dua gerai toko roti.', konteks: 'Wacana 2: Penjumlahan matriks penjualan Sabtu & Minggu ($T = S + M$)', level: 'L1', skor: 2 },
+      { no: 5, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan elemen hasil pengurangan matriks $2 \\times 2$ untuk menganalisis kenaikan penjualan akhir pekan.', konteks: 'Wacana 2: Selisih matriks penjualan Minggu terhadap Sabtu ($D = M - S$)', level: 'L1', skor: 2 },
+      { no: 6, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menghitung elemen hasil perkalian skalar dengan matriks $2 \\times 2$ untuk menentukan target penjualan.', konteks: 'Wacana 2: Target penjualan dua kali lipat ($K = 2T$)', level: 'L2', skor: 2 },
+      { no: 7, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menentukan ordo matriks hasil perkalian antara matriks penjualan $2 \\times 2$ dengan matriks kolom harga $2 \\times 1$.', konteks: 'Wacana 2: Ordo matriks pendapatan $R = T_{2 \\times 2} \\cdot H_{2 \\times 1}$', level: 'L1', skor: 2 },
+      { no: 8, topik: 'Operasi Matriks', bentuk: 'Isian Singkat', indikator: 'Menghitung total pendapatan sebuah gerai melalui operasi perkalian matriks $2 \\times 2$ dengan matriks $2 \\times 1$.', konteks: 'Wacana 2: Pendapatan kotor Gerai 1 (elemen $r_{11}$)', level: 'L2', skor: 2 },
+      { no: 9, topik: 'Translasi', bentuk: 'Isian Singkat', indikator: 'Menentukan absis bayangan titik setelah mengalami translasi tahap pertama $T_1$ pada koordinat Kartesius.', konteks: 'Wacana 3: Pergerakan robot logistik dari $A(4, -3)$ oleh $T_1 = \\begin{pmatrix} -6 \\\\ 8 \\end{pmatrix}$', level: 'L1', skor: 2 },
+      { no: 10, topik: 'Translasi', bentuk: 'Isian Singkat', indikator: 'Menentukan ordinat bayangan akhir titik setelah mengalami komposisi dua translasi berurutan $T_1$ dilanjutkan $T_2$.', konteks: 'Wacana 3: Pergerakan lanjutan robot logistik oleh $T_2 = \\begin{pmatrix} 9 \\\\ -2 \\end{pmatrix}$', level: 'L2', skor: 2 },
+      { no: 11, topik: 'Polinomial', bentuk: 'Menjodohkan', indikator: 'Menentukan sisa pembagian polinomial berderajat tiga oleh pembagi linear $(x + a)$ menggunakan Teorema Sisa.', konteks: 'Sisa pembagian $P(x) = 2x^3 + 5x^2 - 4x + 3$ oleh $(x + 2)$', level: 'L2', skor: 3 },
+      { no: 12, topik: 'Polinomial', bentuk: 'Menjodohkan', indikator: 'Menentukan nilai koefisien yang belum diketahui pada polinomial menggunakan Teorema Faktor.', konteks: 'Mencari koefisien $m$ jika $(x - 1)$ faktor dari $F(x) = x^3 - 4x^2 + mx + 6$', level: 'L2', skor: 3 },
+      { no: 13, topik: 'Operasi Matriks', bentuk: 'Menjodohkan', indikator: 'Menghitung nilai determinan matriks berordo $2 \\times 2$ yang memuat elemen bilangan bulat positif dan negatif.', konteks: 'Determinan matriks $K = \\begin{bmatrix} 4 & -3 \\\\ 2 & -5 \\end{bmatrix}$', level: 'L1', skor: 3 },
+      { no: 14, topik: 'Operasi Matriks', bentuk: 'Menjodohkan', indikator: 'Menentukan nilai ekspresi aljabar variabel dari persamaan kesamaan dua matriks berordo $2 \\times 2$.', konteks: 'Mencari nilai $p + q$ dari kesamaan dua matriks $2 \\times 2$', level: 'L2', skor: 3 },
+      { no: 15, topik: 'Translasi', bentuk: 'Menjodohkan', indikator: 'Menentukan persamaan bayangan garis lurus $ax + by + c = 0$ yang ditranslasikan oleh vektor $T = \\begin{pmatrix} a \\\\ b \\end{pmatrix}$.', konteks: 'Bayangan garis $3x + y - 4 = 0$ oleh translasi $T = \\begin{pmatrix} -2 \\\\ 3 \\end{pmatrix}$', level: 'L2', skor: 3 },
+      { no: 16, topik: 'Polinomial', bentuk: 'Uraian HOTS', indikator: 'Menentukan hasil bagi, memfaktorkan secara lengkap, dan mencari seluruh akar persamaan polinomial berderajat tiga.', konteks: 'Pembagian Horner $P(x) = x^3 - 4x^2 + x + 6$ oleh $(x + 1)$ &amp; evaluasi akar', level: 'L3', skor: 10 },
+      { no: 17, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Memodelkan masalah kontekstual SPLDV ke dalam persamaan matriks dan menyelesaikannya dengan invers matriks / Cramer.', konteks: 'Pemodelan harga Paket Hemat &amp; Paket Spesial katering sekolah', level: 'L3', skor: 14 },
+      { no: 18, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Menentukan matriks $X$ dari persamaan $A \\cdot X = B$ menggunakan invers matriks serta membuktikan sifat non-komutatif perkalian matriks.', konteks: 'Penyelesaian $X = A^{-1}B$ dengan $\\det(A) = 1$ dan perbandingan $AB$ vs $BA$', level: 'L3', skor: 11 },
+      { no: 19, topik: 'Translasi', bentuk: 'Uraian HOTS', indikator: 'Menganalisis bayangan bangun datar segitiga dan persamaan garis akibat komposisi dua translasi beserta sifat invariansi luasnya.', konteks: 'Pergeseran zona parkir segitiga siku-siku $PQR$ dan jalur pedestrian garis $h$', level: 'L3', skor: 12 },
+      { no: 20, topik: 'Operasi Matriks', bentuk: 'Uraian HOTS', indikator: 'Menentukan determinan, kofaktor, adjoin, dan invers matriks berordo $3 \\times 3$ ($\\det = 1$) untuk mendekripsi sandi pesan.', konteks: 'Dekripsi pesan rahasia $P = M^{-1}C$ menggunakan matriks kunci $3 \\times 3$', level: 'L3', skor: 18 }
     ];
 
     // 2. DATA KUNCI & PEMBAHASAN BAGIAN I (ISIAN SINGKAT LKPD NO. 1-10)
     const BAGIAN1_QUESTIONS = [
-      { no: 1, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien b pada luas alas akuarium L(x) = (2x + 1)(x - 1) = 2x^2 + bx - 1', acceptedAnswers: ['-1', '-1x'], displayAnswer: '-1', explanation: 'Jabarkan perkalian luas alas: $$L(x) = (2x + 1)(x - 1) = 2x^2 - 2x + x - 1 = 2x^2 - x - 1$$ Dengan menyamakan terhadap bentuk $2x^2 + bx - 1$, diperoleh nilai koefisien $b = -1$.' },
-      { no: 2, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien c pada polinomial volume V(x) = (2x^2 - x - 1)(x + 2) = 2x^3 + 3x^2 + cx - 2', acceptedAnswers: ['-3', '-3x'], displayAnswer: '-3', explanation: 'Kalikan luas alas dengan tinggi: $$V(x) = (2x^2 - x - 1)(x + 2) = 2x^3 + 4x^2 - x^2 - 2x - x - 2 = 2x^3 + 3x^2 - 3x - 2$$ Sehingga koefisien suku berderajat satu adalah $c = -3$.' },
-      { no: 3, topik: 'Polinomial', skor: 2, promptShort: 'Kapasitas volume akuarium V(3) untuk parameter x = 3 (dalam dm^3 / liter)', acceptedAnswers: ['70', '70liter', '70dm3'], displayAnswer: '70', explanation: 'Substitusikan $x = 3$ ke dalam $V(x)$: $$V(3) = 2(3)^3 + 3(3)^2 - 3(3) - 2 = 2(27) + 3(9) - 9 - 2 = 54 + 27 - 11 = 70\\text{ dm}^3$$ (Atau melalui dimensi: $p(3)=7$, $l(3)=2$, $t(3)=5 \\implies V = 7 \\times 2 \\times 5 = 70$).' },
-      { no: 4, topik: 'Operasi Matriks', skor: 2, promptShort: 'Jumlah penjualan Roti Cokelat di Gerai 1 selama akhir pekan (elemen t_11 pada T = S + M)', acceptedAnswers: ['70', '70bungkus'], displayAnswer: '70', explanation: 'Matriks total penjualan $T = S + M$: $$T = \\begin{bmatrix} 30 & 20 \\\\ 25 & 15 \\end{bmatrix} + \\begin{bmatrix} 40 & 25 \\\\ 35 & 20 \\end{bmatrix} = \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix}$$ Elemen baris ke-1 kolom ke-1 adalah $t_{11} = 30 + 40 = 70$ bungkus.' },
-      { no: 5, topik: 'Operasi Matriks', skor: 2, promptShort: 'Kenaikan penjualan Roti Keju di Gerai 2 dari Sabtu ke Minggu (elemen d_22 pada D = M - S)', acceptedAnswers: ['5', '5bungkus'], displayAnswer: '5', explanation: 'Matriks selisih penjualan $D = M - S$: $$D = \\begin{bmatrix} 40 & 25 \\\\ 35 & 20 \\end{bmatrix} - \\begin{bmatrix} 30 & 20 \\\\ 25 & 15 \\end{bmatrix} = \\begin{bmatrix} 10 & 5 \\\\ 10 & 5 \\end{bmatrix}$$ Elemen baris ke-2 kolom ke-2 adalah $d_{22} = 20 - 15 = 5$ bungkus.' },
-      { no: 6, topik: 'Operasi Matriks', skor: 2, promptShort: 'Target penjualan Roti Cokelat di Gerai 2 pada matriks K = 2T (elemen k_21)', acceptedAnswers: ['120', '120bungkus'], displayAnswer: '120', explanation: 'Dari matriks $T = \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix}$, perkalian skalar $K = 2T$ menghasilkan: $$K = 2 \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix} = \\begin{bmatrix} 140 & 90 \\\\ 120 & 70 \\end{bmatrix}$$ Maka elemen baris ke-2 kolom ke-1 adalah $k_{21} = 2 \\times 60 = 120$ bungkus.' },
-      { no: 7, topik: 'Operasi Matriks', skor: 2, promptShort: 'Ordo matriks pendapatan R = T_(2x2) . H_(2x1)', acceptedAnswers: ['2x1', '2*1', '2kali1'], displayAnswer: '2x1', explanation: 'Perkalian matriks $T$ berordo $2 \\times 2$ dengan matriks kolom $H$ berordo $2 \\times 1$ menghasilkan matriks $R$ berordo $2 \\times 1$ (2 baris dan 1 kolom).' },
-      { no: 8, topik: 'Operasi Matriks', skor: 2, promptShort: 'Total pendapatan kotor Gerai 1 selama akhir pekan (elemen r_11 pada R = T . H)', acceptedAnswers: ['1010000', 'rp1010000'], displayAnswer: '1.010.000', explanation: 'Kalikan baris ke-1 matriks $T$ dengan matriks kolom harga $H$: $$r_{11} = (70 \\times 8.000) + (45 \\times 10.000) = 560.000 + 450.000 = 1.010.000$$ Jadi pendapatan kotor Gerai 1 adalah $\\text{Rp}1.010.000$.' },
-      { no: 9, topik: 'Translasi', skor: 2, promptShort: 'Nilai absis x\' dari bayangan titik A(4, -3) oleh translasi T_1 = (-6, 8)', acceptedAnswers: ['-2'], displayAnswer: '-2', explanation: 'Translasi titik $A(4, -3)$ oleh $T_1 = \\begin{pmatrix} -6 \\\\ 8 \\end{pmatrix}$: $$A\' = (4 + (-6), -3 + 8) = (-2, 5)$$ Sehingga nilai absis $x\' = -2$.' },
-      { no: 10, topik: 'Translasi', skor: 2, promptShort: 'Nilai ordinat akhir y\'\' setelah dilanjutkan translasi T_2 = (9, -2)', acceptedAnswers: ['3'], displayAnswer: '3', explanation: 'Dari titik $A\'(-2, 5)$ dilanjutkan translasi $T_2 = \\begin{pmatrix} 9 \\\\ -2 \\end{pmatrix}$: $$A\'\' = (-2 + 9, 5 + (-2)) = (7, 3)$$ Sehingga nilai ordinat akhir adalah $y\'\' = 3$.' }
+      { no: 1, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien $b$ pada luas alas akuarium $L(x) = (2x + 1)(x - 1) = 2x^2 + bx - 1$', acceptedAnswers: ['-1', '-1x'], displayAnswer: '-1', explanation: 'Jabarkan perkalian luas alas: $$L(x) = (2x + 1)(x - 1) = 2x^2 - 2x + x - 1 = 2x^2 - x - 1$$ Dengan menyamakan terhadap bentuk $2x^2 + bx - 1$, diperoleh nilai koefisien $b = -1$.' },
+      { no: 2, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien $c$ pada polinomial volume $V(x) = (2x^2 - x - 1)(x + 2) = 2x^3 + 3x^2 + cx - 2$', acceptedAnswers: ['-3', '-3x'], displayAnswer: '-3', explanation: 'Kalikan luas alas dengan tinggi: $$V(x) = (2x^2 - x - 1)(x + 2) = 2x^3 + 4x^2 - x^2 - 2x - x - 2 = 2x^3 + 3x^2 - 3x - 2$$ Sehingga koefisien suku berderajat satu adalah $c = -3$.' },
+      { no: 3, topik: 'Polinomial', skor: 2, promptShort: 'Kapasitas volume akuarium $V(3)$ untuk parameter $x = 3$ (dalam $\\text{dm}^3$ / liter)', acceptedAnswers: ['70', '70liter', '70dm3'], displayAnswer: '70', explanation: 'Substitusikan $x = 3$ ke dalam $V(x)$: $$V(3) = 2(3)^3 + 3(3)^2 - 3(3) - 2 = 2(27) + 3(9) - 9 - 2 = 54 + 27 - 11 = 70\\text{ dm}^3$$ (Atau melalui dimensi: $p(3)=7$, $l(3)=2$, $t(3)=5 \\implies V = 7 \\times 2 \\times 5 = 70$).' },
+      { no: 4, topik: 'Operasi Matriks', skor: 2, promptShort: 'Jumlah penjualan Roti Cokelat di Gerai 1 selama akhir pekan (elemen $t_{11}$ pada $T = S + M$)', acceptedAnswers: ['70', '70bungkus'], displayAnswer: '70', explanation: 'Matriks total penjualan $T = S + M$: $$T = \\begin{bmatrix} 30 & 20 \\\\ 25 & 15 \\end{bmatrix} + \\begin{bmatrix} 40 & 25 \\\\ 35 & 20 \\end{bmatrix} = \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix}$$ Elemen baris ke-1 kolom ke-1 adalah $t_{11} = 30 + 40 = 70$ bungkus.' },
+      { no: 5, topik: 'Operasi Matriks', skor: 2, promptShort: 'Kenaikan penjualan Roti Keju di Gerai 2 dari Sabtu ke Minggu (elemen $d_{22}$ pada $D = M - S$)', acceptedAnswers: ['5', '5bungkus'], displayAnswer: '5', explanation: 'Matriks selisih penjualan $D = M - S$: $$D = \\begin{bmatrix} 40 & 25 \\\\ 35 & 20 \\end{bmatrix} - \\begin{bmatrix} 30 & 20 \\\\ 25 & 15 \\end{bmatrix} = \\begin{bmatrix} 10 & 5 \\\\ 10 & 5 \\end{bmatrix}$$ Elemen baris ke-2 kolom ke-2 adalah $d_{22} = 20 - 15 = 5$ bungkus.' },
+      { no: 6, topik: 'Operasi Matriks', skor: 2, promptShort: 'Target penjualan Roti Cokelat di Gerai 2 pada matriks $K = 2T$ (elemen $k_{21}$)', acceptedAnswers: ['120', '120bungkus'], displayAnswer: '120', explanation: 'Dari matriks $T = \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix}$, perkalian skalar $K = 2T$ menghasilkan: $$K = 2 \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix} = \\begin{bmatrix} 140 & 90 \\\\ 120 & 70 \\end{bmatrix}$$ Maka elemen baris ke-2 kolom ke-1 adalah $k_{21} = 2 \\times 60 = 120$ bungkus.' },
+      { no: 7, topik: 'Operasi Matriks', skor: 2, promptShort: 'Ordo matriks pendapatan $R = T_{2 \\times 2} \\cdot H_{2 \\times 1}$', acceptedAnswers: ['2x1', '2*1', '2kali1'], displayAnswer: '2x1', explanation: 'Perkalian matriks $T$ berordo $2 \\times 2$ dengan matriks kolom $H$ berordo $2 \\times 1$ menghasilkan matriks $R$ berordo $2 \\times 1$ (2 baris dan 1 kolom).' },
+      { no: 8, topik: 'Operasi Matriks', skor: 2, promptShort: 'Total pendapatan kotor Gerai 1 selama akhir pekan (elemen $r_{11}$ pada $R = T \\cdot H$)', acceptedAnswers: ['1010000', 'rp1010000'], displayAnswer: '1.010.000', explanation: 'Kalikan baris ke-1 matriks $T$ dengan matriks kolom harga $H$: $$r_{11} = (70 \\times 8.000) + (45 \\times 10.000) = 560.000 + 450.000 = 1.010.000$$ Jadi pendapatan kotor Gerai 1 adalah $\\text{Rp}1.010.000$.' },
+      { no: 9, topik: 'Translasi', skor: 2, promptShort: 'Nilai absis $x\'$ dari bayangan titik $A(4, -3)$ oleh translasi $T_1 = \\begin{pmatrix} -6 \\\\ 8 \\end{pmatrix}$', acceptedAnswers: ['-2'], displayAnswer: '-2', explanation: 'Translasi titik $A(4, -3)$ oleh $T_1 = \\begin{pmatrix} -6 \\\\ 8 \\end{pmatrix}$: $$A\' = (4 + (-6), -3 + 8) = (-2, 5)$$ Sehingga nilai absis $x\' = -2$.' },
+      { no: 10, topik: 'Translasi', skor: 2, promptShort: 'Nilai ordinat akhir $y\'\'$ setelah dilanjutkan translasi $T_2 = \\begin{pmatrix} 9 \\\\ -2 \\end{pmatrix}$', acceptedAnswers: ['3'], displayAnswer: '3', explanation: 'Dari titik $A\'(-2, 5)$ dilanjutkan translasi $T_2 = \\begin{pmatrix} 9 \\\\ -2 \\end{pmatrix}$: $$A\'\' = (-2 + 9, 5 + (-2)) = (7, 3)$$ Sehingga nilai ordinat akhir adalah $y\'\' = 3$.' }
     ];
 
     // 3. DATA BAGIAN II — MENJODOHKAN (NO. 11-15 & OPSI A-G)
@@ -1636,17 +1636,17 @@
         title: 'Pembagian Horner, Pemfaktoran & Akar-Akar Polinomial',
         stemLatex: 'Diketahui polinomial berderajat tiga $P(x) = x^3 - 4x^2 + x + 6$ habis dibagi oleh $(x + 1)$.',
         subQuestions: [
-          { id: 'a', label: 'a. Tentukan hasil bagi H(x) dan sisa pembagian P(x) oleh (x + 1) menggunakan skema Horner atau pembagian bersusun! (4 poin)' },
-          { id: 'b', label: 'b. Faktorkan hasil bagi H(x) secara lengkap, lalu tentukan ketiga akar persamaan polinomial P(x) = 0! (4 poin)' },
-          { id: 'c', label: 'c. Jika ketiga akar tersebut diurutkan dari yang terkecil x_1 < x_2 < x_3, hitunglah nilai dari x_1 + 2x_2 + 3x_3! (2 poin)' }
+          { id: 'a', label: 'a. Tentukan hasil bagi $H(x)$ dan sisa pembagian $P(x)$ oleh $(x + 1)$ menggunakan skema Horner atau pembagian bersusun! (4 poin)' },
+          { id: 'b', label: 'b. Faktorkan hasil bagi $H(x)$ secara lengkap, lalu tentukan ketiga akar persamaan polinomial $P(x) = 0$! (4 poin)' },
+          { id: 'c', label: 'c. Jika ketiga akar tersebut diurutkan dari yang terkecil $x_1 < x_2 < x_3$, hitunglah nilai dari $x_1 + 2x_2 + 3x_3$! (2 poin)' }
         ],
         hint: 'Gunakan pembagi $x = -1$ pada skema Horner dengan baris koefisien $[1, -4, 1, 6]$. Hasil baginya berupa polinomial kuadrat $H(x) = x^2 - 5x + 6$ yang mudah difaktorkan.',
         rubricItems: [
-          { id: '16_1', points: 2, text: 'Menyusun koefisien P(x) yaitu [1, -4, 1, 6] dengan nilai pembagi x = -1 pada skema Horner / pembagian bersusun dengan benar.' },
-          { id: '16_2', points: 2, text: 'Menemukan polinomial hasil bagi H(x) = x^2 - 5x + 6 dan menunjukkan sisa pembagian S = 0.' },
-          { id: '16_3', points: 2, text: 'Memfaktorkan hasil bagi H(x) menjadi (x - 2)(x - 3) sehingga P(x) = (x + 1)(x - 2)(x - 3).' },
-          { id: '16_4', points: 2, text: 'Menentukan ketiga akar persamaan P(x) = 0 secara lengkap yaitu x = -1, x = 2, dan x = 3.' },
-          { id: '16_5', points: 2, text: 'Mengurutkan x_1 = -1 < x_2 = 2 < x_3 = 3 lalu menghitung nilai x_1 + 2x_2 + 3x_3 = (-1) + 2(2) + 3(3) = 12.' }
+          { id: '16_1', points: 2, text: 'Menyusun koefisien $P(x)$ yaitu $[1, -4, 1, 6]$ dengan nilai pembagi $x = -1$ pada skema Horner / pembagian bersusun dengan benar.' },
+          { id: '16_2', points: 2, text: 'Menemukan polinomial hasil bagi $H(x) = x^2 - 5x + 6$ dan menunjukkan sisa pembagian $S = 0$.' },
+          { id: '16_3', points: 2, text: 'Memfaktorkan hasil bagi $H(x)$ menjadi $(x - 2)(x - 3)$ sehingga $P(x) = (x + 1)(x - 2)(x - 3)$.' },
+          { id: '16_4', points: 2, text: 'Menentukan ketiga akar persamaan $P(x) = 0$ secara lengkap yaitu $x = -1$, $x = 2$, dan $x = 3$.' },
+          { id: '16_5', points: 2, text: 'Mengurutkan $x_1 = -1 < x_2 = 2 < x_3 = 3$ lalu menghitung nilai $x_1 + 2x_2 + 3x_3 = (-1) + 2(2) + 3(3) = 12$.' }
         ],
         solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Skema Horner dengan $x = -1$):</strong></p><p>Koefisien $P(x) = x^3 - 4x^2 + x + 6$ adalah $[1, -4, 1, 6]$. Dengan $x = -1$, baris hasil Horner menghasilkan koefisien hasil bagi $[1, -5, 6]$ dan sisa $S = 0$.</p><p>Sehingga diperoleh hasil bagi $H(x) = x^2 - 5x + 6$ dan sisa pembagian $S = 0$.</p><p><strong>Langkah b (Pemfaktoran &amp; Akar-Akar):</strong></p><p>$$H(x) = x^2 - 5x + 6 = (x - 2)(x - 3)$$</p><p>$$P(x) = (x + 1)(x - 2)(x - 3) = 0 \\implies x = -1, \\; x = 2, \\; \\text{atau } x = 3$$</p><p><strong>Langkah c (Evaluasi Ekspresi Akar):</strong></p><p>Karena $x_1 < x_2 < x_3$, maka $x_1 = -1$, $x_2 = 2$, dan $x_3 = 3$. Nilai dari:</p><p>$$x_1 + 2x_2 + 3x_3 = (-1) + 2(2) + 3(3) = -1 + 4 + 9 = 12$$</p></div>`
       },
@@ -1655,37 +1655,37 @@
         title: 'Penyelesaian SPLDV Kontekstual dengan Invers Matriks / Cramer',
         stemLatex: 'Panitia kegiatan sekolah memesan katering <strong>Paket Hemat</strong> ($x$) dan <strong>Paket Spesial</strong> ($y$) dari dapur katering yang sama untuk dua hari acara:<br/>&bull; Hari pertama: Pemesanan $3$ Paket Hemat dan $2$ Paket Spesial menghabiskan biaya $\\text{Rp}130.000$.<br/>&bull; Hari kedua: Pemesanan $4$ Paket Hemat dan $3$ Paket Spesial menghabiskan biaya $\\text{Rp}180.000$.',
         subQuestions: [
-          { id: 'a', label: 'a. Buatlah model sistem persamaan linear dua variabel (SPLDV) dan nyatakan ke dalam persamaan matriks A . X = B! (4 poin)' },
-          { id: 'b', label: 'b. Tentukan determinan matriks koefisien A serta matriks invers A^(-1)! (5 poin)' },
-          { id: 'c', label: 'c. Hitunglah harga satuan Paket Hemat (x) dan Paket Spesial (y), lalu tentukan total biaya untuk memesan 10 Paket Hemat dan 5 Paket Spesial! (5 poin)' }
+          { id: 'a', label: 'a. Buatlah model sistem persamaan linear dua variabel (SPLDV) dan nyatakan ke dalam persamaan matriks $A \\cdot X = B$! (4 poin)' },
+          { id: 'b', label: 'b. Tentukan determinan matriks koefisien $A$ serta matriks invers $A^{-1}$! (5 poin)' },
+          { id: 'c', label: 'c. Hitunglah harga satuan Paket Hemat ($x$) dan Paket Spesial ($y$), lalu tentukan total biaya untuk memesan $10$ Paket Hemat dan $5$ Paket Spesial! (5 poin)' }
         ],
         hint: 'Susun matriks koefisien $A = \\begin{bmatrix} 3 & 2 \\\\ 4 & 3 \\end{bmatrix}$. Perhatikan bahwa $\\det(A) = (3)(3) - (2)(4) = 1$, sehingga invers matriksnya seluruhnya berupa bilangan bulat.',
         rubricItems: [
-          { id: '17_1', points: 2, text: 'Menuliskan model SPLDV: 3x + 2y = 130.000 dan 4x + 3y = 180.000.' },
-          { id: '17_2', points: 2, text: 'Menyatakan SPLDV ke dalam bentuk persamaan matriks [[3, 2], [4, 3]] [[x], [y]] = [[130.000], [180.000]].' },
-          { id: '17_3', points: 2, text: 'Menghitung determinan matriks koefisien det(A) = (3)(3) - (2)(4) = 9 - 8 = 1.' },
-          { id: '17_4', points: 3, text: 'Menentukan matriks invers A^(-1) = [[3, -2], [-4, 3]].' },
-          { id: '17_5', points: 3, text: 'Menghitung harga satuan Paket Hemat x = Rp30.000 dan Paket Spesial y = Rp20.000.' },
-          { id: '17_6', points: 2, text: 'Menghitung total biaya untuk 10 Paket Hemat dan 5 Paket Spesial: 10(30.000) + 5(20.000) = Rp400.000.' }
+          { id: '17_1', points: 2, text: 'Menuliskan model SPLDV: $3x + 2y = 130.000$ dan $4x + 3y = 180.000$.' },
+          { id: '17_2', points: 2, text: 'Menyatakan SPLDV ke dalam bentuk persamaan matriks $\\begin{bmatrix} 3 & 2 \\\\ 4 & 3 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 130.000 \\\\ 180.000 \\end{bmatrix}$.' },
+          { id: '17_3', points: 2, text: 'Menghitung determinan matriks koefisien $\\det(A) = (3)(3) - (2)(4) = 9 - 8 = 1$.' },
+          { id: '17_4', points: 3, text: 'Menentukan matriks invers $A^{-1} = \\begin{bmatrix} 3 & -2 \\\\ -4 & 3 \\end{bmatrix}$.' },
+          { id: '17_5', points: 3, text: 'Menghitung harga satuan Paket Hemat $x = \\text{Rp}30.000$ dan Paket Spesial $y = \\text{Rp}20.000$.' },
+          { id: '17_6', points: 2, text: 'Menghitung total biaya untuk $10$ Paket Hemat dan $5$ Paket Spesial: $10(30.000) + 5(20.000) = \\text{Rp}400.000$.' }
         ],
         solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Model SPLDV &amp; Persamaan Matriks):</strong></p><p>$$\\begin{cases} 3x + 2y = 130.000 \\\\ 4x + 3y = 180.000 \\end{cases} \\iff \\begin{bmatrix} 3 & 2 \\\\ 4 & 3 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 130.000 \\\\ 180.000 \\end{bmatrix}$$</p><p><strong>Langkah b (Determinan &amp; Invers Matriks $A$):</strong></p><p>$$\\det(A) = (3)(3) - (2)(4) = 9 - 8 = 1$$</p><p>$$A^{-1} = \\frac{1}{1} \\begin{bmatrix} 3 & -2 \\\\ -4 & 3 \\end{bmatrix} = \\begin{bmatrix} 3 & -2 \\\\ -4 & 3 \\end{bmatrix}$$</p><p><strong>Langkah c (Menentukan $x, y$ &amp; Total Biaya):</strong></p><p>$$\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 3 & -2 \\\\ -4 & 3 \\end{bmatrix} \\begin{bmatrix} 130.000 \\\\ 180.000 \\end{bmatrix} = \\begin{bmatrix} 390.000 - 360.000 \\\\ -520.000 + 540.000 \\end{bmatrix} = \\begin{bmatrix} 30.000 \\\\ 20.000 \\end{bmatrix}$$</p><p>Harga Paket Hemat $x = \\text{Rp}30.000$ dan Paket Spesial $y = \\text{Rp}20.000$. Biaya untuk $10$ Paket Hemat dan $5$ Paket Spesial adalah $10(30.000) + 5(20.000) = \\text{Rp}400.000$.</p></div>`
       },
       {
         no: 18, topik: 'Operasi Matriks', level: 'L3', skor: 11,
-        title: 'Persamaan Matriks A . X = B & Sifat Non-Komutatif',
+        title: 'Persamaan Matriks $A \\cdot X = B$ & Sifat Non-Komutatif',
         stemLatex: 'Diketahui dua matriks berordo $2 \\times 2$: $$A = \\begin{bmatrix} 2 & 5 \\\\ 1 & 3 \\end{bmatrix} \\quad \\text{dan} \\quad B = \\begin{bmatrix} 4 & -1 \\\\ 2 & 3 \\end{bmatrix}$$',
         subQuestions: [
-          { id: 'a', label: 'a. Tentukan determinan matriks A dan matriks invers A^(-1)! (3 poin)' },
-          { id: 'b', label: 'b. Tentukan matriks X berordo 2x2 yang memenuhi persamaan matriks A . X = B! (4 poin)' },
-          { id: 'c', label: 'c. Hitunglah hasil kali A . B dan B . A, lalu simpulkan apakah operasi perkalian matriks bersifat komutatif! (4 poin)' }
+          { id: 'a', label: 'a. Tentukan determinan matriks $A$ dan matriks invers $A^{-1}$! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan matriks $X$ berordo $2 \\times 2$ yang memenuhi persamaan matriks $A \\cdot X = B$! (4 poin)' },
+          { id: 'c', label: 'c. Hitunglah hasil kali $A \\cdot B$ dan $B \\cdot A$, lalu simpulkan apakah operasi perkalian matriks bersifat komutatif! (4 poin)' }
         ],
         hint: 'Ingat bahwa untuk persamaan $A \\cdot X = B$, matriks $X$ ditentukan dengan mengalikan $A^{-1}$ dari sebelah kiri: $X = A^{-1} \\cdot B$ (bukan $B \\cdot A^{-1}$).',
         rubricItems: [
-          { id: '18_1', points: 3, text: 'Menghitung det(A) = (2)(3) - (5)(1) = 1 dan menentukan matriks invers A^(-1) = [[3, -5], [-1, 2]].' },
-          { id: '18_2', points: 2, text: 'Menuliskan rumus penyelesaian persamaan matriks secara tepat yaitu X = A^(-1) . B.' },
-          { id: '18_3', points: 2, text: 'Menghitung hasil perkalian matriks X = [[3, -5], [-1, 2]] [[4, -1], [2, 3]] = [[2, -18], [0, 7]].' },
-          { id: '18_4', points: 2, text: 'Menghitung A . B = [[18, 13], [10, 8]] dan B . A = [[7, 17], [7, 19]].' },
-          { id: '18_5', points: 2, text: 'Menyimpulkan bahwa karena A . B != B . A, maka perkalian matriks tidak bersifat komutatif.' }
+          { id: '18_1', points: 3, text: 'Menghitung $\\det(A) = (2)(3) - (5)(1) = 1$ dan menentukan matriks invers $A^{-1} = \\begin{bmatrix} 3 & -5 \\\\ -1 & 2 \\end{bmatrix}$.' },
+          { id: '18_2', points: 2, text: 'Menuliskan rumus penyelesaian persamaan matriks secara tepat yaitu $X = A^{-1} \\cdot B$.' },
+          { id: '18_3', points: 2, text: 'Menghitung hasil perkalian matriks $X = \\begin{bmatrix} 3 & -5 \\\\ -1 & 2 \\end{bmatrix} \\begin{bmatrix} 4 & -1 \\\\ 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & -18 \\\\ 0 & 7 \\end{bmatrix}$.' },
+          { id: '18_4', points: 2, text: 'Menghitung $A \\cdot B = \\begin{bmatrix} 18 & 13 \\\\ 10 & 8 \\end{bmatrix}$ dan $B \\cdot A = \\begin{bmatrix} 7 & 17 \\\\ 7 & 19 \\end{bmatrix}$.' },
+          { id: '18_5', points: 2, text: 'Menyimpulkan bahwa karena $A \\cdot B \\neq B \\cdot A$, maka perkalian matriks tidak bersifat komutatif.' }
         ],
         solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Determinan &amp; Invers Matriks $A$):</strong></p><p>$$\\det(A) = (2)(3) - (5)(1) = 6 - 5 = 1 \\implies A^{-1} = \\begin{bmatrix} 3 & -5 \\\\ -1 & 2 \\end{bmatrix}$$</p><p><strong>Langkah b (Penyelesaian $A \\cdot X = B$):</strong></p><p>$$X = A^{-1} \\cdot B = \\begin{bmatrix} 3 & -5 \\\\ -1 & 2 \\end{bmatrix} \\begin{bmatrix} 4 & -1 \\\\ 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 12 - 10 & -3 - 15 \\\\ -4 + 4 & 1 + 6 \\end{bmatrix} = \\begin{bmatrix} 2 & -18 \\\\ 0 & 7 \\end{bmatrix}$$</p><p><strong>Langkah c (Uji Komutatif $A \\cdot B$ vs $B \\cdot A$):</strong></p><p>$$A \\cdot B = \\begin{bmatrix} 2 & 5 \\\\ 1 & 3 \\end{bmatrix} \\begin{bmatrix} 4 & -1 \\\\ 2 & 3 \\end{bmatrix} = \\begin{bmatrix} 18 & 13 \\\\ 10 & 8 \\end{bmatrix}, \\quad B \\cdot A = \\begin{bmatrix} 4 & -1 \\\\ 2 & 3 \\end{bmatrix} \\begin{bmatrix} 2 & 5 \\\\ 1 & 3 \\end{bmatrix} = \\begin{bmatrix} 7 & 17 \\\\ 7 & 19 \\end{bmatrix}$$</p><p>Karena $A \\cdot B \\neq B \\cdot A$, maka operasi perkalian matriks <strong>tidak bersifat komutatif</strong>.</p></div>`
       },
@@ -1694,38 +1694,38 @@
         title: 'Komposisi Translasi Segitiga, Analisis Luas & Translasi Garis',
         stemLatex: 'Pada cetak biru tata ruang sekolah, sebuah zona parkir berbentuk segitiga siku-siku $PQR$ memiliki koordinat titik sudut $P(1, 2)$, $Q(7, 2)$, dan $R(1, 6)$ (dalam satuan meter). Di dekatnya terdapat jalur pedestrian yang mengikuti persamaan garis lurus $h: 2x - 3y + 6 = 0$.<br/>Seluruh rancangan tersebut digeser melalui dua tahap translasi berturut-turut, yaitu $T_1 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}$ dilanjutkan dengan $T_2 = \\begin{pmatrix} 2 \\\\ -5 \\end{pmatrix}$.',
         subQuestions: [
-          { id: 'a', label: 'a. Tentukan vektor translasi tunggal (komposisi) T = T_1 + T_2 serta koordinat akhir bayangan titik sudut P\'\', Q\'\', dan R\'\'! (4 poin)' },
-          { id: 'b', label: 'b. Hitunglah luas segitiga awal PQR dan luas segitiga bayangan akhir P\'\'Q\'\'R\'\', lalu jelaskan sifat translasi terhadap ukuran bangun datar! (4 poin)' },
-          { id: 'c', label: 'c. Tentukan persamaan garis bayangan akhir h\'\' dari jalur pedestrian setelah mengalami komposisi translasi tersebut! (4 poin)' }
+          { id: 'a', label: 'a. Tentukan vektor translasi tunggal (komposisi) $T = T_1 + T_2$ serta koordinat akhir bayangan titik sudut $P\'\'$, $Q\'\'$, dan $R\'\'$! (4 poin)' },
+          { id: 'b', label: 'b. Hitunglah luas segitiga awal $PQR$ dan luas segitiga bayangan akhir $P\'\'Q\'\'R\'\'$, lalu jelaskan sifat translasi terhadap ukuran bangun datar! (4 poin)' },
+          { id: 'c', label: 'c. Tentukan persamaan garis bayangan akhir $h\'\'$ dari jalur pedestrian setelah mengalami komposisi translasi tersebut! (4 poin)' }
         ],
         hint: 'Jumlahkan kedua vektor translasi terlebih dahulu: $T = T_1 + T_2 = \\begin{pmatrix} -4 + 2 \\\\ 3 + (-5) \\end{pmatrix} = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$. Gunakan vektor tunggal $T$ tersebut untuk menggeser titik $P, Q, R$ maupun garis $h$.',
         rubricItems: [
-          { id: '19_1', points: 2, text: 'Menentukan vektor translasi komposisi T = T_1 + T_2 = (-2, -2).' },
-          { id: '19_2', points: 2, text: 'Menentukan koordinat bayangan akhir titik sudut: P\'\'(-1, 0), Q\'\'(5, 0), dan R\'\'(-1, 4).' },
-          { id: '19_3', points: 2, text: 'Menghitung luas segitiga awal L_PQR = 1/2 x 6 x 4 = 12 m^2 dan luas bayangan L_P\'\'Q\'\'R\'\' = 1/2 x 6 x 4 = 12 m^2.' },
+          { id: '19_1', points: 2, text: 'Menentukan vektor translasi komposisi $T = T_1 + T_2 = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$.' },
+          { id: '19_2', points: 2, text: 'Menentukan koordinat bayangan akhir titik sudut: $P\'\'(-1, 0)$, $Q\'\'(5, 0)$, dan $R\'\'(-1, 4)$.' },
+          { id: '19_3', points: 2, text: 'Menghitung luas segitiga awal $L_{PQR} = \\frac{1}{2} \\times 6 \\times 4 = 12\\text{ m}^2$ dan luas bayangan $L_{P\'\'Q\'\'R\'\'} = \\frac{1}{2} \\times 6 \\times 4 = 12\\text{ m}^2$.' },
           { id: '19_4', points: 2, text: 'Menjelaskan bahwa translasi adalah transformasi isometri yang mempertahankan bentuk dan luas bangun datar.' },
-          { id: '19_5', points: 2, text: 'Menyusun hubungan substitusi x = x\'\' + 2 dan y = y\'\' + 2 untuk translasi garis h oleh T = (-2, -2).' },
-          { id: '19_6', points: 2, text: 'Menentukan persamaan garis bayangan akhir h\'\': 2(x + 2) - 3(y + 2) + 6 = 0 => 2x - 3y + 4 = 0.' }
+          { id: '19_5', points: 2, text: 'Menyusun hubungan substitusi $x = x\'\' + 2$ dan $y = y\'\' + 2$ untuk translasi garis $h$ oleh $T = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$.' },
+          { id: '19_6', points: 2, text: 'Menentukan persamaan garis bayangan akhir $h\'\'$: $2(x + 2) - 3(y + 2) + 6 = 0 \\implies 2x - 3y + 4 = 0$.' }
         ],
         solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Vektor Komposisi &amp; Bayangan Titik Sudut):</strong></p><p>$$T = T_1 + T_2 = \\begin{pmatrix} -4 + 2 \\\\ 3 + (-5) \\end{pmatrix} = \\begin{pmatrix} -2 \\\\ -2 \\end{pmatrix}$$</p><p>$$P(1, 2) \\to P''(-1, 0), \\quad Q(7, 2) \\to Q''(5, 0), \\quad R(1, 6) \\to R''(-1, 4)$$</p><p><strong>Langkah b (Perbandingan Luas Segitiga):</strong></p><p>Pada $\\triangle PQR$: panjang alas $PQ = 7 - 1 = 6\\text{ m}$ dan tinggi $PR = 6 - 2 = 4\\text{ m}$, sehingga $L_{PQR} = \\frac{1}{2} \\times 6 \\times 4 = 12\\text{ m}^2$.</p><p>Pada $\\triangle P''Q''R''$: panjang alas $P''Q'' = 5 - (-1) = 6\\text{ m}$ dan tinggi $P''R'' = 4 - 0 = 4\\text{ m}$, sehingga $L_{P''Q''R''} = 12\\text{ m}^2$. Translasi bersifat <strong>isometri</strong> (kekekalan bentuk dan ukuran/luas).</p><p><strong>Langkah c (Bayangan Garis $h: 2x - 3y + 6 = 0$ oleh $T = (-2, -2)$):</strong></p><p>$$x'' = x - 2 \\implies x = x'' + 2 \\quad \\text{dan} \\quad y'' = y - 2 \\implies y = y'' + 2$$</p><p>$$2(x'' + 2) - 3(y'' + 2) + 6 = 0 \\implies 2x'' + 4 - 3y'' - 6 + 6 = 0 \\implies 2x - 3y + 4 = 0$$</p></div>`
       },
       {
         no: 20, topik: 'Operasi Matriks', level: 'L3', skor: 18,
-        title: 'Determinan, Kofaktor, Adjoin, Invers Matriks 3x3 & Dekripsi Sandi',
+        title: 'Determinan, Kofaktor, Adjoin, Invers Matriks $3 \\times 3$ & Dekripsi Sandi',
         stemLatex: 'Sebuah sistem keamanan jaringan mengenkripsi vektor pesan asli $P = \\begin{bmatrix} p_1 \\\\ p_2 \\\\ p_3 \\end{bmatrix}$ menjadi vektor sandi $C = M \\cdot P$ menggunakan matriks kunci berordo $3 \\times 3$: $$M = \\begin{bmatrix} 1 & 2 & 1 \\\\ 1 & 3 & 2 \\\\ 2 & 3 & 2 \\end{bmatrix}$$ Seorang petugas menerima vektor sandi $C = \\begin{bmatrix} 11 \\\\ 17 \\\\ 20 \\end{bmatrix}$ dan harus mendekripsinya dengan rumus $P = M^{-1} \\cdot C$.',
         subQuestions: [
-          { id: 'a', label: 'a. Hitunglah determinan matriks kunci M (det(M)) menggunakan aturan Sarrus atau ekspansi kofaktor! (4 poin)' },
-          { id: 'b', label: 'b. Tentukan matriks kofaktor Kof(M), matriks adjoin Adj(M), dan matriks invers M^(-1)! (9 poin)' },
-          { id: 'c', label: 'c. Tentukan vektor pesan asli P = [p_1, p_2, p_3]^T melalui perkalian P = M^(-1) . C! (5 poin)' }
+          { id: 'a', label: 'a. Hitunglah determinan matriks kunci $M$ ($\\det(M)$) menggunakan aturan Sarrus atau ekspansi kofaktor! (4 poin)' },
+          { id: 'b', label: 'b. Tentukan matriks kofaktor $\\text{Kof}(M)$, matriks adjoin $\\text{Adj}(M)$, dan matriks invers $M^{-1}$! (9 poin)' },
+          { id: 'c', label: 'c. Tentukan vektor pesan asli $P = \\begin{bmatrix} p_1 \\\\ p_2 \\\\ p_3 \\end{bmatrix}$ melalui perkalian $P = M^{-1} \\cdot C$! (5 poin)' }
         ],
         hint: 'Hitung determinan $M$ terlebih dahulu; kamu akan memperoleh $\\det(M) = 1$. Ingat bahwa $\\text{Adj}(M)$ adalah transpos dari matriks kofaktor $\\text{Kof}(M)$, dan jangan lupa tanda papan catur $(+ - + / - + - / + - +)$ saat menghitung kofaktor.',
         rubricItems: [
-          { id: '20_1', points: 4, text: 'Menghitung determinan matriks M dengan tepat: det(M) = (6 + 8 + 3) - (6 + 6 + 4) = 17 - 16 = 1.' },
-          { id: '20_2', points: 4, text: 'Menentukan ke-9 elemen matriks kofaktor Kof(M) = [[0, 2, -3], [-1, 0, 1], [1, -1, 1]].' },
-          { id: '20_3', points: 2, text: 'Mentranpos matriks kofaktor untuk memperoleh matriks adjoin Adj(M) = [[0, -1, 1], [2, 0, -1], [-3, 1, 1]].' },
-          { id: '20_4', points: 3, text: 'Menentukan matriks invers M^(-1) = (1/det(M)) Adj(M) = [[0, -1, 1], [2, 0, -1], [-3, 1, 1]].' },
-          { id: '20_5', points: 3, text: 'Melakukan perkalian matriks P = M^(-1) . C dengan C = [11, 17, 20]^T secara benar.' },
-          { id: '20_6', points: 2, text: 'Menemukan vektor pesan asli secara tepat yaitu p_1 = 3, p_2 = 2, dan p_3 = 4.' }
+          { id: '20_1', points: 4, text: 'Menghitung determinan matriks $M$ dengan tepat: $\\det(M) = (6 + 8 + 3) - (6 + 6 + 4) = 17 - 16 = 1$.' },
+          { id: '20_2', points: 4, text: 'Menentukan ke-9 elemen matriks kofaktor $\\text{Kof}(M) = \\begin{bmatrix} 0 & 2 & -3 \\\\ -1 & 0 & 1 \\\\ 1 & -1 & 1 \\end{bmatrix}$.' },
+          { id: '20_3', points: 2, text: 'Mentranpos matriks kofaktor untuk memperoleh matriks adjoin $\\text{Adj}(M) = \\begin{bmatrix} 0 & -1 & 1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$.' },
+          { id: '20_4', points: 3, text: 'Menentukan matriks invers $M^{-1} = \\frac{1}{\\det(M)} \\text{Adj}(M) = \\begin{bmatrix} 0 & -1 & 1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$.' },
+          { id: '20_5', points: 3, text: 'Melakukan perkalian matriks $P = M^{-1} \\cdot C$ dengan $C = \\begin{bmatrix} 11 \\\\ 17 \\\\ 20 \\end{bmatrix}$ secara benar.' },
+          { id: '20_6', points: 2, text: 'Menemukan vektor pesan asli secara tepat yaitu $p_1 = 3$, $p_2 = 2$, dan $p_3 = 4$.' }
         ],
         solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Determinan Matriks $M$):</strong></p><p>Dengan aturan Sarrus atau ekspansi baris pertama:</p><p>$$\\det(M) = 1(6 - 6) - 2(2 - 4) + 1(3 - 6) = 0 - 2(-2) - 3 = 4 - 3 = 1$$</p><p><strong>Langkah b (Matriks Kofaktor, Adjoin &amp; Invers $M^{-1}$):</strong></p><p>Kesembilan kofaktor $C_{ij} = (-1)^{i+j} M_{ij}$:</p><p>$C_{11} = 0, \\; C_{12} = 2, \\; C_{13} = -3; \\quad C_{21} = -1, \\; C_{22} = 0, \\; C_{23} = 1; \\quad C_{31} = 1, \\; C_{32} = -1, \\; C_{33} = 1$</p><p>$$\\text{Kof}(M) = \\begin{bmatrix} 0 & 2 & -3 \\\\ -1 & 0 & 1 \\\\ 1 & -1 & 1 \\end{bmatrix} \\implies \\text{Adj}(M) = (\\text{Kof}(M))^T = \\begin{bmatrix} 0 & -1 & 1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$$</p><p>Karena $\\det(M) = 1$, maka $M^{-1} = \\frac{1}{1}\\text{Adj}(M) = \\begin{bmatrix} 0 & -1 & 1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$.</p><p><strong>Langkah c (Dekripsi Vektor Pesan Asli $P = M^{-1} \\cdot C$):</strong></p><p>$$P = \\begin{bmatrix} 0 & -1 & 1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix} \\begin{bmatrix} 11 \\\\ 17 \\\\ 20 \\end{bmatrix} = \\begin{bmatrix} 0 - 17 + 20 \\\\ 22 + 0 - 20 \\\\ -33 + 17 + 20 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 2 \\\\ 4 \\end{bmatrix}$$</p><p>Jadi pesan asli yang dikirim adalah $p_1 = 3, \\; p_2 = 2, \\; p_3 = 4$.</p></div>`
       }
@@ -2365,6 +2365,7 @@
           `)
           .join('');
       }
+      triggerMathRender(document.getElementById('view-kisikisi'));
     }
 
     // 12. RENDER & HANDLE BAGIAN I, II, III
@@ -2776,8 +2777,8 @@
                 const checked = Boolean(appState.answers.bagian3Rubric[r.id]);
                 return `
                   <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 cursor-pointer border ${checked ? 'border-brand-300 bg-brand-50/40' : 'border-slate-200/70'} transition">
-                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="handleRubricToggle('${r.id}', this.checked); renderResultsTab();" class="mt-0.5 w-5 h-5 rounded text-brand-700 shrink-0" />
-                    <span class="flex-1 text-xs sm:text-sm font-medium text-slate-800">${escapeHtml(r.text)}</span>
+                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="handleRubricToggle('${r.id}', this.checked); renderResultsTab();" class="mt-1 w-5 h-5 rounded text-brand-700 shrink-0" />
+                    <span class="flex-1 min-w-0 text-xs sm:text-sm font-medium text-slate-800 leading-relaxed overflow-x-auto">${r.text}</span>
                     <span class="px-2.5 py-0.5 rounded-md bg-brand-100 text-brand-900 font-mono text-xs font-bold tabular-nums shrink-0">+${r.points} pt</span>
                   </label>
                 `;
@@ -2799,7 +2800,7 @@
               <span class="text-xs sm:text-sm font-extrabold text-slate-900">Nomor ${q.no} &bull; Bagian I (${q.topik})</span>
               <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${badgeClass}">${statusText}</span>
             </div>
-            <p class="text-xs text-slate-600">${escapeHtml(q.promptShort)}</p>
+            <p class="text-xs text-slate-600 overflow-x-auto">${q.promptShort}</p>
             <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm pt-1">
               <div>Jawabanmu: <strong class="font-mono text-slate-900">${userAns ? escapeHtml(userAns) : '<em>Kosong</em>'}</strong></div>
               <div>Kunci Jawaban: <strong class="font-mono text-emerald-800">${escapeHtml(q.displayAnswer)}</strong></div>
