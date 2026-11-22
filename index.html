@@ -448,30 +448,56 @@
         <!-- Left: Student Identity & Mode Form -->
         <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-8 shadow-card">
           <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
-            Formulir Identitas Siswa (Wajib)
+            Identitas Murid &amp; Simpan Progres Otomatis
           </h3>
           <p class="mt-1 text-sm text-slate-600">
-            Isi Nama Lengkap dan pilih kelasmu (<strong>XI-1</strong> atau <strong>XI-2</strong>). Progres jawaban tersimpan otomatis di browser dan siap dicetak menjadi PDF bukti latihan.
+            Cukup masukkan <strong>Nama Panggilan</strong>, pilih <strong>Kelas (XI-1 / XI-2)</strong>, dan <strong>No. Absen</strong>. Seluruh jawabanmu otomatis tersimpan di Cloud Supabase — jika halaman di-<em>refresh</em> atau pindah perangkat, masukkan Kelas &amp; No. Absen yang sama untuk langsung melanjutkan progresmu.
           </p>
 
-          <form id="identityForm" onsubmit="handleStartSession(event)" class="mt-6 space-y-5" novalidate>
-            <!-- Nama Lengkap -->
-            <div>
-              <label for="inputNama" class="block text-sm font-bold text-slate-800">
-                Nama Lengkap Siswa <span class="text-red-600">*</span>
-              </label>
-              <input
-                id="inputNama"
-                type="text"
-                required
-                minlength="3"
-                autocomplete="name"
-                placeholder="Ketik nama lengkapmu (contoh: Nadia Putri Pratama)"
-                class="mt-2 w-full px-4 py-3 rounded-xl border-2 border-slate-300 text-base sm:text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition"
-              />
-              <p id="errorNama" class="hidden mt-1.5 text-xs font-semibold text-red-700">
-                Nama lengkap wajib diisi (minimal 3 karakter).
-              </p>
+          <!-- Cloud Restore Notice Banner -->
+          <div id="cloudRestoreBanner" class="hidden mt-4 p-3.5 rounded-xl border border-emerald-300 bg-emerald-50 text-xs sm:text-sm font-semibold text-emerald-900">
+            Progres latihanmu berhasil dipulihkan dari Cloud Supabase!
+          </div>
+
+          <form id="identityForm" onsubmit="handleStartSession(event)" class="mt-5 space-y-5" novalidate>
+            <!-- Nama Panggilan & No. Absen -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+              <div class="sm:col-span-8">
+                <label for="inputNama" class="block text-sm font-bold text-slate-800">
+                  Nama Panggilan <span class="text-red-600">*</span>
+                </label>
+                <input
+                  id="inputNama"
+                  type="text"
+                  required
+                  minlength="2"
+                  autocomplete="given-name"
+                  placeholder="Contoh: Nadia"
+                  class="mt-2 w-full px-4 py-3 rounded-xl border-2 border-slate-300 text-base sm:text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition"
+                />
+                <p id="errorNama" class="hidden mt-1.5 text-xs font-semibold text-red-700">
+                  Nama panggilan wajib diisi (minimal 2 karakter).
+                </p>
+              </div>
+
+              <div class="sm:col-span-4">
+                <label for="inputAbsen" class="block text-sm font-bold text-slate-800">
+                  No. Absen <span class="text-red-600">*</span>
+                </label>
+                <input
+                  id="inputAbsen"
+                  type="number"
+                  inputmode="numeric"
+                  min="1"
+                  max="45"
+                  required
+                  placeholder="1–45"
+                  class="mt-2 w-full px-4 py-3 rounded-xl border-2 border-slate-300 text-base sm:text-sm font-mono font-bold text-slate-900 placeholder:text-slate-400 focus:border-brand-600 transition tabular-nums"
+                />
+                <p id="errorAbsen" class="hidden mt-1.5 text-xs font-semibold text-red-700">
+                  Isi No. Absen (1–45).
+                </p>
+              </div>
             </div>
 
             <!-- Pilihan Kelas: HANYA XI-1 dan XI-2 -->
@@ -2078,17 +2104,22 @@
     ];
 
     // 5. DEFAULT APPLICATION STATE
-    function generateSessionId() {
-      return `uas_xi_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    function buildStudentSessionId(kelas, noAbsen) {
+      if (!ALLOWED_CLASSES.includes(kelas) || !noAbsen) {
+        return `uas_xi_temp_${Date.now()}`;
+      }
+      const paddedAbsen = String(parseInt(noAbsen, 10)).padStart(2, '0');
+      return `${kelas.toLowerCase()}_absen_${paddedAbsen}`;
     }
 
     function getDefaultState() {
       return {
-        sessionId: generateSessionId(),
+        sessionId: '',
         lastSyncedAt: null,
         student: {
           nama: '',
           kelas: '', // Restricted to 'XI-1' or 'XI-2'
+          noAbsen: '', // 1 - 45
           mode: 'belajar', // 'belajar' | 'simulasi'
           startedAt: null,
           completedAt: null
@@ -2122,7 +2153,6 @@
         appState = {
           ...getDefaultState(),
           ...parsed,
-          sessionId: parsed.sessionId || generateSessionId(),
           student: { ...getDefaultState().student, ...(parsed.student || {}) },
           timer: { ...getDefaultState().timer, ...(parsed.timer || {}) },
           answers: {
@@ -2132,6 +2162,9 @@
             bagian3Rubric: { ...((parsed.answers && parsed.answers.bagian3Rubric) || {}) }
           }
         };
+        if (appState.student.kelas && appState.student.noAbsen) {
+          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+        }
         // Enforce only XI-1 or XI-2
         if (appState.student.kelas && !ALLOWED_CLASSES.includes(appState.student.kelas)) {
           appState.student.kelas = 'XI-1';
@@ -2266,8 +2299,19 @@
       return count;
     }
 
+    function hasValidStudentIdentity() {
+      const absenNum = parseInt(appState.student.noAbsen, 10);
+      return Boolean(
+        appState.student.nama &&
+        appState.student.nama.trim().length >= 2 &&
+        ALLOWED_CLASSES.includes(appState.student.kelas) &&
+        absenNum >= 1 &&
+        absenNum <= 45
+      );
+    }
+
     function updateHeaderUI() {
-      const hasIdentity = Boolean(appState.student.nama && ALLOWED_CLASSES.includes(appState.student.kelas));
+      const hasIdentity = hasValidStudentIdentity();
       const idBadge = document.getElementById('headerIdentityBadge');
       const modeBadge = document.getElementById('headerModeBadge');
       const btnReset = document.getElementById('btnResetSession');
@@ -2276,7 +2320,7 @@
         idBadge.classList.remove('hidden');
         idBadge.classList.add('flex');
         document.getElementById('headerStudentName').textContent = appState.student.nama;
-        document.getElementById('headerStudentClass').textContent = appState.student.kelas;
+        document.getElementById('headerStudentClass').textContent = `${appState.student.kelas} • Abs ${appState.student.noAbsen}`;
 
         modeBadge.classList.remove('hidden');
         modeBadge.classList.add('flex');
@@ -2445,7 +2489,7 @@
     }
 
     function checkIdentityGate() {
-      const hasIdentity = Boolean(appState.student.nama && ALLOWED_CLASSES.includes(appState.student.kelas));
+      const hasIdentity = hasValidStudentIdentity();
       const banner = document.getElementById('identityGateBanner');
       const wrapper = document.getElementById('practiceContentWrapper');
       if (!hasIdentity) {
@@ -2505,8 +2549,12 @@
 
     function populateIdentityFormFromState() {
       const inputNama = document.getElementById('inputNama');
+      const inputAbsen = document.getElementById('inputAbsen');
       if (appState.student.nama) {
         inputNama.value = appState.student.nama;
+      }
+      if (appState.student.noAbsen && inputAbsen) {
+        inputAbsen.value = appState.student.noAbsen;
       }
 
       if (ALLOWED_CLASSES.includes(appState.student.kelas)) {
@@ -2519,27 +2567,60 @@
         updateModeCardSelection();
       }
 
-      if (appState.student.nama && ALLOWED_CLASSES.includes(appState.student.kelas)) {
-        document.getElementById('btnStartLabel').textContent = 'Perbarui Identitas & Lanjutkan Latihan';
+      if (hasValidStudentIdentity()) {
+        document.getElementById('btnStartLabel').textContent = 'Lanjutkan Latihan (Sinkron Cloud)';
       }
     }
 
-    function handleStartSession(event) {
+    async function fetchProgressFromSupabase(sessionId) {
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?session_id=eq.${encodeURIComponent(sessionId)}&select=*&limit=1`;
+        const response = await fetch(endpoint, {
+          method: 'GET',
+          headers: {
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+        if (!response.ok) return null;
+        const rows = await response.json();
+        return Array.isArray(rows) && rows.length > 0 ? rows[0] : null;
+      } catch (err) {
+        console.warn('Tidak dapat mengecek progres cloud:', err);
+        return null;
+      }
+    }
+
+    async function handleStartSession(event) {
       event.preventDefault();
       const inputNama = document.getElementById('inputNama');
+      const inputAbsen = document.getElementById('inputAbsen');
       const selectKelas = document.getElementById('selectKelas');
       const errorNama = document.getElementById('errorNama');
+      const errorAbsen = document.getElementById('errorAbsen');
       const errorKelas = document.getElementById('errorKelas');
+      const startLabel = document.getElementById('btnStartLabel');
+      const restoreBanner = document.getElementById('cloudRestoreBanner');
 
       const nama = inputNama.value.trim();
+      const noAbsenRaw = inputAbsen ? inputAbsen.value.trim() : '';
+      const noAbsenNum = parseInt(noAbsenRaw, 10);
       const kelas = selectKelas.value.trim();
 
       let isValid = true;
-      if (nama.length < 3) {
+      if (nama.length < 2) {
         errorNama.classList.remove('hidden');
         isValid = false;
       } else {
         errorNama.classList.add('hidden');
+      }
+
+      if (!noAbsenRaw || isNaN(noAbsenNum) || noAbsenNum < 1 || noAbsenNum > 45) {
+        if (errorAbsen) errorAbsen.classList.remove('hidden');
+        isValid = false;
+      } else {
+        if (errorAbsen) errorAbsen.classList.add('hidden');
       }
 
       if (!ALLOWED_CLASSES.includes(kelas)) {
@@ -2552,23 +2633,64 @@
       if (!isValid) return;
 
       const selectedMode = document.querySelector('input[name="modeLatihan"]:checked')?.value || 'belajar';
+      const newSessionId = buildStudentSessionId(kelas, noAbsenNum);
+      const switchedStudent = appState.sessionId && appState.sessionId !== newSessionId;
       const modeChanged = appState.student.mode !== selectedMode;
 
-      appState.student.nama = nama;
-      appState.student.kelas = kelas;
-      appState.student.mode = selectedMode;
-      if (!appState.student.startedAt) {
-        appState.student.startedAt = new Date().toISOString();
+      if (startLabel) startLabel.textContent = 'Memeriksa Progres Cloud...';
+
+      // Cek apakah murid (Kelas + No. Absen ini) sudah punya progres tersimpan di Supabase
+      const cloudRow = await fetchProgressFromSupabase(newSessionId);
+
+      if (cloudRow) {
+        // Pulihkan seluruh jawaban dari Supabase agar bisa lanjut dari HP/laptop mana pun
+        appState.sessionId = newSessionId;
+        appState.student.nama = nama;
+        appState.student.kelas = kelas;
+        appState.student.noAbsen = String(noAbsenNum);
+        appState.student.mode = selectedMode;
+        appState.student.startedAt = cloudRow.waktu_mulai || appState.student.startedAt || new Date().toISOString();
+        appState.isSubmitted = Boolean(cloudRow.is_submitted);
+        appState.answers = {
+          bagian1: cloudRow.jawaban_bagian_1 || {},
+          bagian2: cloudRow.jawaban_bagian_2 || {},
+          bagian3Text: cloudRow.jawaban_bagian_3_teks || {},
+          bagian3Rubric: cloudRow.jawaban_bagian_3_rubrik || {}
+        };
+        if (restoreBanner) {
+          restoreBanner.textContent = `Progres tersimpan ditemukan untuk ${nama} (${kelas}, Absen ${noAbsenNum}) — jawaban berhasil dipulihkan dari Supabase!`;
+          restoreBanner.classList.remove('hidden');
+        }
+      } else {
+        if (switchedStudent) {
+          appState = getDefaultState();
+        }
+        appState.sessionId = newSessionId;
+        appState.student.nama = nama;
+        appState.student.kelas = kelas;
+        appState.student.noAbsen = String(noAbsenNum);
+        appState.student.mode = selectedMode;
+        if (!appState.student.startedAt) {
+          appState.student.startedAt = new Date().toISOString();
+        }
+        if (restoreBanner) restoreBanner.classList.add('hidden');
       }
 
-      if (selectedMode === 'simulasi' && (modeChanged || !appState.timer.targetEndTime)) {
+      if (selectedMode === 'simulasi' && (modeChanged || switchedStudent || !appState.timer.targetEndTime)) {
         appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
         appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
       }
 
       saveStateToStorage();
+      restoreBagian1Inputs();
+      renderBagian2Matching();
+      renderBagian3Essays();
       updateHeaderUI();
       startOrResumeSimulationTimer();
+      if (startLabel) startLabel.textContent = 'Lanjutkan Latihan (Sinkron Cloud)';
+
+      // Simpan sesi awal/terbaru ke Supabase
+      syncSubmissionToSupabase(true);
       switchTab('latihan');
     }
 
@@ -2665,6 +2787,7 @@
       appState.answers.bagian1[no] = value;
       saveStateToStorage();
       updateHeaderUI();
+      scheduleAutoSaveToSupabase();
     }
 
     function toggleHint(no) {
@@ -2771,6 +2894,7 @@
       renderBagian2Matching();
       triggerMathRender(document.getElementById('section-bagian2'));
       updateHeaderUI();
+      scheduleAutoSaveToSupabase();
     }
 
     function checkDuplicateMatchingSelections() {
@@ -2865,19 +2989,27 @@
       appState.answers.bagian3Text[key] = value;
       saveStateToStorage();
       updateHeaderUI();
+      scheduleAutoSaveToSupabase();
     }
 
     function handleRubricToggle(rubricId, isChecked) {
       appState.answers.bagian3Rubric[rubricId] = Boolean(isChecked);
       saveStateToStorage();
       updateScoreSummaryCards();
+      scheduleAutoSaveToSupabase(700);
+    }
 
-      if (appState.isSubmitted) {
-        if (supabaseSyncTimeoutId) clearTimeout(supabaseSyncTimeoutId);
-        supabaseSyncTimeoutId = setTimeout(() => {
-          syncSubmissionToSupabase();
-        }, 700);
+    function scheduleAutoSaveToSupabase(delayMs = 1200) {
+      if (!hasValidStudentIdentity()) return;
+      const indicator = document.getElementById('practiceSavedIndicator');
+      if (indicator) {
+        indicator.textContent = 'Menyimpan perubahan ke Cloud...';
+        indicator.className = 'text-xs font-semibold text-brand-700';
       }
+      if (supabaseSyncTimeoutId) clearTimeout(supabaseSyncTimeoutId);
+      supabaseSyncTimeoutId = setTimeout(() => {
+        syncSubmissionToSupabase(true);
+      }, delayMs);
     }
 
     // 14B. INTEGRASI SUPABASE (PENYIMPANAN PERMANEN)
@@ -2888,6 +3020,23 @@
       const timeEl = document.getElementById('supabaseLastSyncedTime');
       const btn = document.getElementById('btnSyncSupabase');
       const btnText = document.getElementById('btnSyncSupabaseText');
+      const indicator = document.getElementById('practiceSavedIndicator');
+
+      if (indicator) {
+        if (state === 'loading') {
+          indicator.textContent = 'Menyimpan ke Cloud...';
+          indicator.className = 'text-xs font-semibold text-brand-700';
+        } else if (state === 'success') {
+          indicator.textContent = appState.lastSyncedAt
+            ? `Tersimpan di Cloud (${appState.lastSyncedAt})`
+            : 'Tersimpan di Cloud';
+          indicator.className = 'text-xs font-semibold text-emerald-700';
+        } else if (state === 'error') {
+          indicator.textContent = 'Tersimpan lokal (Cloud offline)';
+          indicator.className = 'text-xs font-semibold text-amber-700';
+        }
+      }
+
       if (!banner || !dot || !msgEl) return;
 
       if (state === 'loading') {
@@ -2921,11 +3070,15 @@
 
     function buildSupabasePayload() {
       const scores = calculateScores();
+      const absenNum = parseInt(appState.student.noAbsen, 10) || 0;
+      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum);
       return {
-        session_id: appState.sessionId || generateSessionId(),
+        session_id: sessionId,
         nama_lengkap: appState.student.nama,
         kelas: appState.student.kelas,
+        no_absen: absenNum,
         mode_latihan: appState.student.mode,
+        is_submitted: Boolean(appState.isSubmitted),
         skor_bagian_1: scores.b1Score,
         skor_bagian_2: scores.b2Score,
         skor_bagian_3: scores.b3Score,
@@ -2942,13 +3095,13 @@
       };
     }
 
-    async function syncSubmissionToSupabase() {
-      if (!appState.student.nama || !ALLOWED_CLASSES.includes(appState.student.kelas)) {
+    async function syncSubmissionToSupabase(silentMode = false) {
+      if (!hasValidStudentIdentity()) {
         return false;
       }
 
       if (!appState.sessionId) {
-        appState.sessionId = generateSessionId();
+        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
         saveStateToStorage();
       }
 
@@ -2984,10 +3137,12 @@
         updateSupabaseStatusUI('success', 'Seluruh data isian & skor murid berhasil tersimpan permanen di Supabase.');
         return true;
       } catch (err) {
-        console.error('Supabase sync error:', err);
+        if (!silentMode) {
+          console.error('Supabase sync error:', err);
+        }
         updateSupabaseStatusUI(
           'error',
-          'Gagal mengirim ke Supabase. Pastikan skema SQL tabel hasil_latihan_uas sudah dijalankan & koneksi internet aktif.'
+          'Gagal mengirim ke Supabase. Pastikan skema SQL terbaru (termasuk kolom no_absen) sudah dijalankan & internet aktif.'
         );
         return false;
       }
@@ -2995,8 +3150,8 @@
 
     // 15. SUBMIT & RENDER EVALUATION RESULTS
     function submitAndOpenResults() {
-      if (!appState.student.nama || !ALLOWED_CLASSES.includes(appState.student.kelas)) {
-        alert('Silakan isi Nama Lengkap dan pilih Kelas (XI-1 atau XI-2) terlebih dahulu sebelum mengumpulkan latihan.');
+      if (!hasValidStudentIdentity()) {
+        alert('Silakan isi Nama Panggilan, Kelas (XI-1 atau XI-2), dan No. Absen terlebih dahulu sebelum mengumpulkan latihan.');
         switchTab('beranda');
         return;
       }
@@ -3014,7 +3169,7 @@
       }
 
       switchTab('hasil');
-      syncSubmissionToSupabase();
+      syncSubmissionToSupabase(false);
     }
 
     function getReadinessPredicate(score) {
@@ -3113,7 +3268,9 @@
       wrapperEl.classList.remove('hidden');
 
       document.getElementById('resultStudentName').textContent = appState.student.nama || '-';
-      document.getElementById('resultStudentClass').textContent = appState.student.kelas || '-';
+      document.getElementById('resultStudentClass').textContent = appState.student.kelas
+        ? `${appState.student.kelas} • Absen ${appState.student.noAbsen || '-'}`
+        : '-';
       document.getElementById('resultModeName').textContent =
         appState.student.mode === 'simulasi' ? 'Mode Simulasi UAS (120 Menit)' : 'Mode Belajar Mandiri';
       document.getElementById('resultCompletedAt').textContent = appState.student.completedAt || '-';
