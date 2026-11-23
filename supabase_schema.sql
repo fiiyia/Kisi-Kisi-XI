@@ -88,3 +88,6 @@ CREATE POLICY "Izinkan pembacaan data hasil latihan (SELECT)"
   FOR SELECT
   TO anon, authenticated
   USING (true);
+
+-- 5. Segarkan schema cache API Supabase agar tabel langsung terbaca
+NOTIFY pgrst, 'reload schema';

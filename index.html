@@ -1022,254 +1022,18 @@
                   Lengkapi kotak rumpang di dalam kalimat berikut dengan jawaban yang tepat. Estimasi waktu: <strong>25 menit</strong> (10 &times; 2 poin = 20 poin).
                 </p>
               </div>
-              <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
-                Bobot: 20 Poin
-              </span>
-            </div>
-
-            <!-- KARTU NARASI 1: POLINOMIAL (No. 1-3) -->
-            <div class="mt-6 rounded-2xl border border-poli-200 bg-poli-50/40 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">
-                  Wacana 1 (No. 1–3) &bull; Polinomial: Desain Akuarium Kaca
+              <div class="flex items-center gap-2">
+                <span id="bagian1PackageBadge" class="px-3 py-1.5 rounded-xl bg-brand-100 border border-brand-200 text-brand-900 text-xs font-bold">
+                  Paket A (Latihan)
                 </span>
-                <span class="text-xs font-mono font-bold text-poli-900 tabular-nums">3 Soal &times; 2 Poin = 6 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Sebuah bengkel kaca memproduksi akuarium berbentuk balok dengan ukuran (dalam satuan $\text{dm}$) yang bergantung pada parameter desain $x$ (untuk $x > 1$):
-                </p>
-                <div class="bg-white p-3.5 rounded-xl border border-poli-200/80 text-sm overflow-x-auto shadow-sm">
-                  $$\text{Panjang } p(x) = (2x + 1)\text{ dm}, \quad \text{Lebar } l(x) = (x - 1)\text{ dm}, \quad \text{Tinggi } t(x) = (x + 2)\text{ dm}$$
-                </div>
-
-                <!-- Soal 1 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 1 &bull; L1 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(1)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Luas alas akuarium diperoleh dari hasil kali panjang dan lebar, yaitu $L(x) = p(x) \cdot l(x) = (2x + 1)(x - 1)$. Jika dijabarkan ke dalam bentuk baku $L(x) = 2x^2 + bx - 1$, maka nilai koefisien $b$ adalah
-                    <input id="input-q1" type="text" inputmode="text" placeholder="Ketik angka" aria-label="Jawaban Nomor 1" oninput="handleBagian1Input(1, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-1" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 1:</strong> Kalikan secara distributif: $(2x + 1)(x - 1) = 2x^2 - 2x + x - 1$, lalu gabungkan suku sejenis berderajat satu.
-                  </div>
-                </div>
-
-                <!-- Soal 2 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 2 &bull; L2 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(2)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Selanjutnya, polinomial volume akuarium dirumuskan dengan mengalikan luas alas terhadap tinggi: $V(x) = L(x) \cdot t(x) = (2x^2 - x - 1)(x + 2)$. Jika hasil perkalian tersebut ditulis sebagai $V(x) = 2x^3 + 3x^2 + cx - 2$, maka nilai koefisien $c$ adalah
-                    <input id="input-q2" type="text" inputmode="text" placeholder="Ketik angka" aria-label="Jawaban Nomor 2" oninput="handleBagian1Input(2, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-2" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 2:</strong> Perhatikan suku-suku yang menghasilkan pangkat satu ($x$) pada perkalian $(2x^2 - x - 1)(x + 2)$, yaitu $(-x)(2) + (-1)(x)$.
-                  </div>
-                </div>
-
-                <!-- Soal 3 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-poli-50 text-poli-900 border border-poli-200 text-xs font-mono font-bold">
-                      Nomor 3 &bull; L2 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(3)" class="hint-btn text-xs font-bold text-poli-600 hover:text-poli-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Apabila seorang pelanggan memesan akuarium dengan parameter desain $x = 3$, maka kapasitas volume akuarium tersebut adalah $V(3) =$
-                    <input id="input-q3" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 3" oninput="handleBagian1Input(3, this.value)" class="lkpd-inline-input" /> $\text{dm}^3$ (liter).
-                  </p>
-                  <div id="hint-3" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 3:</strong> Substitusikan $x = 3$ ke $V(x) = 2x^3 + 3x^2 - 3x - 2$ atau hitung langsung $p(3) \times l(3) \times t(3)$.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- KARTU NARASI 2: OPERASI MATRIKS (No. 4-8) -->
-            <div class="mt-6 rounded-2xl border border-matriks-200 bg-matriks-50/40 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">
-                  Wacana 2 (No. 4–8) &bull; Operasi Matriks: Penjualan Roti Cokelat &amp; Keju
+                <span class="px-3.5 py-1.5 rounded-xl bg-brand-50 border border-brand-200 text-brand-900 text-xs font-mono font-bold tabular-nums">
+                  Bobot: 20 Poin
                 </span>
-                <span class="text-xs font-mono font-bold text-matriks-900 tabular-nums">5 Soal &times; 2 Poin = 10 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Toko Bakery <em>"Sari Gandum"</em> mencatat penjualan <strong>Roti Cokelat</strong> (kolom 1) dan <strong>Roti Keju</strong> (kolom 2) di <strong>Gerai 1</strong> (baris 1) dan <strong>Gerai 2</strong> (baris 2) selama akhir pekan. Data penjualan hari Sabtu ($S$), hari Minggu ($M$) dalam satuan bungkus, serta matriks harga jual per bungkus ($H$) dalam rupiah disajikan sebagai berikut:
-                </p>
-                <div class="bg-white p-3.5 rounded-xl border border-matriks-200/80 text-sm overflow-x-auto shadow-sm">
-                  $$S = \begin{bmatrix} 30 & 20 \\ 25 & 15 \end{bmatrix}, \quad M = \begin{bmatrix} 40 & 25 \\ 35 & 20 \end{bmatrix}, \quad H = \begin{bmatrix} 8.000 \\ 10.000 \end{bmatrix}$$
-                </div>
-
-                <!-- Soal 4 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 4 &bull; L1 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(4)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Total penjualan gabungan selama dua hari dinyatakan dengan matriks $T = S + M$. Berdasarkan matriks $T$, jumlah <strong>Roti Cokelat yang terjual di Gerai 1</strong> (elemen baris ke-1 kolom ke-1, $t_{11}$) adalah
-                    <input id="input-q4" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 4" oninput="handleBagian1Input(4, this.value)" class="lkpd-inline-input" /> bungkus.
-                  </p>
-                  <div id="hint-4" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 4:</strong> Jumlahkan elemen seletak pada baris ke-1 kolom ke-1: $t_{11} = s_{11} + m_{11}$.
-                  </div>
-                </div>
-
-                <!-- Soal 5 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 5 &bull; L1 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(5)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Selisih kenaikan penjualan hari Minggu terhadap hari Sabtu dinyatakan oleh matriks $D = M - S$. Nilai elemen $d_{22}$ yang menyatakan kenaikan penjualan <strong>Roti Keju di Gerai 2</strong> adalah
-                    <input id="input-q5" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 5" oninput="handleBagian1Input(5, this.value)" class="lkpd-inline-input" /> bungkus.
-                  </p>
-                  <div id="hint-5" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 5:</strong> Kurangkan elemen baris ke-2 kolom ke-2 pada matriks $M$ dengan matriks $S$: $d_{22} = m_{22} - s_{22}$.
-                  </div>
-                </div>
-
-                <!-- Soal 6 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 6 &bull; L2 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(6)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Pada pekan promosi berikutnya, manajemen menargetkan total penjualan akhir pekan menjadi dua kali lipat dari matriks $T$, yaitu $K = 2T = 2(S + M)$. Target penjualan <strong>Roti Cokelat di Gerai 2</strong> (elemen $k_{21}$) adalah
-                    <input id="input-q6" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 6" oninput="handleBagian1Input(6, this.value)" class="lkpd-inline-input" /> bungkus.
-                  </p>
-                  <div id="hint-6" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 6:</strong> Hitung terlebih dahulu $t_{21} = s_{21} + m_{21}$, kemudian kalikan hasilnya dengan skalar $2$.
-                  </div>
-                </div>
-
-                <!-- Soal 7 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 7 &bull; L1 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(7)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Untuk menghitung total pendapatan kotor tiap gerai selama akhir pekan, matriks total penjualan $T$ dikalikan dengan matriks harga $H$ sehingga diperoleh matriks pendapatan $R = T \cdot H$. Ordo dari matriks hasil kali $R$ adalah
-                    <input id="input-q7" type="text" placeholder="Contoh: 2x2" aria-label="Jawaban Nomor 7" oninput="handleBagian1Input(7, this.value)" class="lkpd-inline-input" /> <span class="text-xs text-slate-500">(format <code>baris x kolom</code>, misal <code>2x2</code>)</span>.
-                  </p>
-                  <div id="hint-7" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 7:</strong> Perkalian matriks berordo $(m \times n)$ dengan matriks berordo $(n \times p)$ menghasilkan matriks berordo $(m \times p)$.
-                  </div>
-                </div>
-
-                <!-- Soal 8 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-matriks-50 text-matriks-900 border border-matriks-200 text-xs font-mono font-bold">
-                      Nomor 8 &bull; L2 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(8)" class="hint-btn text-xs font-bold text-matriks-700 hover:text-matriks-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Berdasarkan perkalian matriks $R = T \cdot H = \begin{bmatrix} 70 & 45 \\ 60 & 35 \end{bmatrix} \begin{bmatrix} 8.000 \\ 10.000 \end{bmatrix}$, total pendapatan kotor <strong>Gerai 1</strong> selama akhir pekan (elemen $r_{11}$) adalah $\text{Rp}$
-                    <input id="input-q8" type="text" inputmode="numeric" placeholder="Contoh: 1010000" aria-label="Jawaban Nomor 8" oninput="handleBagian1Input(8, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-8" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 8:</strong> Hitung hasil kali baris ke-1 matriks $T$ dengan kolom matriks $H$: $r_{11} = (70 \times 8.000) + (45 \times 10.000)$. Boleh ditulis dengan atau tanpa titik pemisah ribuan.
-                  </div>
-                </div>
               </div>
             </div>
 
-            <!-- KARTU NARASI 3: TRANSLASI TITIK (No. 9-10) -->
-            <div class="mt-6 rounded-2xl border border-translasi-200 bg-translasi-50/50 p-4 sm:p-6">
-              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">
-                  Wacana 3 (No. 9–10) &bull; Translasi: Navigasi Robot Logistik Gudang
-                </span>
-                <span class="text-xs font-mono font-bold text-translasi-900 tabular-nums">2 Soal &times; 2 Poin = 4 Poin</span>
-              </div>
-
-              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
-                <p>
-                  Sebuah robot logistik otomatis bergerak di atas lantai gudang yang dipetakan dalam bidang koordinat Kartesius (dalam satuan meter). Robot berangkat dari stasiun pengisian daya pada titik awal $A(4, -3)$.
-                </p>
-
-                <!-- Soal 9 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
-                      Nomor 9 &bull; L1 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(9)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Pada tahap pertama, robot bergerak menuju rak pengambilan barang dengan vektor translasi $T_1 = \begin{pmatrix} -6 \\ 8 \end{pmatrix}$ hingga berhenti di titik bayangan $A'(x', 5)$. Nilai absis $x'$ dari posisi robot di rak pengambilan tersebut adalah
-                    <input id="input-q9" type="text" inputmode="text" placeholder="Ketik angka" aria-label="Jawaban Nomor 9" oninput="handleBagian1Input(9, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-9" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 9:</strong> Gunakan rumus translasi titik: $x' = x + a = 4 + (-6)$.
-                  </div>
-                </div>
-
-                <!-- Soal 10 -->
-                <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <span class="px-2.5 py-0.5 rounded-md bg-translasi-50 text-translasi-900 border border-translasi-200 text-xs font-mono font-bold">
-                      Nomor 10 &bull; L2 &bull; 2 Poin
-                    </span>
-                    <button type="button" onclick="toggleHint(10)" class="hint-btn text-xs font-bold text-translasi-700 hover:text-translasi-900 underline">
-                      Petunjuk (Hint)
-                    </button>
-                  </div>
-                  <p class="leading-loose">
-                    Dari titik $A'$, robot melanjutkan pergerakan tahap kedua menuju meja pengemasan dengan vektor translasi $T_2 = \begin{pmatrix} 9 \\ -2 \end{pmatrix}$ sehingga tiba di koordinat akhir $A''(7, y'')$. Nilai ordinat $y''$ dari posisi akhir robot tersebut adalah
-                    <input id="input-q10" type="text" inputmode="numeric" placeholder="Ketik angka" aria-label="Jawaban Nomor 10" oninput="handleBagian1Input(10, this.value)" class="lkpd-inline-input" />.
-                  </p>
-                  <div id="hint-10" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950">
-                    <strong>Petunjuk No. 10:</strong> Jumlahkan ordinat titik $A'$ yaitu $y' = -3 + 8 = 5$ dengan komponen vertikal $T_2$ yaitu $-2$.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Rendered dynamically according to Mode Belajar (Paket A) vs Mode Simulasi UAS (Paket B) -->
+            <div id="bagian1CardsContainer" class="mt-6 space-y-6"></div>
 
             <div class="mt-6 flex justify-end">
               <button
@@ -1771,13 +1535,243 @@
       }
     ];
 
-    // 5. STATE MANAGEMENT & DETERMINISTIC STUDENT SESSION ID
-    function buildStudentSessionId(kelas, noAbsen) {
+    // 4B. PAKET B — BANK SOAL KHUSUS MODE SIMULASI UAS (120 MENIT, ISOMORFIK & BEDA SOAL)
+    const BAGIAN1_CARDS_BELAJAR = [
+      {
+        theme: 'poli',
+        badge: 'Wacana 1 (No. 1–3) • Polinomial: Desain Akuarium Kaca',
+        pointsLabel: '3 Soal × 2 Poin = 6 Poin',
+        introHtml: 'Sebuah bengkel kaca memproduksi akuarium berbentuk balok dengan ukuran (dalam satuan $\\text{dm}$) yang bergantung pada parameter desain $x$ (untuk $x > 1$):',
+        formulaHtml: '$$\\text{Panjang } p(x) = (2x + 1)\\text{ dm}, \\quad \\text{Lebar } l(x) = (x - 1)\\text{ dm}, \\quad \\text{Tinggi } t(x) = (x + 2)\\text{ dm}$$',
+        items: [
+          { no: 1, level: 'L1', inputmode: 'text', placeholder: 'Ketik angka', before: 'Luas alas akuarium diperoleh dari hasil kali panjang dan lebar, yaitu $L(x) = p(x) \\cdot l(x) = (2x + 1)(x - 1)$. Jika dijabarkan ke dalam bentuk baku $L(x) = 2x^2 + bx - 1$, maka nilai koefisien $b$ adalah', after: '.', hint: 'Kalikan secara distributif: $(2x + 1)(x - 1) = 2x^2 - 2x + x - 1$, lalu gabungkan suku sejenis berderajat satu.' },
+          { no: 2, level: 'L2', inputmode: 'text', placeholder: 'Ketik angka', before: 'Selanjutnya, polinomial volume akuarium dirumuskan dengan mengalikan luas alas terhadap tinggi: $V(x) = L(x) \\cdot t(x) = (2x^2 - x - 1)(x + 2)$. Jika hasil perkalian tersebut ditulis sebagai $V(x) = 2x^3 + 3x^2 + cx - 2$, maka nilai koefisien $c$ adalah', after: '.', hint: 'Perhatikan suku-suku yang menghasilkan pangkat satu ($x$) pada perkalian $(2x^2 - x - 1)(x + 2)$, yaitu $(-x)(2) + (-1)(x)$.' },
+          { no: 3, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Apabila seorang pelanggan memesan akuarium dengan parameter desain $x = 3$, maka kapasitas volume akuarium tersebut adalah $V(3) =$', after: ' $\\text{dm}^3$ (liter).', hint: 'Substitusikan $x = 3$ ke $V(x) = 2x^3 + 3x^2 - 3x - 2$ atau hitung langsung $p(3) \\times l(3) \\times t(3)$.' }
+        ]
+      },
+      {
+        theme: 'matriks',
+        badge: 'Wacana 2 (No. 4–8) • Operasi Matriks: Penjualan Roti Cokelat & Keju',
+        pointsLabel: '5 Soal × 2 Poin = 10 Poin',
+        introHtml: 'Toko Bakery <em>"Sari Gandum"</em> mencatat penjualan <strong>Roti Cokelat</strong> (kolom 1) dan <strong>Roti Keju</strong> (kolom 2) di <strong>Gerai 1</strong> (baris 1) dan <strong>Gerai 2</strong> (baris 2) selama akhir pekan. Data penjualan hari Sabtu ($S$), hari Minggu ($M$) dalam satuan bungkus, serta matriks harga jual per bungkus ($H$) dalam rupiah disajikan sebagai berikut:',
+        formulaHtml: '$$S = \\begin{bmatrix} 30 & 20 \\\\ 25 & 15 \\end{bmatrix}, \\quad M = \\begin{bmatrix} 40 & 25 \\\\ 35 & 20 \\end{bmatrix}, \\quad H = \\begin{bmatrix} 8.000 \\\\ 10.000 \\end{bmatrix}$$',
+        items: [
+          { no: 4, level: 'L1', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Total penjualan gabungan selama dua hari dinyatakan dengan matriks $T = S + M$. Berdasarkan matriks $T$, jumlah <strong>Roti Cokelat yang terjual di Gerai 1</strong> (elemen baris ke-1 kolom ke-1, $t_{11}$) adalah', after: ' bungkus.', hint: 'Jumlahkan elemen seletak pada baris ke-1 kolom ke-1: $t_{11} = s_{11} + m_{11}$.' },
+          { no: 5, level: 'L1', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Selisih kenaikan penjualan hari Minggu terhadap hari Sabtu dinyatakan oleh matriks $D = M - S$. Nilai elemen $d_{22}$ yang menyatakan kenaikan penjualan <strong>Roti Keju di Gerai 2</strong> adalah', after: ' bungkus.', hint: 'Kurangkan elemen baris ke-2 kolom ke-2 pada matriks $M$ dengan matriks $S$: $d_{22} = m_{22} - s_{22}$.' },
+          { no: 6, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Pada pekan promosi berikutnya, manajemen menargetkan total penjualan akhir pekan menjadi dua kali lipat dari matriks $T$, yaitu $K = 2T = 2(S + M)$. Target penjualan <strong>Roti Cokelat di Gerai 2</strong> (elemen $k_{21}$) adalah', after: ' bungkus.', hint: 'Hitung terlebih dahulu $t_{21} = s_{21} + m_{21}$, kemudian kalikan hasilnya dengan skalar $2$.' },
+          { no: 7, level: 'L1', inputmode: 'text', placeholder: 'Contoh: 2x2', before: 'Untuk menghitung total pendapatan kotor tiap gerai selama akhir pekan, matriks total penjualan $T$ dikalikan dengan matriks harga $H$ sehingga diperoleh matriks pendapatan $R = T \\cdot H$. Ordo dari matriks hasil kali $R$ adalah', after: ' <span class="text-xs text-slate-500">(format <code>baris x kolom</code>, misal <code>2x2</code>)</span>.', hint: 'Perkalian matriks berordo $(m \\times n)$ dengan matriks berordo $(n \\times p)$ menghasilkan matriks berordo $(m \\times p)$.' },
+          { no: 8, level: 'L2', inputmode: 'numeric', placeholder: 'Contoh: 1010000', before: 'Berdasarkan perkalian matriks $R = T \\cdot H = \\begin{bmatrix} 70 & 45 \\\\ 60 & 35 \\end{bmatrix} \\begin{bmatrix} 8.000 \\\\ 10.000 \\end{bmatrix}$, total pendapatan kotor <strong>Gerai 1</strong> selama akhir pekan (elemen $r_{11}$) adalah $\\text{Rp}$', after: '.', hint: 'Hitung hasil kali baris ke-1 matriks $T$ dengan kolom matriks $H$: $r_{11} = (70 \\times 8.000) + (45 \\times 10.000)$.' }
+        ]
+      },
+      {
+        theme: 'translasi',
+        badge: 'Wacana 3 (No. 9–10) • Translasi: Navigasi Robot Logistik Gudang',
+        pointsLabel: '2 Soal × 2 Poin = 4 Poin',
+        introHtml: 'Sebuah robot logistik otomatis bergerak di atas lantai gudang yang dipetakan dalam bidang koordinat Kartesius (dalam satuan meter). Robot berangkat dari stasiun pengisian daya pada titik awal $A(4, -3)$.',
+        formulaHtml: '',
+        items: [
+          { no: 9, level: 'L1', inputmode: 'text', placeholder: 'Ketik angka', before: 'Pada tahap pertama, robot bergerak menuju rak pengambilan barang dengan vektor translasi $T_1 = \\begin{pmatrix} -6 \\\\ 8 \\end{pmatrix}$ hingga berhenti di titik bayangan $A\'(x\', 5)$. Nilai absis $x\'$ dari posisi robot di rak pengambilan tersebut adalah', after: '.', hint: 'Gunakan rumus translasi titik: $x\' = x + a = 4 + (-6)$.' },
+          { no: 10, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Dari titik $A\'$, robot melanjutkan pergerakan tahap kedua menuju meja pengemasan dengan vektor translasi $T_2 = \\begin{pmatrix} 9 \\\\ -2 \\end{pmatrix}$ sehingga tiba di koordinat akhir $A\'\'(7, y\'\')$. Nilai ordinat $y\'\'$ dari posisi akhir robot tersebut adalah', after: '.', hint: 'Jumlahkan ordinat titik $A\'$ yaitu $y\' = -3 + 8 = 5$ dengan komponen vertikal $T_2$ yaitu $-2$.' }
+        ]
+      }
+    ];
+
+    const BAGIAN1_CARDS_SIMULASI = [
+      {
+        theme: 'poli',
+        badge: 'Wacana 1 (No. 1–3) • Polinomial: Bak Penampungan Bibit Ikan (Simulasi)',
+        pointsLabel: '3 Soal × 2 Poin = 6 Poin',
+        introHtml: 'Sebuah peternakan ikan membangun bak penampungan air berbentuk balok dengan ukuran (dalam satuan $\\text{dm}$) yang bergantung pada parameter desain $x$ (untuk $x > 2$):',
+        formulaHtml: '$$\\text{Panjang } p(x) = (x + 3)\\text{ dm}, \\quad \\text{Lebar } l(x) = (2x - 1)\\text{ dm}, \\quad \\text{Tinggi } t(x) = (x - 2)\\text{ dm}$$',
+        items: [
+          { no: 1, level: 'L1', inputmode: 'text', placeholder: 'Ketik angka', before: 'Luas alas bak dinyatakan oleh hasil kali panjang dan lebar, yaitu $L(x) = p(x) \\cdot l(x) = (x + 3)(2x - 1)$. Jika dijabarkan menjadi $L(x) = 2x^2 + bx - 3$, maka nilai koefisien $b$ adalah', after: '.', hint: '' },
+          { no: 2, level: 'L2', inputmode: 'text', placeholder: 'Ketik angka', before: 'Polinomial volume bak diperoleh dari $V(x) = L(x) \\cdot t(x) = (2x^2 + 5x - 3)(x - 2)$. Jika ditulis dalam bentuk baku $V(x) = 2x^3 + x^2 + cx + 6$, maka nilai koefisien $c$ adalah', after: '.', hint: '' },
+          { no: 3, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Apabila peternak memilih parameter desain $x = 4$, maka kapasitas volume maksimum bak tersebut adalah $V(4) =$', after: ' $\\text{dm}^3$ (liter).', hint: '' }
+        ]
+      },
+      {
+        theme: 'matriks',
+        badge: 'Wacana 2 (No. 4–8) • Operasi Matriks: Penjualan Alat Tulis Koperasi (Simulasi)',
+        pointsLabel: '5 Soal × 2 Poin = 10 Poin',
+        introHtml: 'Koperasi sekolah <em>"Bintang Ilmu"</em> mencatat penjualan <strong>Buku Tulis</strong> (kolom 1) dan <strong>Bolpoin</strong> (kolom 2) di <strong>Cabang A</strong> (baris 1) dan <strong>Cabang B</strong> (baris 2). Data penjualan hari Senin ($P$), hari Selasa ($Q$) dalam satuan buah, serta matriks harga satuan ($H$) dalam rupiah adalah:',
+        formulaHtml: '$$P = \\begin{bmatrix} 45 & 30 \\\\ 20 & 25 \\end{bmatrix}, \\quad Q = \\begin{bmatrix} 55 & 40 \\\\ 30 & 35 \\end{bmatrix}, \\quad H = \\begin{bmatrix} 6.000 \\\\ 4.000 \\end{bmatrix}$$',
+        items: [
+          { no: 4, level: 'L1', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Total penjualan gabungan hari Senin dan Selasa dinyatakan oleh matriks $T = P + Q$. Jumlah <strong>Buku Tulis yang terjual di Cabang A</strong> (elemen $t_{11}$) adalah', after: ' buah.', hint: '' },
+          { no: 5, level: 'L1', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Kenaikan penjualan hari Selasa terhadap hari Senin dinyatakan oleh matriks $D = Q - P$. Nilai elemen $d_{22}$ yang menyatakan kenaikan penjualan <strong>Bolpoin di Cabang B</strong> adalah', after: ' buah.', hint: '' },
+          { no: 6, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Menjelang pekan ujian, koperasi menargetkan penjualan menjadi tiga kali lipat dari total dua hari tersebut ($K = 3T$). Target penjualan <strong>Buku Tulis di Cabang B</strong> (elemen $k_{21}$) adalah', after: ' buah.', hint: '' },
+          { no: 7, level: 'L1', inputmode: 'text', placeholder: 'Contoh: 2x2', before: 'Matriks total pendapatan kotor masing-masing cabang dirumuskan oleh perkalian $R = T_{2 \\times 2} \\cdot H_{2 \\times 1}$. Ordo dari matriks hasil kali $R$ adalah', after: ' <span class="text-xs text-slate-500">(format <code>baris x kolom</code>, misal <code>2x2</code>)</span>.', hint: '' },
+          { no: 8, level: 'L2', inputmode: 'numeric', placeholder: 'Contoh: 540000', before: 'Berdasarkan perkalian matriks $R = T \\cdot H = \\begin{bmatrix} 100 & 70 \\\\ 50 & 60 \\end{bmatrix} \\begin{bmatrix} 6.000 \\\\ 4.000 \\end{bmatrix}$, total pendapatan kotor <strong>Cabang B</strong> (elemen $r_{21}$) adalah $\\text{Rp}$', after: '.', hint: '' }
+        ]
+      },
+      {
+        theme: 'translasi',
+        badge: 'Wacana 3 (No. 9–10) • Translasi: Rute Kapal Nelayan (Simulasi)',
+        pointsLabel: '2 Soal × 2 Poin = 4 Poin',
+        introHtml: 'Sebuah kapal nelayan berlayar di perairan yang dipetakan dalam bidang koordinat Kartesius (dalam satuan km). Kapal berangkat dari dermaga pada titik awal $K(-3, 5)$.',
+        formulaHtml: '',
+        items: [
+          { no: 9, level: 'L1', inputmode: 'text', placeholder: 'Ketik angka', before: 'Pada tahap pertama, kapal berlayar menuju lokasi tebar jaring pertama dengan vektor translasi $T_1 = \\begin{pmatrix} 7 \\\\ -4 \\end{pmatrix}$ hingga berhenti di titik $K\'(x\', 1)$. Nilai absis $x\'$ dari posisi kapal tersebut adalah', after: '.', hint: '' },
+          { no: 10, level: 'L2', inputmode: 'numeric', placeholder: 'Ketik angka', before: 'Dari titik $K\'$, kapal melanjutkan pelayaran tahap kedua oleh translasi $T_2 = \\begin{pmatrix} -2 \\\\ 6 \\end{pmatrix}$ hingga tiba di titik akhir $K\'\'(2, y\'\')$. Nilai ordinat $y\'\'$ dari posisi akhir kapal tersebut adalah', after: '.', hint: '' }
+        ]
+      }
+    ];
+
+    const BAGIAN1_QUESTIONS_SIMULASI = [
+      { no: 1, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien $b$ pada luas alas bak $L(x) = (x + 3)(2x - 1) = 2x^2 + bx - 3$', acceptedAnswers: ['5', '5x'], displayAnswer: '5', explanation: 'Jabarkan luas alas: $$L(x) = (x + 3)(2x - 1) = 2x^2 - x + 6x - 3 = 2x^2 + 5x - 3$$ Jadi nilai koefisien $b = 5$.' },
+      { no: 2, topik: 'Polinomial', skor: 2, promptShort: 'Nilai koefisien $c$ pada volume bak $V(x) = (2x^2 + 5x - 3)(x - 2) = 2x^3 + x^2 + cx + 6$', acceptedAnswers: ['-13', '-13x'], displayAnswer: '-13', explanation: 'Kalikan luas alas dengan tinggi: $$V(x) = (2x^2 + 5x - 3)(x - 2) = 2x^3 - 4x^2 + 5x^2 - 10x - 3x + 6 = 2x^3 + x^2 - 13x + 6$$ Jadi nilai koefisien $c = -13$.' },
+      { no: 3, topik: 'Polinomial', skor: 2, promptShort: 'Kapasitas volume bak $V(4)$ untuk parameter $x = 4$ (dalam $\\text{dm}^3$ / liter)', acceptedAnswers: ['98', '98liter', '98dm3'], displayAnswer: '98', explanation: 'Substitusi $x = 4$: $$V(4) = 2(4)^3 + (4)^2 - 13(4) + 6 = 128 + 16 - 52 + 6 = 98\\text{ dm}^3$$ (Atau dimensi: $p(4)=7, l(4)=7, t(4)=2 \\implies 7 \\times 7 \\times 2 = 98$).' },
+      { no: 4, topik: 'Operasi Matriks', skor: 2, promptShort: 'Jumlah penjualan Buku Tulis di Cabang A selama dua hari (elemen $t_{11}$ pada $T = P + Q$)', acceptedAnswers: ['100', '100buah'], displayAnswer: '100', explanation: 'Matriks total $T = P + Q = \\begin{bmatrix} 100 & 70 \\\\ 50 & 60 \\end{bmatrix}$, sehingga elemen $t_{11} = 45 + 55 = 100$ buah.' },
+      { no: 5, topik: 'Operasi Matriks', skor: 2, promptShort: 'Kenaikan penjualan Bolpoin di Cabang B dari Senin ke Selasa (elemen $d_{22}$ pada $D = Q - P$)', acceptedAnswers: ['10', '10buah'], displayAnswer: '10', explanation: 'Matriks selisih $D = Q - P = \\begin{bmatrix} 10 & 10 \\\\ 10 & 10 \\end{bmatrix}$, sehingga elemen $d_{22} = 35 - 25 = 10$ buah.' },
+      { no: 6, topik: 'Operasi Matriks', skor: 2, promptShort: 'Target penjualan Buku Tulis di Cabang B pada matriks $K = 3T$ (elemen $k_{21}$)', acceptedAnswers: ['150', '150buah'], displayAnswer: '150', explanation: 'Dari $t_{21} = 20 + 30 = 50$, maka $k_{21} = 3 \\times 50 = 150$ buah.' },
+      { no: 7, topik: 'Operasi Matriks', skor: 2, promptShort: 'Ordo matriks pendapatan $R = T_{2 \\times 2} \\cdot H_{2 \\times 1}$', acceptedAnswers: ['2x1', '2*1', '2kali1'], displayAnswer: '2x1', explanation: 'Perkalian matriks ordo $2 \\times 2$ dengan ordo $2 \\times 1$ menghasilkan matriks berordo $2 \\times 1$.' },
+      { no: 8, topik: 'Operasi Matriks', skor: 2, promptShort: 'Total pendapatan kotor Cabang B selama dua hari (elemen $r_{21}$ pada $R = T \\cdot H$)', acceptedAnswers: ['540000', 'rp540000'], displayAnswer: '540.000', explanation: 'Baris ke-2 matriks $T$ dikali kolom $H$: $$r_{21} = (50 \\times 6.000) + (60 \\times 4.000) = 300.000 + 240.000 = 540.000$$ Jadi pendapatan kotor Cabang B adalah $\\text{Rp}540.000$.' },
+      { no: 9, topik: 'Translasi', skor: 2, promptShort: 'Nilai absis $x\'$ dari bayangan titik $K(-3, 5)$ oleh translasi $T_1 = \\begin{pmatrix} 7 \\\\ -4 \\end{pmatrix}$', acceptedAnswers: ['4'], displayAnswer: '4', explanation: 'Translasi $K(-3, 5)$ oleh $T_1 = \\begin{pmatrix} 7 \\\\ -4 \\end{pmatrix}$: $$K\' = (-3 + 7, 5 + (-4)) = (4, 1)$$ Jadi absis $x\' = 4$.' },
+      { no: 10, topik: 'Translasi', skor: 2, promptShort: 'Nilai ordinat akhir $y\'\'$ setelah dilanjutkan translasi $T_2 = \\begin{pmatrix} -2 \\\\ 6 \\end{pmatrix}$', acceptedAnswers: ['7'], displayAnswer: '7', explanation: 'Dari $K\'(4, 1)$ dilanjutkan $T_2 = \\begin{pmatrix} -2 \\\\ 6 \\end{pmatrix}$: $$K\'\' = (4 - 2, 1 + 6) = (2, 7)$$ Jadi ordinat akhir $y\'\' = 7$.' }
+    ];
+
+    const BAGIAN2_OPTIONS_SIMULASI = [
+      { code: 'A', labelLatex: '$10$' },
+      { code: 'B', labelLatex: '$-6$' },
+      { code: 'C', labelLatex: '$-23$' },
+      { code: 'D', labelLatex: '$2x - 3y - 4 = 0$' },
+      { code: 'E', labelLatex: '$7$' },
+      { code: 'F', labelLatex: '$2x - 3y + 14 = 0$' },
+      { code: 'G', labelLatex: '$-7$' }
+    ];
+
+    const BAGIAN2_QUESTIONS_SIMULASI = [
+      { no: 11, topik: 'Polinomial', level: 'L2', skor: 3, questionLatex: 'Sisa pembagian polinomial $P(x) = 3x^3 - 4x^2 + 2x - 5$ oleh $(x - 2)$ adalah ....', hint: '', correctOption: 'E', explanation: 'Berdasarkan Teorema Sisa, sisa $S = P(2) = 3(2)^3 - 4(2)^2 + 2(2) - 5 = 24 - 16 + 4 - 5 = 7$. Jawaban tepat: <strong>E ($7$)</strong>.' },
+      { no: 12, topik: 'Polinomial', level: 'L2', skor: 3, questionLatex: 'Jika $(x + 1)$ merupakan faktor dari polinomial $G(x) = 2x^3 + kx^2 - 5x + 3$, maka nilai koefisien $k$ adalah ....', hint: '', correctOption: 'B', explanation: 'Menurut Teorema Faktor, $G(-1) = 0$: $$2(-1)^3 + k(-1)^2 - 5(-1) + 3 = 0 \\implies -2 + k + 5 + 3 = 0 \\implies k = -6$$ Jawaban tepat: <strong>B ($-6$)</strong>.' },
+      { no: 13, topik: 'Operasi Matriks', level: 'L1', skor: 3, questionLatex: 'Diketahui matriks $N = \\begin{bmatrix} 5 & -2 \\\\ 4 & -3 \\end{bmatrix}$. Nilai determinan matriks $N$ ($\\det(N)$) adalah ....', hint: '', correctOption: 'G', explanation: 'Hitung determinan: $$\\det(N) = (5)(-3) - (-2)(4) = -15 - (-8) = -15 + 8 = -7$$ (Opsi C yaitu $-23$ adalah pengecoh jika salah tanda $-15 - 8$). Jawaban tepat: <strong>G ($-7$)</strong>.' },
+      { no: 14, topik: 'Operasi Matriks', level: 'L2', skor: 3, questionLatex: 'Diketahui kesamaan matriks $\\begin{bmatrix} 3a - 2 & 5 \\\\ -1 & b + 4 \\end{bmatrix} = \\begin{bmatrix} 7 & 5 \\\\ -1 & 2a + 5 \\end{bmatrix}$. Nilai dari $a + b$ adalah ....', hint: '', correctOption: 'A', explanation: 'Dari $3a - 2 = 7 \\implies 3a = 9 \\implies a = 3$. Lalu $b + 4 = 2(3) + 5 = 11 \\implies b = 7$. Maka $a + b = 3 + 7 = 10$. Jawaban tepat: <strong>A ($10$)</strong>.' },
+      { no: 15, topik: 'Translasi', level: 'L2', skor: 3, questionLatex: 'Persamaan bayangan garis lurus $2x - 3y + 5 = 0$ setelah ditranslasikan oleh vektor $T = \\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}$ adalah ....', hint: '', correctOption: 'D', explanation: 'Dari $x\' = x + 3 \\implies x = x\' - 3$ dan $y\' = y - 1 \\implies y = y\' + 1$: $$2(x\' - 3) - 3(y\' + 1) + 5 = 0 \\implies 2x\' - 6 - 3y\' - 3 + 5 = 0 \\implies 2x - 3y - 4 = 0$$ Jawaban tepat: <strong>D ($2x - 3y - 4 = 0$)</strong>.' }
+    ];
+
+    const BAGIAN3_QUESTIONS_SIMULASI = [
+      {
+        no: 16, topik: 'Polinomial', level: 'L3', skor: 10,
+        title: 'Pembagian Horner, Pemfaktoran & Akar-Akar Polinomial (Simulasi)',
+        stemLatex: 'Diketahui polinomial berderajat tiga $P(x) = x^3 - 3x^2 - 4x + 12$ habis dibagi oleh $(x - 2)$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan hasil bagi $H(x)$ dan sisa pembagian $P(x)$ oleh $(x - 2)$ menggunakan skema Horner atau pembagian bersusun! (4 poin)' },
+          { id: 'b', label: 'b. Faktorkan hasil bagi $H(x)$ secara lengkap, lalu tentukan ketiga akar persamaan polinomial $P(x) = 0$! (4 poin)' },
+          { id: 'c', label: 'c. Jika ketiga akar tersebut diurutkan $x_1 < x_2 < x_3$, hitunglah nilai dari $2x_1 + x_2 + 3x_3$! (2 poin)' }
+        ],
+        hint: '',
+        rubricItems: [
+          { id: '16_1', points: 2, text: 'Menyusun koefisien $P(x)$ yaitu $[1, -3, -4, 12]$ dengan nilai pembagi $x = 2$ pada skema Horner / pembagian bersusun.' },
+          { id: '16_2', points: 2, text: 'Menemukan polinomial hasil bagi $H(x) = x^2 - x - 6$ dan menunjukkan sisa pembagian $S = 0$.' },
+          { id: '16_3', points: 2, text: 'Memfaktorkan hasil bagi $H(x)$ menjadi $(x - 3)(x + 2)$ sehingga $P(x) = (x - 2)(x + 2)(x - 3)$.' },
+          { id: '16_4', points: 2, text: 'Menentukan ketiga akar persamaan $P(x) = 0$ secara lengkap yaitu $x = -2$, $x = 2$, dan $x = 3$.' },
+          { id: '16_5', points: 2, text: 'Mengurutkan $x_1 = -2 < x_2 = 2 < x_3 = 3$ dan menghitung $2x_1 + x_2 + 3x_3 = 2(-2) + 2 + 3(3) = 7$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a (Skema Horner dengan $x = 2$):</strong></p><p>Koefisien $[1, -3, -4, 12]$ dibagi $x = 2$ menghasilkan koefisien hasil bagi $[1, -1, -6]$ dan sisa $S = 0$, sehingga $H(x) = x^2 - x - 6$.</p><p><strong>Langkah b (Pemfaktoran &amp; Akar-Akar):</strong></p><p>$$H(x) = (x - 3)(x + 2) \\implies P(x) = (x - 2)(x + 2)(x - 3) = 0$$</p><p>Akar-akarnya adalah $x = -2$, $x = 2$, dan $x = 3$.</p><p><strong>Langkah c (Evaluasi):</strong></p><p>$$2x_1 + x_2 + 3x_3 = 2(-2) + 2 + 3(3) = -4 + 2 + 9 = 7$$</p></div>`
+      },
+      {
+        no: 17, topik: 'Operasi Matriks', level: 'L3', skor: 14,
+        title: 'Penyelesaian SPLDV Sewa Lapangan dengan Invers Matriks (Simulasi)',
+        stemLatex: 'Pengelola GOR menyewakan <strong>Lapangan Futsal</strong> ($x$ per jam) dan <strong>Lapangan Badminton</strong> ($y$ per jam):<br/>&bull; Tim A menyewa $2$ jam Futsal dan $3$ jam Badminton dengan total biaya $\\text{Rp}270.000$.<br/>&bull; Tim B menyewa $1$ jam Futsal dan $2$ jam Badminton dengan total biaya $\\text{Rp}160.000$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Buatlah model SPLDV dan nyatakan ke dalam persamaan matriks $A \\cdot X = B$! (4 poin)' },
+          { id: 'b', label: 'b. Tentukan determinan matriks koefisien $A$ serta matriks invers $A^{-1}$! (5 poin)' },
+          { id: 'c', label: 'c. Hitunglah tarif sewa per jam Futsal ($x$) dan Badminton ($y$), lalu tentukan total biaya sewa $4$ jam Futsal dan $2$ jam Badminton! (5 poin)' }
+        ],
+        hint: '',
+        rubricItems: [
+          { id: '17_1', points: 2, text: 'Menuliskan model SPLDV: $2x + 3y = 270.000$ dan $x + 2y = 160.000$.' },
+          { id: '17_2', points: 2, text: 'Menyatakan ke bentuk persamaan matriks $\\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 270.000 \\\\ 160.000 \\end{bmatrix}$.' },
+          { id: '17_3', points: 2, text: 'Menghitung determinan matriks koefisien $\\det(A) = (2)(2) - (3)(1) = 4 - 3 = 1$.' },
+          { id: '17_4', points: 3, text: 'Menentukan matriks invers $A^{-1} = \\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}$.' },
+          { id: '17_5', points: 3, text: 'Menghitung tarif Futsal $x = \\text{Rp}60.000$ dan Badminton $y = \\text{Rp}50.000$.' },
+          { id: '17_6', points: 2, text: 'Menghitung total biaya $4$ jam Futsal dan $2$ jam Badminton: $4(60.000) + 2(50.000) = \\text{Rp}340.000$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a:</strong> $$\\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 270.000 \\\\ 160.000 \\end{bmatrix}$$</p><p><strong>Langkah b:</strong> $\\det(A) = 4 - 3 = 1 \\implies A^{-1} = \\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix}$.</p><p><strong>Langkah c:</strong> $$\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 2 & -3 \\\\ -1 & 2 \\end{bmatrix} \\begin{bmatrix} 270.000 \\\\ 160.000 \\end{bmatrix} = \\begin{bmatrix} 60.000 \\\\ 50.000 \\end{bmatrix}$$ Biaya $4(60.000) + 2(50.000) = \\text{Rp}340.000$.</p></div>`
+      },
+      {
+        no: 18, topik: 'Operasi Matriks', level: 'L3', skor: 11,
+        title: 'Persamaan Matriks $A \\cdot X = B$ & Sifat Non-Komutatif (Simulasi)',
+        stemLatex: 'Diketahui dua matriks berordo $2 \\times 2$: $$A = \\begin{bmatrix} 3 & 4 \\\\ 2 & 3 \\end{bmatrix} \\quad \\text{dan} \\quad B = \\begin{bmatrix} 2 & -3 \\\\ 1 & 4 \\end{bmatrix}$$',
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan determinan matriks $A$ dan matriks invers $A^{-1}$! (3 poin)' },
+          { id: 'b', label: 'b. Tentukan matriks $X$ berordo $2 \\times 2$ yang memenuhi persamaan matriks $A \\cdot X = B$! (4 poin)' },
+          { id: 'c', label: 'c. Hitunglah hasil kali $A \\cdot B$ dan $B \\cdot A$, lalu simpulkan apakah perkalian matriks bersifat komutatif! (4 poin)' }
+        ],
+        hint: '',
+        rubricItems: [
+          { id: '18_1', points: 3, text: 'Menghitung $\\det(A) = (3)(3) - (4)(2) = 1$ dan menentukan invers $A^{-1} = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix}$.' },
+          { id: '18_2', points: 2, text: 'Menuliskan rumus penyelesaian persamaan matriks $X = A^{-1} \\cdot B$.' },
+          { id: '18_3', points: 2, text: 'Menghitung matriks $X = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix} \\begin{bmatrix} 2 & -3 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & -25 \\\\ -1 & 18 \\end{bmatrix}$.' },
+          { id: '18_4', points: 2, text: 'Menghitung $A \\cdot B = \\begin{bmatrix} 10 & 7 \\\\ 7 & 6 \\end{bmatrix}$ dan $B \\cdot A = \\begin{bmatrix} 0 & -1 \\\\ 11 & 16 \\end{bmatrix}$.' },
+          { id: '18_5', points: 2, text: 'Menyimpulkan bahwa karena $A \\cdot B \\neq B \\cdot A$, perkalian matriks tidak bersifat komutatif.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a:</strong> $\\det(A) = 9 - 8 = 1 \\implies A^{-1} = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix}$.</p><p><strong>Langkah b:</strong> $$X = A^{-1} \\cdot B = \\begin{bmatrix} 3 & -4 \\\\ -2 & 3 \\end{bmatrix} \\begin{bmatrix} 2 & -3 \\\\ 1 & 4 \\end{bmatrix} = \\begin{bmatrix} 2 & -25 \\\\ -1 & 18 \\end{bmatrix}$$</p><p><strong>Langkah c:</strong> $$A \\cdot B = \\begin{bmatrix} 10 & 7 \\\\ 7 & 6 \\end{bmatrix}, \\quad B \\cdot A = \\begin{bmatrix} 0 & -1 \\\\ 11 & 16 \\end{bmatrix}$$ Karena $A \\cdot B \\neq B \\cdot A$, perkalian matriks <strong>tidak bersifat komutatif</strong>.</p></div>`
+      },
+      {
+        no: 19, topik: 'Translasi', level: 'L3', skor: 12,
+        title: 'Komposisi Translasi Kebun Segitiga, Luas & Garis Irigasi (Simulasi)',
+        stemLatex: 'Sebuah kebun hidroponik berbentuk segitiga siku-siku $DEF$ memiliki koordinat titik sudut $D(2, 1)$, $E(10, 1)$, dan $F(2, 6)$ (dalam satuan meter). Di tepinya terdapat saluran irigasi lurus dengan persamaan garis $k: 3x - 2y + 4 = 0$.<br/>Seluruh rancangan kebun dan saluran digeser melalui dua translasi berturut-turut, yaitu $T_1 = \\begin{pmatrix} -5 \\\\ 4 \\end{pmatrix}$ dilanjutkan $T_2 = \\begin{pmatrix} 3 \\\\ -1 \\end{pmatrix}$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Tentukan vektor translasi tunggal $T = T_1 + T_2$ serta koordinat akhir bayangan titik sudut $D\'\'$, $E\'\'$, dan $F\'\'$! (4 poin)' },
+          { id: 'b', label: 'b. Hitunglah luas segitiga awal $DEF$ dan luas segitiga bayangan akhir $D\'\'E\'\'F\'\'$, lalu jelaskan sifat translasi terhadap luas! (4 poin)' },
+          { id: 'c', label: 'c. Tentukan persamaan garis bayangan akhir $k\'\'$ dari saluran irigasi setelah komposisi translasi tersebut! (4 poin)' }
+        ],
+        hint: '',
+        rubricItems: [
+          { id: '19_1', points: 2, text: 'Menentukan vektor translasi komposisi $T = T_1 + T_2 = \\begin{pmatrix} -2 \\\\ 3 \\end{pmatrix}$.' },
+          { id: '19_2', points: 2, text: 'Menentukan koordinat akhir: $D\'\'(0, 4)$, $E\'\'(8, 4)$, dan $F\'\'(0, 9)$.' },
+          { id: '19_3', points: 2, text: 'Menghitung luas awal $L_{DEF} = \\frac{1}{2} \\times 8 \\times 5 = 20\\text{ m}^2$ dan luas bayangan $L_{D\'\'E\'\'F\'\'} = 20\\text{ m}^2$.' },
+          { id: '19_4', points: 2, text: 'Menjelaskan bahwa translasi bersifat isometri (mempertahankan bentuk dan luas bangun datar).' },
+          { id: '19_5', points: 2, text: 'Menyusun substitusi $x = x\'\' + 2$ dan $y = y\'\' - 3$ untuk translasi garis $k$ oleh $T = \\begin{pmatrix} -2 \\\\ 3 \\end{pmatrix}$.' },
+          { id: '19_6', points: 2, text: 'Menemukan persamaan bayangan akhir $k\'\'$: $3(x + 2) - 2(y - 3) + 4 = 0 \\implies 3x - 2y + 16 = 0$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a:</strong> $T = \\begin{pmatrix} -5 + 3 \\\\ 4 - 1 \\end{pmatrix} = \\begin{pmatrix} -2 \\\\ 3 \\end{pmatrix} \\implies D''(0, 4), \\; E''(8, 4), \\; F''(0, 9)$.</p><p><strong>Langkah b:</strong> Alas $DE = 8\\text{ m}$, tinggi $DF = 5\\text{ m} \\implies L_{DEF} = L_{D''E''F''} = \\frac{1}{2} \\times 8 \\times 5 = 20\\text{ m}^2$ (isometri).</p><p><strong>Langkah c:</strong> Substitusi $x = x'' + 2$ dan $y = y'' - 3$: $$3(x'' + 2) - 2(y'' - 3) + 4 = 0 \\implies 3x - 2y + 16 = 0$$</p></div>`
+      },
+      {
+        no: 20, topik: 'Operasi Matriks', level: 'L3', skor: 18,
+        title: 'Determinan, Kofaktor, Adjoin, Invers Matriks $3 \\times 3$ & Dekripsi Sandi (Simulasi)',
+        stemLatex: 'Sebuah server sekolah mengenkripsi vektor pesan asli $P = \\begin{bmatrix} p_1 \\\\ p_2 \\\\ p_3 \\end{bmatrix}$ menjadi vektor sandi $C = M \\cdot P$ menggunakan matriks kunci berordo $3 \\times 3$: $$M = \\begin{bmatrix} 1 & 1 & 2 \\\\ 1 & 2 & 3 \\\\ 2 & 1 & 4 \\end{bmatrix}$$ Petugas menerima vektor sandi $C = \\begin{bmatrix} 9 \\\\ 15 \\\\ 13 \\end{bmatrix}$ dan harus mendekripsinya dengan $P = M^{-1} \\cdot C$.',
+        subQuestions: [
+          { id: 'a', label: 'a. Hitunglah determinan matriks kunci $M$ ($\\det(M)$) dengan aturan Sarrus atau ekspansi kofaktor! (4 poin)' },
+          { id: 'b', label: 'b. Tentukan matriks kofaktor $\\text{Kof}(M)$, matriks adjoin $\\text{Adj}(M)$, dan matriks invers $M^{-1}$! (9 poin)' },
+          { id: 'c', label: 'c. Tentukan vektor pesan asli $P = \\begin{bmatrix} p_1 \\\\ p_2 \\\\ p_3 \\end{bmatrix}$ melalui perkalian $P = M^{-1} \\cdot C$! (5 poin)' }
+        ],
+        hint: '',
+        rubricItems: [
+          { id: '20_1', points: 4, text: 'Menghitung determinan matriks $M$ dengan tepat: $\\det(M) = 1(8-3) - 1(4-6) + 2(1-4) = 5 + 2 - 6 = 1$.' },
+          { id: '20_2', points: 4, text: 'Menentukan ke-9 elemen matriks kofaktor $\\text{Kof}(M) = \\begin{bmatrix} 5 & 2 & -3 \\\\ -2 & 0 & 1 \\\\ -1 & -1 & 1 \\end{bmatrix}$.' },
+          { id: '20_3', points: 2, text: 'Mentranpos kofaktor menjadi matriks adjoin $\\text{Adj}(M) = \\begin{bmatrix} 5 & -2 & -1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$.' },
+          { id: '20_4', points: 3, text: 'Menentukan matriks invers $M^{-1} = \\frac{1}{\\det(M)} \\text{Adj}(M) = \\begin{bmatrix} 5 & -2 & -1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$.' },
+          { id: '20_5', points: 3, text: 'Melakukan perkalian $P = M^{-1} \\cdot C$ dengan $C = \\begin{bmatrix} 9 \\\\ 15 \\\\ 13 \\end{bmatrix}$ secara benar.' },
+          { id: '20_6', points: 2, text: 'Menemukan vektor pesan asli secara tepat yaitu $p_1 = 2$, $p_2 = 5$, dan $p_3 = 1$.' }
+        ],
+        solutionLatex: `<div class="space-y-2 text-sm text-slate-800"><p><strong>Langkah a:</strong> $\\det(M) = 1(8 - 3) - 1(4 - 6) + 2(1 - 4) = 5 + 2 - 6 = 1$.</p><p><strong>Langkah b:</strong> $$\\text{Kof}(M) = \\begin{bmatrix} 5 & 2 & -3 \\\\ -2 & 0 & 1 \\\\ -1 & -1 & 1 \\end{bmatrix} \\implies \\text{Adj}(M) = M^{-1} = \\begin{bmatrix} 5 & -2 & -1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix}$$</p><p><strong>Langkah c:</strong> $$P = \\begin{bmatrix} 5 & -2 & -1 \\\\ 2 & 0 & -1 \\\\ -3 & 1 & 1 \\end{bmatrix} \\begin{bmatrix} 9 \\\\ 15 \\\\ 13 \\end{bmatrix} = \\begin{bmatrix} 45 - 30 - 13 \\\\ 18 + 0 - 13 \\\\ -27 + 15 + 13 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ 5 \\\\ 1 \\end{bmatrix}$$</p></div>`
+      }
+    ];
+
+    function getBagian1Cards() {
+      return appState.student.mode === 'simulasi' ? BAGIAN1_CARDS_SIMULASI : BAGIAN1_CARDS_BELAJAR;
+    }
+    function getBagian1Questions() {
+      return appState.student.mode === 'simulasi' ? BAGIAN1_QUESTIONS_SIMULASI : BAGIAN1_QUESTIONS;
+    }
+    function getBagian2Options() {
+      return appState.student.mode === 'simulasi' ? BAGIAN2_OPTIONS_SIMULASI : BAGIAN2_OPTIONS;
+    }
+    function getBagian2Questions() {
+      return appState.student.mode === 'simulasi' ? BAGIAN2_QUESTIONS_SIMULASI : BAGIAN2_QUESTIONS;
+    }
+    function getBagian3Questions() {
+      return appState.student.mode === 'simulasi' ? BAGIAN3_QUESTIONS_SIMULASI : BAGIAN3_QUESTIONS;
+    }
+
+    // 5. STATE MANAGEMENT & DETERMINISTIC STUDENT SESSION ID (TERPISAH ANTARA BELAJAR & SIMULASI)
+    function buildStudentSessionId(kelas, noAbsen, mode = 'belajar') {
       if (!ALLOWED_CLASSES.includes(kelas) || !noAbsen) {
         return `uas_xi_temp_${Date.now()}`;
       }
       const paddedAbsen = String(parseInt(noAbsen, 10)).padStart(2, '0');
-      return `${kelas.toLowerCase()}_absen_${paddedAbsen}`;
+      const suffix = mode === 'simulasi' ? '_simulasi' : '';
+      return `${kelas.toLowerCase()}_absen_${paddedAbsen}${suffix}`;
     }
 
     function getDefaultState() {
@@ -1833,7 +1827,7 @@
           appState.student.kelas = 'XI-1';
         }
         if (appState.student.kelas && appState.student.noAbsen) {
-          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+          appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen, appState.student.mode);
         }
         if (!VIEW_METADATA[appState.activeView]) {
           appState.activeView = 'dashboard';
@@ -1889,7 +1883,7 @@
     }
 
     function isBagian1Correct(questionNo) {
-      const q = BAGIAN1_QUESTIONS.find((item) => item.no === questionNo);
+      const q = getBagian1Questions().find((item) => item.no === questionNo);
       if (!q) return false;
       const userRaw = appState.answers.bagian1[questionNo] || '';
       const normUser = normalizeAnswer(userRaw);
@@ -1898,7 +1892,7 @@
     }
 
     function isBagian2Correct(questionNo) {
-      const q = BAGIAN2_QUESTIONS.find((item) => item.no === questionNo);
+      const q = getBagian2Questions().find((item) => item.no === questionNo);
       if (!q) return false;
       const userChoice = (appState.answers.bagian2[questionNo] || '').trim().toUpperCase();
       return userChoice === q.correctOption;
@@ -1917,7 +1911,7 @@
         'Translasi': { earned: 0, max: 19, correctItems: 0, totalItems: 4 }
       };
 
-      BAGIAN1_QUESTIONS.forEach((q) => {
+      getBagian1Questions().forEach((q) => {
         if (isBagian1Correct(q.no)) {
           b1Score += q.skor;
           b1CorrectCount += 1;
@@ -1926,7 +1920,7 @@
         }
       });
 
-      BAGIAN2_QUESTIONS.forEach((q) => {
+      getBagian2Questions().forEach((q) => {
         if (isBagian2Correct(q.no)) {
           b2Score += q.skor;
           b2CorrectCount += 1;
@@ -1935,7 +1929,7 @@
         }
       });
 
-      BAGIAN3_QUESTIONS.forEach((q) => {
+      getBagian3Questions().forEach((q) => {
         let qEarned = 0;
         q.rubricItems.forEach((r) => {
           if (appState.answers.bagian3Rubric[r.id]) {
@@ -2313,7 +2307,7 @@
       if (!isValid) return;
 
       const selectedMode = document.querySelector('input[name="modeLatihan"]:checked')?.value || 'belajar';
-      const newSessionId = buildStudentSessionId(kelas, noAbsenNum);
+      const newSessionId = buildStudentSessionId(kelas, noAbsenNum, selectedMode);
       const switchedStudent = appState.sessionId && appState.sessionId !== newSessionId;
       const modeChanged = appState.student.mode !== selectedMode;
 
@@ -2372,7 +2366,7 @@
       }
 
       saveStateToStorage();
-      restoreBagian1Inputs();
+      renderBagian1LKPD();
       renderBagian2Matching();
       renderBagian3Essays();
       if (startLabel) startLabel.textContent = 'Masuk ke Dashboard LMS';
@@ -2440,11 +2434,96 @@
     }
 
     // 12. RENDER & HANDLE BAGIAN I, II, III
-    function restoreBagian1Inputs() {
-      for (let i = 1; i <= 10; i++) {
-        const el = document.getElementById(`input-q${i}`);
-        if (el) el.value = appState.answers.bagian1[i] || '';
+    function renderBagian1LKPD() {
+      const container = document.getElementById('bagian1CardsContainer');
+      const pkgBadge = document.getElementById('bagian1PackageBadge');
+      const isSimulasi = appState.student.mode === 'simulasi';
+
+      if (pkgBadge) {
+        pkgBadge.textContent = isSimulasi ? 'Paket B (Simulasi UAS)' : 'Paket A (Mode Belajar)';
+        pkgBadge.className = isSimulasi
+          ? 'px-3 py-1.5 rounded-xl bg-amber-100 border border-amber-300 text-amber-950 text-xs font-bold'
+          : 'px-3 py-1.5 rounded-xl bg-brand-100 border border-brand-200 text-brand-900 text-xs font-bold';
       }
+
+      if (!container) return;
+
+      const themeStyles = {
+        poli: {
+          card: 'border-poli-200 bg-poli-50/40',
+          headerBadge: 'bg-poli-600 text-white',
+          pointsText: 'text-poli-900',
+          formulaBorder: 'border-poli-200/80',
+          itemBadge: 'bg-poli-50 text-poli-900 border-poli-200',
+          hintLink: 'text-poli-600 hover:text-poli-900'
+        },
+        matriks: {
+          card: 'border-matriks-200 bg-matriks-50/40',
+          headerBadge: 'bg-matriks-700 text-white',
+          pointsText: 'text-matriks-900',
+          formulaBorder: 'border-matriks-200/80',
+          itemBadge: 'bg-matriks-50 text-matriks-900 border-matriks-200',
+          hintLink: 'text-matriks-700 hover:text-matriks-900'
+        },
+        translasi: {
+          card: 'border-translasi-200 bg-translasi-50/50',
+          headerBadge: 'bg-translasi-700 text-white',
+          pointsText: 'text-translasi-900',
+          formulaBorder: 'border-translasi-200/80',
+          itemBadge: 'bg-translasi-50 text-translasi-900 border-translasi-200',
+          hintLink: 'text-translasi-700 hover:text-translasi-900'
+        }
+      };
+
+      container.innerHTML = getBagian1Cards()
+        .map((card) => {
+          const st = themeStyles[card.theme] || themeStyles.matriks;
+          return `
+            <div class="rounded-2xl border ${st.card} p-4 sm:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span class="px-3 py-1 rounded-lg ${st.headerBadge} text-xs font-bold">${card.badge}</span>
+                <span class="text-xs font-mono font-bold ${st.pointsText} tabular-nums">${card.pointsLabel}</span>
+              </div>
+              <div class="text-sm sm:text-base text-slate-800 space-y-4 leading-relaxed">
+                <p>${card.introHtml}</p>
+                ${card.formulaHtml ? `<div class="bg-white p-3.5 rounded-xl border ${st.formulaBorder} text-sm overflow-x-auto shadow-sm">${card.formulaHtml}</div>` : ''}
+                ${card.items
+                  .map((it) => {
+                    const val = escapeHtml(appState.answers.bagian1[it.no] || '');
+                    const hintBtnHtml =
+                      !isSimulasi && it.hint
+                        ? `<button type="button" onclick="toggleHint(${it.no})" class="hint-btn text-xs font-bold ${st.hintLink} underline">Petunjuk (Hint)</button>`
+                        : '';
+                    const hintBoxHtml =
+                      !isSimulasi && it.hint
+                        ? `<div id="hint-${it.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${it.no}:</strong> ${it.hint}</div>`
+                        : '';
+                    return `
+                      <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between gap-2">
+                          <span class="px-2.5 py-0.5 rounded-md ${st.itemBadge} border text-xs font-mono font-bold">Nomor ${it.no} &bull; ${it.level} &bull; 2 Poin</span>
+                          ${hintBtnHtml}
+                        </div>
+                        <p class="leading-loose">
+                          ${it.before}
+                          <input id="input-q${it.no}" type="text" inputmode="${it.inputmode}" value="${val}" placeholder="${it.placeholder}" aria-label="Jawaban Nomor ${it.no}" oninput="handleBagian1Input(${it.no}, this.value)" class="lkpd-inline-input" />${it.after}
+                        </p>
+                        ${hintBoxHtml}
+                      </div>
+                    `;
+                  })
+                  .join('')}
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+
+      triggerMathRender(container);
+    }
+
+    function restoreBagian1Inputs() {
+      renderBagian1LKPD();
     }
 
     function handleBagian1Input(no, value) {
@@ -2471,16 +2550,19 @@
     function renderBagian2Matching() {
       const qContainer = document.getElementById('matchingQuestionsContainer');
       const optContainer = document.getElementById('matchingOptionsList');
+      const activeOptions = getBagian2Options();
+      const activeQuestions = getBagian2Questions();
 
-      optContainer.innerHTML = BAGIAN2_OPTIONS.map((opt) => `
+      optContainer.innerHTML = activeOptions.map((opt) => `
         <div class="flex items-center gap-3 p-3 rounded-xl bg-white border border-brand-200/80 shadow-sm">
           <span class="w-8 h-8 rounded-lg bg-brand-700 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">${opt.code}</span>
           <div class="text-sm font-bold text-slate-900 overflow-x-auto">${opt.labelLatex}</div>
         </div>
       `).join('');
 
-      qContainer.innerHTML = BAGIAN2_QUESTIONS.map((q) => {
+      qContainer.innerHTML = activeQuestions.map((q) => {
         const currentVal = appState.answers.bagian2[q.no] || '';
+        const hintBtnHtml = q.hint ? `<button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>` : '';
         return `
           <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3.5 shadow-sm">
             <div class="flex flex-wrap items-center justify-between gap-2">
@@ -2489,7 +2571,7 @@
                 <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${getTopicBadgeForQuestion(q.topik)}">${q.topik}</span>
                 <span class="text-xs font-mono font-semibold text-slate-600">${q.level} &bull; 3 Poin</span>
               </div>
-              <button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>
+              ${hintBtnHtml}
             </div>
             <div class="text-sm sm:text-base text-slate-900 bg-white p-3.5 rounded-xl border border-slate-200/80 overflow-x-auto">${q.questionLatex}</div>
             <div class="pt-1 space-y-2">
@@ -2498,7 +2580,7 @@
                 ${currentVal ? `<span class="text-xs font-mono font-bold text-brand-700">Terpilih: Pilihan ${currentVal}</span>` : `<span class="text-xs text-slate-500">Belum dipilih</span>`}
               </div>
               <div class="flex flex-wrap items-center gap-2">
-                ${BAGIAN2_OPTIONS.map((opt) => {
+                ${activeOptions.map((opt) => {
                   const isSelected = currentVal === opt.code;
                   const btnClass = isSelected
                     ? 'bg-brand-600 text-white border-brand-600 shadow-sm'
@@ -2507,7 +2589,7 @@
                 }).join('')}
               </div>
             </div>
-            <div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>
+            ${q.hint ? `<div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>` : ''}
           </div>
         `;
       }).join('');
@@ -2546,7 +2628,7 @@
 
     function renderBagian3Essays() {
       const container = document.getElementById('essayQuestionsContainer');
-      container.innerHTML = BAGIAN3_QUESTIONS.map((q) => `
+      container.innerHTML = getBagian3Questions().map((q) => `
         <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex flex-wrap items-center gap-2">
@@ -2556,11 +2638,11 @@
             </div>
             <div class="flex items-center gap-3">
               <span class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-800 font-mono text-xs font-bold tabular-nums">${q.skor} Poin</span>
-              <button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>
+              ${q.hint ? `<button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>` : ''}
             </div>
           </div>
           <div class="p-4 rounded-xl bg-white border border-slate-200 text-sm sm:text-base text-slate-900 leading-relaxed overflow-x-auto">${q.stemLatex}</div>
-          <div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>
+          ${q.hint ? `<div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>` : ''}
           <div class="space-y-3">
             ${q.subQuestions.map((sub) => {
               const key = `${q.no}_${sub.id}`;
@@ -2662,7 +2744,7 @@
     function buildSupabasePayload() {
       const scores = calculateScores();
       const absenNum = parseInt(appState.student.noAbsen, 10) || 0;
-      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum);
+      const sessionId = appState.sessionId || buildStudentSessionId(appState.student.kelas, absenNum, appState.student.mode);
       return {
         session_id: sessionId,
         nama_lengkap: appState.student.nama,
@@ -2689,7 +2771,7 @@
     async function syncSubmissionToSupabase(silentMode = false) {
       if (!hasValidStudentIdentity()) return false;
       if (!appState.sessionId) {
-        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen);
+        appState.sessionId = buildStudentSessionId(appState.student.kelas, appState.student.noAbsen, appState.student.mode);
         saveStateToStorage();
       }
       updateSupabaseStatusUI('loading', 'Menyimpan data isian & skor ke Supabase...');
@@ -2820,7 +2902,7 @@
       renderPrintOfficialReport();
 
       const rubricContainer = document.getElementById('selfAssessmentRubricContainer');
-      rubricContainer.innerHTML = BAGIAN3_QUESTIONS.map((q) => {
+      rubricContainer.innerHTML = getBagian3Questions().map((q) => {
         const earnedForQ = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
         return `
           <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 print-break-inside-avoid">
@@ -2861,7 +2943,7 @@
       }).join('');
 
       const objContainer = document.getElementById('objectiveSolutionsContainer');
-      const b1Html = BAGIAN1_QUESTIONS.map((q) => {
+      const b1Html = getBagian1Questions().map((q) => {
         const userAns = (appState.answers.bagian1[q.no] || '').trim();
         const correct = isBagian1Correct(q.no);
         const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
@@ -2882,7 +2964,7 @@
         `;
       }).join('');
 
-      const b2Html = BAGIAN2_QUESTIONS.map((q) => {
+      const b2Html = getBagian2Questions().map((q) => {
         const userAns = (appState.answers.bagian2[q.no] || '').trim();
         const correct = isBagian2Correct(q.no);
         const badgeClass = correct ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-red-100 text-red-900 border-red-300';
@@ -2920,7 +3002,7 @@
       const predikat = getReadinessPredicate(scores.totalScore);
 
       // Tabel Rekap Bagian I (No. 1-10)
-      const b1Rows = BAGIAN1_QUESTIONS.map((q) => {
+      const b1Rows = getBagian1Questions().map((q) => {
         const userAns = (appState.answers.bagian1[q.no] || '').trim();
         const ok = isBagian1Correct(q.no);
         return `
@@ -2935,7 +3017,7 @@
       }).join('');
 
       // Tabel Rekap Bagian II (No. 11-15)
-      const b2Rows = BAGIAN2_QUESTIONS.map((q) => {
+      const b2Rows = getBagian2Questions().map((q) => {
         const userAns = (appState.answers.bagian2[q.no] || '').trim();
         const ok = isBagian2Correct(q.no);
         return `
@@ -2950,7 +3032,7 @@
       }).join('');
 
       // Tabel Rekap Bagian III (No. 16-20)
-      const b3Rows = BAGIAN3_QUESTIONS.map((q) => {
+      const b3Rows = getBagian3Questions().map((q) => {
         const earned = q.rubricItems.reduce((acc, r) => acc + (appState.answers.bagian3Rubric[r.id] ? r.points : 0), 0);
         const filledCount = q.subQuestions.filter((sub) => (appState.answers.bagian3Text[`${q.no}_${sub.id}`] || '').trim() !== '').length;
         const checkedCount = q.rubricItems.filter((r) => appState.answers.bagian3Rubric[r.id]).length;
