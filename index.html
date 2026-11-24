@@ -498,7 +498,7 @@
                 class="relative flex flex-col p-3.5 rounded-xl border-2 cursor-pointer transition bg-white border-slate-200 hover:border-slate-300"
               >
                 <div class="flex items-center justify-between gap-2">
-                  <span class="text-sm font-extrabold text-slate-900">Simulasi UAS</span>
+                  <span class="text-sm font-extrabold text-slate-900">Simulasi SAS</span>
                   <input
                     type="radio"
                     name="modeLatihan"
@@ -508,7 +508,7 @@
                   />
                 </div>
                 <p class="mt-1 text-xs text-slate-600">
-                  Timer mundur <strong>120 menit</strong> tanpa tombol petunjuk.
+                  Soal Paket B + timer mundur <strong>120 menit</strong> tanpa petunjuk &amp; rumus.
                 </p>
               </label>
             </div>
@@ -523,6 +523,20 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </button>
+
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Khusus Guru Pengampu</span>
+            <button
+              type="button"
+              onclick="openTeacherPanelModal()"
+              class="font-bold text-brand-700 hover:text-brand-900 hover:underline flex items-center gap-1"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+              </svg>
+              <span>Buka Panel Rekap Guru</span>
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -633,8 +647,21 @@
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
           </svg>
-          <span class="flex-1">Kisi-Kisi UAS</span>
+          <span class="flex-1">Kisi-Kisi SAS</span>
           <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-sidebar-800 text-slate-300">20</span>
+        </button>
+
+        <button
+          type="button"
+          data-lms-view="rumus"
+          onclick="navigateLMS('rumus')"
+          class="lms-nav-item w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition text-left"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span class="flex-1 truncate">Rangkuman Rumus</span>
+          <span id="badgeRumusLock" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-brand-600/30 text-brand-100">Belajar</span>
         </button>
 
         <div class="px-3 pt-4 pb-1 text-[11px] font-bold text-slate-400 tracking-wide">
@@ -699,21 +726,46 @@
       </nav>
 
       <!-- Sidebar Footer Actions -->
-      <div class="p-3.5 border-t border-sidebar-800 space-y-2.5">
-        <div class="px-2 text-[11px] text-brand-200/80 leading-snug">
-          <div class="text-slate-400">Guru Pengampu:</div>
-          <div class="font-bold text-white">Bernadet Intan Dewi Safitri, S.Pd</div>
+      <div class="p-3.5 border-t border-sidebar-800 space-y-2">
+        <div class="px-2 text-[11px] text-brand-200/80 leading-snug flex items-center justify-between gap-2">
+          <div class="min-w-0">
+            <div class="text-slate-400">Guru Pengampu:</div>
+            <div class="font-bold text-white truncate">Bernadet Intan Dewi Safitri, S.Pd</div>
+          </div>
+          <button
+            type="button"
+            onclick="openTeacherPanelModal()"
+            class="px-2 py-1 rounded-lg bg-sidebar-800 hover:bg-sidebar-700 text-[10px] font-bold text-amber-200 shrink-0 transition"
+            title="Panel Rekap Nilai Guru"
+          >
+            Panel Guru
+          </button>
         </div>
-        <button
-          type="button"
-          onclick="logoutToLoginScreen()"
-          class="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-sidebar-900 hover:bg-sidebar-800 border border-sidebar-700 text-xs font-bold text-brand-100 transition"
-        >
-          <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-          </svg>
-          <span>Keluar / Ganti Murid</span>
-        </button>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onclick="resetCurrentSessionAnswers()"
+            class="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-sidebar-900 hover:bg-sidebar-800 border border-sidebar-700 text-[11px] font-bold text-amber-200 transition"
+            title="Kosongkan seluruh jawaban sesi ini untuk mengulang dari nol"
+          >
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+            <span>Reset Soal</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="logoutToLoginScreen()"
+            class="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-sidebar-900 hover:bg-sidebar-800 border border-sidebar-700 text-[11px] font-bold text-brand-100 transition"
+          >
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg>
+            <span>Ganti Murid</span>
+          </button>
+        </div>
       </div>
     </aside>
 
@@ -742,7 +794,7 @@
               Dashboard Belajar
             </h2>
             <p id="topbarPageSubtitle" class="text-xs text-slate-500 truncate hidden sm:block">
-              Ringkasan progres latihan persiapan UAS Matematika Tingkat Lanjut
+              Ringkasan progres latihan persiapan SAS Matematika Tingkat Lanjut
             </p>
           </div>
         </div>
@@ -865,12 +917,29 @@
             </button>
           </div>
 
+          <!-- Quick Simulasi SAS CTA (Visible in Mode Belajar) -->
+          <div id="dashSimulasiCta" class="rounded-2xl bg-amber-50/90 border border-amber-200 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="text-sm font-extrabold text-amber-950">Siap uji kemampuan dengan soal berbeda?</div>
+              <p class="text-xs text-amber-900 mt-0.5">
+                Coba <strong>Mode Simulasi SAS (Paket B)</strong> — 20 soal baru setipe dengan waktu hitung mundur 120 menit tanpa petunjuk.
+              </p>
+            </div>
+            <button
+              type="button"
+              onclick="switchToSimulasiPackage()"
+              class="px-4 py-2.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs sm:text-sm font-bold transition shrink-0"
+            >
+              Coba Simulasi SAS (Paket B)
+            </button>
+          </div>
+
           <!-- Topic Distribution Breakdown -->
           <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-7 shadow-card">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <h3 class="text-base sm:text-lg font-extrabold text-slate-900">
-                  Peta Sebaran Materi &amp; Bobot UAS
+                  Peta Sebaran Materi &amp; Bobot SAS
                 </h3>
                 <p class="text-xs sm:text-sm text-slate-600">
                   Pelajari proporsi soal berikut untuk mengatur strategi belajarmu.
@@ -930,10 +999,10 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">
-                  Kisi-Kisi Resmi UAS Matematika Tingkat Lanjut Kelas XI
+                  Kisi-Kisi Resmi SAS Matematika Tingkat Lanjut Kelas XI
                 </h2>
                 <p class="mt-1 text-sm text-slate-600">
-                  Peta indikator kompetensi, level kognitif (L1–L3), bentuk soal, dan bobot poin untuk 20 butir soal UAS.
+                  Peta indikator kompetensi, level kognitif (L1–L3), bentuk soal, dan bobot poin untuk 20 butir soal SAS. Klik baris mana saja untuk langsung menuju soalnya.
                 </p>
               </div>
               <button
@@ -1004,6 +1073,97 @@
                 </thead>
                 <tbody id="kisiKisiTableBody" class="divide-y divide-slate-200 text-sm"></tbody>
               </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- VIEW 2B: RANGKUMAN RUMUS (MODE BELAJAR)    -->
+        <!-- ========================================== -->
+        <section id="view-rumus" class="hidden space-y-6 no-print">
+          <!-- Locked State (Mode Simulasi SAS) -->
+          <div id="rumusLockedNotice" class="hidden bg-amber-50 border-2 border-amber-300 rounded-2xl p-6 text-center space-y-3">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 mx-auto flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-amber-950">Rangkuman Rumus Terkunci di Mode Simulasi SAS</h3>
+            <p class="text-sm text-amber-900 max-w-lg mx-auto">
+              Agar simulasi 120 menit ini melatih kesiapan ujian secara autentik, halaman Rangkuman Rumus hanya dapat dibuka pada <strong>Mode Belajar Mandiri</strong>.
+            </p>
+            <button type="button" onclick="navigateLMS('bagian1')" class="px-5 py-2.5 rounded-xl bg-amber-900 hover:bg-amber-950 text-white text-sm font-bold transition">
+              Kembali ke Soal Simulasi
+            </button>
+          </div>
+
+          <!-- Formula Cards (Mode Belajar) -->
+          <div id="rumusContentCards" class="space-y-6">
+            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-7 shadow-card">
+              <h2 class="text-xl font-extrabold text-slate-900">Rangkuman Rumus &amp; Trik Cepat SAS Kelas XI</h2>
+              <p class="mt-1 text-sm text-slate-600">
+                Gunakan ringkasan konsep inti berikut saat berlatih di <strong>Mode Belajar</strong>. Pastikan kamu menghafal rumus-rumus ini sebelum mencoba <strong>Mode Simulasi SAS (Paket B)</strong>.
+              </p>
+
+              <div class="mt-6 space-y-5">
+                <!-- 1. Polinomial -->
+                <div class="p-5 rounded-2xl border border-poli-200 bg-poli-50/40 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">1. Polinomial (Suku Banyak) &bull; 30%</span>
+                    <span class="text-xs font-mono font-bold text-poli-900">No. 1–3, 11–12, 16</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
+                    <div class="p-3.5 rounded-xl bg-white border border-poli-200/70">
+                      <div class="font-bold text-poli-900 mb-1">Teorema Sisa</div>
+                      <p class="text-xs leading-relaxed">Jika polinomial $P(x)$ dibagi oleh $(x - a)$, maka sisanya adalah $S = P(a)$. Jika dibagi $(x + a)$, maka sisanya $S = P(-a)$.</p>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-poli-200/70">
+                      <div class="font-bold text-poli-900 mb-1">Teorema Faktor &amp; Skema Horner</div>
+                      <p class="text-xs leading-relaxed">$(x - a)$ adalah faktor dari $P(x)$ jika dan hanya jika $P(a) = 0$. Gunakan skema Horner untuk mencari hasil bagi $H(x)$ lalu faktorkan kuadratnya untuk menemukan semua akar.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Operasi Matriks -->
+                <div class="p-5 rounded-2xl border border-matriks-200 bg-matriks-50/50 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">2. Operasi Matriks ($2\times 2$ &amp; $3\times 3$) &bull; 50%</span>
+                    <span class="text-xs font-mono font-bold text-matriks-900">No. 4–8, 13–14, 17, 18, 20</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
+                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 overflow-x-auto">
+                      <div class="font-bold text-matriks-900 mb-1">Determinan &amp; Invers Matriks $2 \times 2$</div>
+                      <p class="text-xs leading-relaxed">Jika $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, maka $\det(A) = ad - bc$ dan $$A^{-1} = \frac{1}{ad - bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$</p>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 overflow-x-auto">
+                      <div class="font-bold text-matriks-900 mb-1">Persamaan Matriks &amp; Sifat Non-Komutatif</div>
+                      <p class="text-xs leading-relaxed">Perkalian matriks <strong>tidak komutatif</strong> ($A\cdot B \neq B\cdot A$). Perhatikan posisi invers: $$A \cdot X = B \implies X = A^{-1} \cdot B, \quad X \cdot A = B \implies X = B \cdot A^{-1}$$</p>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 md:col-span-2 overflow-x-auto">
+                      <div class="font-bold text-matriks-900 mb-1">Invers Matriks $3 \times 3$ (Kofaktor &amp; Adjoin)</div>
+                      <p class="text-xs leading-relaxed">Tanda papan catur kofaktor: $\begin{bmatrix} + & - & + \\ - & + & - \\ + & - & + \end{bmatrix}$. Ingat: $\text{Adj}(M) = (\text{Kof}(M))^T$ (jangan lupa di-<strong>transpos</strong>!), lalu $M^{-1} = \frac{1}{\det(M)}\text{Adj}(M)$ dan dekripsi sandi $P = M^{-1} \cdot C$.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Translasi -->
+                <div class="p-5 rounded-2xl border border-translasi-200 bg-translasi-50/50 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">3. Transformasi Geometri: Translasi &bull; 20%</span>
+                    <span class="text-xs font-mono font-bold text-translasi-900">No. 9–10, 15, 19</span>
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
+                    <div class="p-3.5 rounded-xl bg-white border border-translasi-200/70 overflow-x-auto">
+                      <div class="font-bold text-translasi-900 mb-1">Translasi Titik &amp; Komposisi</div>
+                      <p class="text-xs leading-relaxed">Titik $A(x,y)$ oleh $T = \begin{pmatrix} a \\ b \end{pmatrix}$ menghasilkan $A'(x+a, y+b)$. Komposisi $T_1$ lalu $T_2$ cukup dijumlahkan: $T = T_1 + T_2$. Translasi bersifat <strong>isometri</strong> (luas bangun tetap).</p>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white border border-translasi-200/70 overflow-x-auto">
+                      <div class="font-bold text-translasi-900 mb-1">Trik Anti-Salah Translasi Garis</div>
+                      <p class="text-xs leading-relaxed">Karena $x' = x + a$ dan $y' = y + b$, maka untuk persamaan garis substitusikan <strong>tanda berlawanan</strong>: $$x = x' - a \quad \text{dan} \quad y = y' - b$$</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1205,8 +1365,20 @@
                   </div>
                 </div>
 
-                <!-- Action Buttons (Sync Cloud, Print PDF, Re-edit) -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 no-print">
+                <!-- Action Buttons (Simulasi CTA, Sync Cloud, Print PDF) -->
+                <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 no-print">
+                  <button
+                    type="button"
+                    id="btnTrySimulasiFromResult"
+                    onclick="switchToSimulasiPackage()"
+                    class="hidden px-4 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-2 min-h-[44px]"
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Coba Simulasi SAS (Paket B)</span>
+                  </button>
+
                   <button
                     type="button"
                     id="btnSyncSupabase"
@@ -1334,6 +1506,155 @@
     </div>
   </div>
 
+  <!-- =================================================================== -->
+  <!-- MODAL: PANEL REKAP NILAI GURU (BER-PIN)                             -->
+  <!-- =================================================================== -->
+  <div id="teacherPanelModal" class="hidden fixed inset-0 z-50 bg-sidebar-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 no-print">
+    <div class="bg-white w-full max-w-5xl max-h-[90vh] rounded-2xl border border-slate-200 shadow-elevated flex flex-col overflow-hidden">
+      <!-- Modal Header -->
+      <div class="px-5 sm:px-6 py-4 bg-sidebar-950 text-white flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-white p-1 shrink-0 flex items-center justify-center">
+            <img src="./logo-don-bosco.png" alt="Logo SMA Don Bosco II Pulomas" class="w-full h-full object-contain" />
+          </div>
+          <div class="min-w-0">
+            <h3 class="text-sm sm:text-base font-extrabold truncate">Panel Rekap Nilai Guru — SMA Don Bosco II Pulomas</h3>
+            <p class="text-[11px] text-brand-200 truncate">Bernadet Intan Dewi Safitri, S.Pd &bull; Matematika Tingkat Lanjut XI-1 &amp; XI-2</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="closeTeacherPanelModal()"
+          class="p-2 rounded-xl bg-sidebar-800 hover:bg-sidebar-700 text-slate-200 transition shrink-0"
+          aria-label="Tutup Panel Guru"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- PIN Gate -->
+      <div id="teacherPinGate" class="p-6 sm:p-10 flex flex-col items-center justify-center text-center space-y-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-lg font-extrabold text-slate-900">Masukkan PIN Guru</h4>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">Akses rekap nilai seluruh siswa Kelas XI-1 &amp; XI-2 dari database cloud.</p>
+        </div>
+        <form onsubmit="unlockTeacherPanel(event)" class="w-full max-w-xs space-y-3">
+          <input
+            id="inputTeacherPin"
+            type="password"
+            inputmode="numeric"
+            placeholder="Ketik PIN Guru..."
+            autocomplete="off"
+            class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 text-center font-mono text-base font-bold tracking-widest focus:border-brand-600"
+          />
+          <p id="errorTeacherPin" class="hidden text-xs font-bold text-red-600">PIN salah. Silakan coba lagi.</p>
+          <button
+            type="submit"
+            class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold transition"
+          >
+            Buka Rekap Nilai
+          </button>
+        </form>
+      </div>
+
+      <!-- Unlocked Teacher Dashboard -->
+      <div id="teacherRecapContent" class="hidden flex-1 overflow-y-auto p-5 sm:p-6 space-y-5">
+        <!-- Filters & Actions -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <select
+              id="teacherFilterKelas"
+              onchange="renderTeacherRecapTable()"
+              class="px-3.5 py-2 rounded-xl border-2 border-slate-200 text-xs sm:text-sm font-bold text-slate-800 bg-white"
+            >
+              <option value="ALL">Semua Kelas (XI-1 &amp; XI-2)</option>
+              <option value="XI-1">Kelas XI-1</option>
+              <option value="XI-2">Kelas XI-2</option>
+            </select>
+            <select
+              id="teacherFilterMode"
+              onchange="renderTeacherRecapTable()"
+              class="px-3.5 py-2 rounded-xl border-2 border-slate-200 text-xs sm:text-sm font-bold text-slate-800 bg-white"
+            >
+              <option value="ALL">Semua Mode</option>
+              <option value="belajar">Mode Belajar (Paket A)</option>
+              <option value="simulasi">Simulasi SAS (Paket B)</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              onclick="loadTeacherRecapData()"
+              class="px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs sm:text-sm font-bold text-slate-800 transition"
+            >
+              Muat Ulang
+            </button>
+            <button
+              type="button"
+              onclick="exportTeacherRecapCSV()"
+              class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-bold transition flex items-center gap-1.5"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span>Unduh Excel (.csv)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Summary Stat Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="text-[11px] font-bold text-slate-500">Total Rekaman Siswa</div>
+            <div id="teacherStatCount" class="mt-1 text-xl font-extrabold font-mono text-slate-900 tabular-nums">0</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-brand-50/70 border border-brand-200">
+            <div class="text-[11px] font-bold text-brand-800">Rata-Rata Skor</div>
+            <div id="teacherStatAvg" class="mt-1 text-xl font-extrabold font-mono text-brand-950 tabular-nums">0</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200">
+            <div class="text-[11px] font-bold text-emerald-800">Tuntas (&ge; 75 Poin)</div>
+            <div id="teacherStatPass" class="mt-1 text-xl font-extrabold font-mono text-emerald-950 tabular-nums">0%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200">
+            <div class="text-[11px] font-bold text-amber-900">Topik Perlu Review</div>
+            <div id="teacherStatWeakest" class="mt-1 text-sm sm:text-base font-extrabold text-amber-950 truncate">-</div>
+          </div>
+        </div>
+
+        <!-- Status / Error Message -->
+        <div id="teacherRecapStatus" class="hidden p-3.5 rounded-xl border text-xs sm:text-sm font-semibold"></div>
+
+        <!-- Student Table -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-extrabold">
+                <th class="py-2.5 px-3">Kelas</th>
+                <th class="py-2.5 px-3 text-center">Absen</th>
+                <th class="py-2.5 px-3">Nama</th>
+                <th class="py-2.5 px-3">Mode</th>
+                <th class="py-2.5 px-3 text-center">Status</th>
+                <th class="py-2.5 px-3 text-center">Poli (/22)</th>
+                <th class="py-2.5 px-3 text-center">Matriks (/59)</th>
+                <th class="py-2.5 px-3 text-center">Translasi (/19)</th>
+                <th class="py-2.5 px-3 text-center">Total (/100)</th>
+              </tr>
+            </thead>
+            <tbody id="teacherRecapTableBody" class="divide-y divide-slate-200"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========================================== -->
   <!-- APPLICATION DATA & JAVASCRIPT LOGIC        -->
   <!-- ========================================== -->
@@ -1341,6 +1662,7 @@
     const STORAGE_KEY = 'kisi_uas_math_lanjut_xi_v1';
     const ALLOWED_CLASSES = ['XI-1', 'XI-2'];
     const EXAM_DURATION_SECONDS = 120 * 60; // 120 minutes
+    const TEACHER_PIN = '2026';
 
     // Konfigurasi Supabase REST API (anon key bersifat publik & dilindungi RLS)
     const SUPABASE_CONFIG = {
@@ -1352,11 +1674,15 @@
     const VIEW_METADATA = {
       dashboard: {
         title: 'Dashboard Belajar',
-        subtitle: 'Ringkasan progres latihan persiapan UAS Matematika Tingkat Lanjut'
+        subtitle: 'Ringkasan progres latihan persiapan SAS Matematika Tingkat Lanjut'
       },
       kisikisi: {
-        title: 'Kisi-Kisi UAS (20 Soal)',
+        title: 'Kisi-Kisi SAS (20 Soal)',
         subtitle: 'Peta indikator kompetensi, level kognitif, dan bobot poin resmi'
+      },
+      rumus: {
+        title: 'Rangkuman Rumus & Trik Cepat',
+        subtitle: 'Ringkasan konsep Polinomial, Operasi Matriks, dan Translasi (Khusus Mode Belajar)'
       },
       bagian1: {
         title: 'Bagian I — Isian Singkat LKPD (No. 1–10)',
@@ -2113,12 +2439,45 @@
         }
       }
 
-      // Show/hide hints depending on mode
+      // Show/hide hints, formula sheet lock, and Simulasi CTA depending on mode
       const isSimulasi = appState.student.mode === 'simulasi';
       document.querySelectorAll('.hint-btn').forEach((btn) => {
         if (isSimulasi) btn.classList.add('hidden');
         else btn.classList.remove('hidden');
       });
+
+      const badgeRumus = document.getElementById('badgeRumusLock');
+      const rumusLocked = document.getElementById('rumusLockedNotice');
+      const rumusContent = document.getElementById('rumusContentCards');
+      if (badgeRumus) {
+        if (isSimulasi) {
+          badgeRumus.textContent = 'Terkunci';
+          badgeRumus.className = 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-200 border border-amber-400/40';
+        } else {
+          badgeRumus.textContent = 'Belajar';
+          badgeRumus.className = 'text-[10px] font-bold px-2 py-0.5 rounded-md bg-brand-600/30 text-brand-100';
+        }
+      }
+      if (rumusLocked && rumusContent) {
+        if (isSimulasi) {
+          rumusLocked.classList.remove('hidden');
+          rumusContent.classList.add('hidden');
+        } else {
+          rumusLocked.classList.add('hidden');
+          rumusContent.classList.remove('hidden');
+        }
+      }
+
+      const dashSimCta = document.getElementById('dashSimulasiCta');
+      const resSimBtn = document.getElementById('btnTrySimulasiFromResult');
+      if (dashSimCta) {
+        if (isSimulasi) dashSimCta.classList.add('hidden');
+        else dashSimCta.classList.remove('hidden');
+      }
+      if (resSimBtn) {
+        if (isSimulasi) resSimBtn.classList.add('hidden');
+        else resSimBtn.classList.remove('hidden');
+      }
     }
 
     // 9. SIMULATION TIMER (120 MINUTES)
@@ -2182,8 +2541,8 @@
             timerIntervalId = null;
           }
           saveStateToStorage();
-          alert('Waktu Simulasi UAS (120 menit) telah habis! Jawabanmu akan dikumpulkan secara otomatis.');
-          submitAndOpenResults();
+          alert('Waktu Simulasi SAS (120 menit) telah habis! Jawabanmu akan dikumpulkan secara otomatis.');
+          submitAndOpenResults(true);
         }
       };
       tick();
@@ -2401,11 +2760,17 @@
 
       tbody.innerHTML = filtered
         .map((row) => `
-          <tr class="hover:bg-slate-50/90 transition">
+          <tr onclick="jumpFromKisiKisi(${row.no})" class="hover:bg-brand-50/60 cursor-pointer transition group" title="Klik untuk langsung ke Soal No. ${row.no}">
             <td class="py-3.5 px-4 text-center font-mono font-bold text-slate-900 tabular-nums">${row.no}</td>
             <td class="py-3.5 px-4"><span class="inline-block px-2.5 py-1 rounded-lg text-xs font-bold ${topicBadgeClass(row.topik)}">${row.topik}</span></td>
             <td class="py-3.5 px-4 text-xs font-bold text-slate-700">${row.bentuk}</td>
-            <td class="py-3.5 px-4"><div class="text-slate-900 font-semibold">${row.indikator}</div><div class="text-xs text-slate-500 mt-0.5">${row.konteks}</div></td>
+            <td class="py-3.5 px-4">
+              <div class="text-slate-900 font-semibold group-hover:text-brand-800 transition">${row.indikator}</div>
+              <div class="text-xs text-slate-500 mt-0.5 flex items-center justify-between gap-2">
+                <span>${row.konteks}</span>
+                <span class="text-brand-700 font-bold opacity-0 group-hover:opacity-100 transition shrink-0">Kerjakan &rarr;</span>
+              </div>
+            </td>
             <td class="py-3.5 px-4 text-center"><span class="px-2.5 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-xs font-mono font-bold text-slate-800">${row.level}</span></td>
             <td class="py-3.5 px-4 text-center font-mono font-bold text-brand-700 tabular-nums">${row.skor} pt</td>
           </tr>
@@ -2415,7 +2780,7 @@
       if (mobileCards) {
         mobileCards.innerHTML = filtered
           .map((row) => `
-            <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+            <div onclick="jumpFromKisiKisi(${row.no})" class="p-4 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-400 hover:bg-brand-50/40 cursor-pointer space-y-2 transition">
               <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-2">
                   <span class="px-2.5 py-0.5 rounded-md bg-brand-700 text-white font-mono font-bold text-xs tabular-nums">No. ${row.no}</span>
@@ -2423,7 +2788,10 @@
                 </div>
                 <span class="font-mono font-bold text-xs text-brand-800 bg-brand-50 border border-brand-200 px-2 py-0.5 rounded-md tabular-nums">${row.level} &bull; ${row.skor} pt</span>
               </div>
-              <div class="text-xs font-bold text-slate-600">${row.bentuk}</div>
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-600">${row.bentuk}</span>
+                <span class="font-bold text-brand-700">Kerjakan &rarr;</span>
+              </div>
               <p class="text-sm font-semibold text-slate-900 leading-snug">${row.indikator}</p>
               <p class="text-xs text-slate-500">${row.konteks}</p>
             </div>
@@ -2433,6 +2801,17 @@
       triggerMathRender(document.getElementById('view-kisikisi'));
     }
 
+    function jumpFromKisiKisi(questionNo) {
+      const targetView = questionNo <= 10 ? 'bagian1' : questionNo <= 15 ? 'bagian2' : 'bagian3';
+      navigateLMS(targetView);
+      setTimeout(() => {
+        const cardEl = document.getElementById(`q-card-${questionNo}`);
+        if (cardEl && typeof cardEl.scrollIntoView === 'function') {
+          cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 120);
+    }
+
     // 12. RENDER & HANDLE BAGIAN I, II, III
     function renderBagian1LKPD() {
       const container = document.getElementById('bagian1CardsContainer');
@@ -2440,7 +2819,7 @@
       const isSimulasi = appState.student.mode === 'simulasi';
 
       if (pkgBadge) {
-        pkgBadge.textContent = isSimulasi ? 'Paket B (Simulasi UAS)' : 'Paket A (Mode Belajar)';
+        pkgBadge.textContent = isSimulasi ? 'Paket B (Simulasi SAS)' : 'Paket A (Mode Belajar)';
         pkgBadge.className = isSimulasi
           ? 'px-3 py-1.5 rounded-xl bg-amber-100 border border-amber-300 text-amber-950 text-xs font-bold'
           : 'px-3 py-1.5 rounded-xl bg-brand-100 border border-brand-200 text-brand-900 text-xs font-bold';
@@ -2498,16 +2877,23 @@
                       !isSimulasi && it.hint
                         ? `<div id="hint-${it.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${it.no}:</strong> ${it.hint}</div>`
                         : '';
+                    const checkBtnHtml = !isSimulasi
+                      ? `<button type="button" onclick="checkBagian1Instant(${it.no})" class="px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-800 text-[11px] font-bold transition">Cek Jawaban</button>`
+                      : '';
                     return `
-                      <div class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
-                        <div class="flex items-center justify-between gap-2">
+                      <div id="q-card-${it.no}" class="p-4 sm:p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm space-y-2.5">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
                           <span class="px-2.5 py-0.5 rounded-md ${st.itemBadge} border text-xs font-mono font-bold">Nomor ${it.no} &bull; ${it.level} &bull; 2 Poin</span>
-                          ${hintBtnHtml}
+                          <div class="flex items-center gap-2.5">
+                            ${checkBtnHtml}
+                            ${hintBtnHtml}
+                          </div>
                         </div>
                         <p class="leading-loose">
                           ${it.before}
                           <input id="input-q${it.no}" type="text" inputmode="${it.inputmode}" value="${val}" placeholder="${it.placeholder}" aria-label="Jawaban Nomor ${it.no}" oninput="handleBagian1Input(${it.no}, this.value)" class="lkpd-inline-input" />${it.after}
                         </p>
+                        <div id="instant-feedback-${it.no}" class="hidden text-xs font-bold px-3 py-2 rounded-lg border"></div>
                         ${hintBoxHtml}
                       </div>
                     `;
@@ -2528,9 +2914,51 @@
 
     function handleBagian1Input(no, value) {
       appState.answers.bagian1[no] = value;
+      const fb = document.getElementById(`instant-feedback-${no}`);
+      if (fb) fb.classList.add('hidden');
       saveStateToStorage();
       updateLMSChromeUI();
       scheduleAutoSaveToSupabase();
+    }
+
+    function checkBagian1Instant(no) {
+      if (appState.student.mode === 'simulasi') return;
+      const fb = document.getElementById(`instant-feedback-${no}`);
+      if (!fb) return;
+      const raw = (appState.answers.bagian1[no] || '').trim();
+      fb.classList.remove('hidden');
+      if (!raw) {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-amber-300 bg-amber-50 text-amber-950';
+        fb.textContent = 'Isi jawabanmu terlebih dahulu sebelum mengecek.';
+        return;
+      }
+      if (isBagian1Correct(no)) {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-emerald-300 bg-emerald-50 text-emerald-900';
+        fb.textContent = 'Tepat sekali! Jawabanmu benar (+2 Poin).';
+      } else {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-red-300 bg-red-50 text-red-900';
+        fb.textContent = 'Belum tepat. Coba periksa kembali tanda positif/negatif atau klik Petunjuk (Hint).';
+      }
+    }
+
+    function checkBagian2Instant(no) {
+      if (appState.student.mode === 'simulasi') return;
+      const fb = document.getElementById(`instant-feedback-${no}`);
+      if (!fb) return;
+      const raw = (appState.answers.bagian2[no] || '').trim();
+      fb.classList.remove('hidden');
+      if (!raw) {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-amber-300 bg-amber-50 text-amber-950';
+        fb.textContent = 'Pilih salah satu huruf (A–G) terlebih dahulu sebelum mengecek.';
+        return;
+      }
+      if (isBagian2Correct(no)) {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-emerald-300 bg-emerald-50 text-emerald-900';
+        fb.textContent = 'Tepat sekali! Pasangan huruf yang kamu pilih benar (+3 Poin).';
+      } else {
+        fb.className = 'text-xs font-bold px-3 py-2 rounded-lg border border-red-300 bg-red-50 text-red-900';
+        fb.textContent = 'Belum tepat. Coba hitung ulang atau buka Petunjuk (Hint) untuk langkahnya.';
+      }
     }
 
     function toggleHint(no) {
@@ -2560,18 +2988,23 @@
         </div>
       `).join('');
 
+      const isSimulasi = appState.student.mode === 'simulasi';
       qContainer.innerHTML = activeQuestions.map((q) => {
         const currentVal = appState.answers.bagian2[q.no] || '';
-        const hintBtnHtml = q.hint ? `<button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>` : '';
+        const hintBtnHtml = !isSimulasi && q.hint ? `<button type="button" onclick="toggleHint(${q.no})" class="hint-btn text-xs font-bold text-brand-700 hover:underline">Petunjuk (Hint)</button>` : '';
+        const checkBtnHtml = !isSimulasi ? `<button type="button" onclick="checkBagian2Instant(${q.no})" class="px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-800 text-[11px] font-bold transition">Cek Jawaban</button>` : '';
         return `
-          <div class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3.5 shadow-sm">
+          <div id="q-card-${q.no}" class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3.5 shadow-sm">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <div class="flex flex-wrap items-center gap-2">
                 <span class="px-2.5 py-1 rounded-lg bg-brand-700 text-white font-mono text-xs font-bold tabular-nums">Nomor ${q.no}</span>
                 <span class="px-2.5 py-0.5 rounded-md border text-xs font-bold ${getTopicBadgeForQuestion(q.topik)}">${q.topik}</span>
                 <span class="text-xs font-mono font-semibold text-slate-600">${q.level} &bull; 3 Poin</span>
               </div>
-              ${hintBtnHtml}
+              <div class="flex items-center gap-2.5">
+                ${checkBtnHtml}
+                ${hintBtnHtml}
+              </div>
             </div>
             <div class="text-sm sm:text-base text-slate-900 bg-white p-3.5 rounded-xl border border-slate-200/80 overflow-x-auto">${q.questionLatex}</div>
             <div class="pt-1 space-y-2">
@@ -2589,6 +3022,7 @@
                 }).join('')}
               </div>
             </div>
+            <div id="instant-feedback-${q.no}" class="hidden text-xs font-bold px-3 py-2 rounded-lg border"></div>
             ${q.hint ? `<div id="hint-${q.no}" class="hidden p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><strong>Petunjuk No. ${q.no}:</strong> ${q.hint}</div>` : ''}
           </div>
         `;
@@ -2629,7 +3063,7 @@
     function renderBagian3Essays() {
       const container = document.getElementById('essayQuestionsContainer');
       container.innerHTML = getBagian3Questions().map((q) => `
-        <div class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 shadow-sm">
+        <div id="q-card-${q.no}" class="p-4 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-4 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex flex-wrap items-center gap-2">
               <span class="px-3 py-1 rounded-lg bg-brand-700 text-white font-mono text-xs font-bold tabular-nums">Nomor ${q.no}</span>
@@ -2807,11 +3241,37 @@
       }
     }
 
-    // 14. SUBMIT & RENDER EVALUATION RESULTS
-    function submitAndOpenResults() {
+    // 14. SUBMIT, RESET, MODE SWITCH & RENDER EVALUATION RESULTS
+    function getUnansweredNumbers() {
+      const missing = [];
+      for (let i = 1; i <= 10; i++) {
+        if ((appState.answers.bagian1[i] || '').trim() === '') missing.push(i);
+      }
+      for (let i = 11; i <= 15; i++) {
+        if ((appState.answers.bagian2[i] || '').trim() === '') missing.push(i);
+      }
+      for (let i = 16; i <= 20; i++) {
+        const hasSub = ['a', 'b', 'c'].some(
+          (sub) => (appState.answers.bagian3Text[`${i}_${sub}`] || '').trim() !== ''
+        );
+        if (!hasSub) missing.push(i);
+      }
+      return missing;
+    }
+
+    function submitAndOpenResults(forceAutoSubmit = false) {
       if (!hasValidStudentIdentity()) {
         showLoginScreen();
         return;
+      }
+      if (!forceAutoSubmit) {
+        const unanswered = getUnansweredNumbers();
+        if (unanswered.length > 0 && typeof confirm === 'function') {
+          const ok = confirm(
+            `Masih ada ${unanswered.length} soal yang belum diisi (No. ${unanswered.join(', ')}).\n\nYakin ingin mengumpulkan jawaban sekarang?`
+          );
+          if (!ok) return;
+        }
       }
       appState.isSubmitted = true;
       appState.student.completedAt = new Date().toLocaleString('id-ID', {
@@ -2828,9 +3288,86 @@
       syncSubmissionToSupabase(false);
     }
 
+    function resetCurrentSessionAnswers() {
+      const modeLabel = appState.student.mode === 'simulasi' ? 'Simulasi SAS (Paket B)' : 'Mode Belajar (Paket A)';
+      if (typeof confirm === 'function') {
+        const ok = confirm(
+          `Kosongkan seluruh jawaban pada ${modeLabel} untuk mengulang dari nol?`
+        );
+        if (!ok) return;
+      }
+      appState.answers = {
+        bagian1: {},
+        bagian2: {},
+        bagian3Text: {},
+        bagian3Rubric: {}
+      };
+      appState.isSubmitted = false;
+      appState.student.completedAt = null;
+      if (appState.student.mode === 'simulasi') {
+        appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
+        appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
+      }
+      saveStateToStorage();
+      renderBagian1LKPD();
+      renderBagian2Matching();
+      renderBagian3Essays();
+      updateLMSChromeUI();
+      if (appState.student.mode === 'simulasi') {
+        startOrResumeSimulationTimer();
+      }
+      navigateLMS('bagian1');
+      syncSubmissionToSupabase(true);
+    }
+
+    async function switchToSimulasiPackage() {
+      if (!hasValidStudentIdentity()) {
+        showLoginScreen();
+        return;
+      }
+      if (typeof confirm === 'function') {
+        const ok = confirm(
+          'Mulai Mode Simulasi SAS (Paket B)?\n\nPaket B berisi 20 soal berbeda yang setipe dengan batas waktu 120 menit tanpa Petunjuk maupun Rangkuman Rumus.'
+        );
+        if (!ok) return;
+      }
+      const kelas = appState.student.kelas;
+      const noAbsen = appState.student.noAbsen;
+      const simSessionId = buildStudentSessionId(kelas, noAbsen, 'simulasi');
+
+      appState.student.mode = 'simulasi';
+      appState.sessionId = simSessionId;
+      appState.isSubmitted = false;
+      appState.student.completedAt = null;
+
+      const cloudRow = await fetchProgressFromSupabase(simSessionId);
+      if (cloudRow) {
+        appState.answers = {
+          bagian1: cloudRow.jawaban_bagian_1 || {},
+          bagian2: cloudRow.jawaban_bagian_2 || {},
+          bagian3Text: cloudRow.jawaban_bagian_3_teks || {},
+          bagian3Rubric: cloudRow.jawaban_bagian_3_rubrik || {}
+        };
+      } else {
+        appState.answers = { bagian1: {}, bagian2: {}, bagian3Text: {}, bagian3Rubric: {} };
+      }
+
+      appState.timer.remainingSeconds = EXAM_DURATION_SECONDS;
+      appState.timer.targetEndTime = Date.now() + EXAM_DURATION_SECONDS * 1000;
+      saveStateToStorage();
+
+      renderBagian1LKPD();
+      renderBagian2Matching();
+      renderBagian3Essays();
+      updateLMSChromeUI();
+      startOrResumeSimulationTimer();
+      navigateLMS('bagian1');
+      syncSubmissionToSupabase(true);
+    }
+
     function getReadinessPredicate(score) {
-      if (score >= 85) return 'Sangat Siap Menghadapi UAS (Penguasaan Sangat Baik)';
-      if (score >= 75) return 'Siap Menghadapi UAS (Penguasaan Baik)';
+      if (score >= 85) return 'Sangat Siap Menghadapi SAS (Penguasaan Sangat Baik)';
+      if (score >= 75) return 'Siap Menghadapi SAS (Penguasaan Baik)';
       if (score >= 60) return 'Cukup Siap (Perlu Penguatan Konsep Tertentu)';
       return 'Perlu Latihan Ulang Secara Intensif';
     }
@@ -2894,7 +3431,7 @@
         ? `${appState.student.kelas} • Absen ${appState.student.noAbsen || '-'}`
         : '-';
       document.getElementById('resultModeName').textContent =
-        appState.student.mode === 'simulasi' ? 'Mode Simulasi UAS (120 Menit)' : 'Mode Belajar Mandiri';
+        appState.student.mode === 'simulasi' ? 'Mode Simulasi SAS (120 Menit)' : 'Mode Belajar Mandiri';
       document.getElementById('resultCompletedAt').textContent = appState.student.completedAt || '-';
 
       updateScoreSummaryCards();
@@ -2997,7 +3534,7 @@
       const nama = escapeHtml(appState.student.nama || '-');
       const kelas = escapeHtml(appState.student.kelas || '-');
       const absen = escapeHtml(appState.student.noAbsen || '-');
-      const modeText = appState.student.mode === 'simulasi' ? 'Simulasi SAS/UAS (120 Menit)' : 'Mode Belajar Mandiri';
+      const modeText = appState.student.mode === 'simulasi' ? 'Simulasi SAS (120 Menit)' : 'Mode Belajar Mandiri';
       const waktuSelesai = escapeHtml(appState.student.completedAt || new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }));
       const predikat = getReadinessPredicate(scores.totalScore);
 
@@ -3185,6 +3722,223 @@
           </div>
         </div>
       `;
+    }
+
+    // 14B. PANEL REKAP NILAI GURU (BER-PIN + UNDUH CSV)
+    let teacherRecapRows = [];
+    let isTeacherUnlocked = false;
+
+    function openTeacherPanelModal() {
+      const modal = document.getElementById('teacherPanelModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      if (isTeacherUnlocked) {
+        document.getElementById('teacherPinGate').classList.add('hidden');
+        document.getElementById('teacherRecapContent').classList.remove('hidden');
+        loadTeacherRecapData();
+      } else {
+        document.getElementById('teacherPinGate').classList.remove('hidden');
+        document.getElementById('teacherRecapContent').classList.add('hidden');
+        const pinInput = document.getElementById('inputTeacherPin');
+        const errEl = document.getElementById('errorTeacherPin');
+        if (pinInput) {
+          pinInput.value = '';
+          setTimeout(() => pinInput.focus(), 50);
+        }
+        if (errEl) errEl.classList.add('hidden');
+      }
+    }
+
+    function closeTeacherPanelModal() {
+      const modal = document.getElementById('teacherPanelModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function unlockTeacherPanel(event) {
+      if (event) event.preventDefault();
+      const pinInput = document.getElementById('inputTeacherPin');
+      const errEl = document.getElementById('errorTeacherPin');
+      const entered = (pinInput ? pinInput.value : '').trim();
+      if (entered !== TEACHER_PIN) {
+        if (errEl) errEl.classList.remove('hidden');
+        return false;
+      }
+      isTeacherUnlocked = true;
+      if (errEl) errEl.classList.add('hidden');
+      document.getElementById('teacherPinGate').classList.add('hidden');
+      document.getElementById('teacherRecapContent').classList.remove('hidden');
+      loadTeacherRecapData();
+      return true;
+    }
+
+    async function loadTeacherRecapData() {
+      const statusEl = document.getElementById('teacherRecapStatus');
+      const tbody = document.getElementById('teacherRecapTableBody');
+      if (statusEl) {
+        statusEl.className = 'p-3.5 rounded-xl border border-brand-200 bg-brand-50 text-brand-900 text-xs sm:text-sm font-semibold';
+        statusEl.textContent = 'Mengambil data rekap nilai seluruh siswa dari Supabase...';
+        statusEl.classList.remove('hidden');
+      }
+      if (tbody) {
+        tbody.innerHTML = '<tr><td colspan="9" class="py-6 text-center text-slate-500">Memuat data...</td></tr>';
+      }
+      try {
+        const baseRest = SUPABASE_CONFIG.restUrl.replace(/\/+$/, '');
+        const endpoint = `${baseRest}/${SUPABASE_CONFIG.table}?select=session_id,nama_lengkap,kelas,no_absen,mode_latihan,is_submitted,skor_bagian_1,skor_bagian_2,skor_bagian_3,total_skor,skor_polinomial,skor_matriks,skor_translasi,waktu_selesai&order=kelas.asc,no_absen.asc`;
+        const response = await fetch(endpoint, {
+          method: 'GET',
+          headers: {
+            apikey: SUPABASE_CONFIG.anonKey,
+            Authorization: `Bearer ${SUPABASE_CONFIG.anonKey}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const rows = await response.json();
+        teacherRecapRows = Array.isArray(rows) ? rows : [];
+        if (statusEl) statusEl.classList.add('hidden');
+        renderTeacherRecapTable();
+      } catch (err) {
+        console.error('Gagal memuat rekap guru:', err);
+        if (statusEl) {
+          statusEl.className = 'p-3.5 rounded-xl border border-red-300 bg-red-50 text-red-900 text-xs sm:text-sm font-semibold';
+          statusEl.textContent = 'Gagal memuat data dari Supabase. Pastikan tabel hasil_latihan_uas aktif dan koneksi internet tersedia.';
+          statusEl.classList.remove('hidden');
+        }
+        if (tbody) {
+          tbody.innerHTML = '<tr><td colspan="9" class="py-6 text-center text-slate-500">Data tidak dapat dimuat.</td></tr>';
+        }
+      }
+    }
+
+    function getFilteredTeacherRows() {
+      const kelasFilter = document.getElementById('teacherFilterKelas')?.value || 'ALL';
+      const modeFilter = document.getElementById('teacherFilterMode')?.value || 'ALL';
+      return teacherRecapRows.filter((row) => {
+        const matchKelas = kelasFilter === 'ALL' || row.kelas === kelasFilter;
+        const matchMode = modeFilter === 'ALL' || row.mode_latihan === modeFilter;
+        return matchKelas && matchMode;
+      });
+    }
+
+    function renderTeacherRecapTable() {
+      const rows = getFilteredTeacherRows();
+      const tbody = document.getElementById('teacherRecapTableBody');
+      const countEl = document.getElementById('teacherStatCount');
+      const avgEl = document.getElementById('teacherStatAvg');
+      const passEl = document.getElementById('teacherStatPass');
+      const weakEl = document.getElementById('teacherStatWeakest');
+
+      const totalCount = rows.length;
+      if (countEl) countEl.textContent = String(totalCount);
+
+      if (totalCount === 0) {
+        if (avgEl) avgEl.textContent = '0';
+        if (passEl) passEl.textContent = '0%';
+        if (weakEl) weakEl.textContent = '-';
+        if (tbody) {
+          tbody.innerHTML = '<tr><td colspan="9" class="py-8 text-center text-slate-500">Belum ada data siswa yang sesuai filter.</td></tr>';
+        }
+        return;
+      }
+
+      const avgTotal = Math.round(rows.reduce((acc, r) => acc + (Number(r.total_skor) || 0), 0) / totalCount);
+      const passCount = rows.filter((r) => (Number(r.total_skor) || 0) >= 75).length;
+      const passPct = Math.round((passCount / totalCount) * 100);
+
+      const avgPoliPct = rows.reduce((acc, r) => acc + ((Number(r.skor_polinomial) || 0) / 22) * 100, 0) / totalCount;
+      const avgMatPct = rows.reduce((acc, r) => acc + ((Number(r.skor_matriks) || 0) / 59) * 100, 0) / totalCount;
+      const avgTransPct = rows.reduce((acc, r) => acc + ((Number(r.skor_translasi) || 0) / 19) * 100, 0) / totalCount;
+      const topicAverages = [
+        { name: 'Polinomial', pct: Math.round(avgPoliPct) },
+        { name: 'Operasi Matriks', pct: Math.round(avgMatPct) },
+        { name: 'Translasi', pct: Math.round(avgTransPct) }
+      ].sort((a, b) => a.pct - b.pct);
+
+      if (avgEl) avgEl.textContent = `${avgTotal} / 100`;
+      if (passEl) passEl.textContent = `${passPct}% (${passCount}/${totalCount})`;
+      if (weakEl) weakEl.textContent = `${topicAverages[0].name} (${topicAverages[0].pct}%)`;
+
+      if (tbody) {
+        tbody.innerHTML = rows
+          .map((r) => {
+            const modeLabel = r.mode_latihan === 'simulasi' ? 'Simulasi SAS' : 'Mode Belajar';
+            const modeBadge = r.mode_latihan === 'simulasi'
+              ? 'bg-amber-100 text-amber-900 border-amber-200'
+              : 'bg-brand-50 text-brand-800 border-brand-200';
+            const statusBadge = r.is_submitted
+              ? '<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-bold">Selesai</span>'
+              : '<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-bold">Proses</span>';
+            return `
+              <tr class="hover:bg-slate-50">
+                <td class="py-2.5 px-3 font-mono font-bold text-slate-900">${escapeHtml(r.kelas || '-')}</td>
+                <td class="py-2.5 px-3 text-center font-mono tabular-nums">${escapeHtml(r.no_absen ?? '-')}</td>
+                <td class="py-2.5 px-3 font-semibold text-slate-900">${escapeHtml(r.nama_lengkap || '-')}</td>
+                <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded border text-[11px] font-bold ${modeBadge}">${modeLabel}</span></td>
+                <td class="py-2.5 px-3 text-center">${statusBadge}</td>
+                <td class="py-2.5 px-3 text-center font-mono tabular-nums">${Number(r.skor_polinomial) || 0}</td>
+                <td class="py-2.5 px-3 text-center font-mono tabular-nums">${Number(r.skor_matriks) || 0}</td>
+                <td class="py-2.5 px-3 text-center font-mono tabular-nums">${Number(r.skor_translasi) || 0}</td>
+                <td class="py-2.5 px-3 text-center font-mono font-extrabold text-brand-900 tabular-nums">${Number(r.total_skor) || 0}</td>
+              </tr>
+            `;
+          })
+          .join('');
+      }
+    }
+
+    function exportTeacherRecapCSV() {
+      const rows = getFilteredTeacherRows();
+      if (rows.length === 0) {
+        alert('Tidak ada data untuk diunduh.');
+        return;
+      }
+      const headers = [
+        'Kelas',
+        'No Absen',
+        'Nama Panggilan',
+        'Mode',
+        'Status',
+        'Bagian I (/20)',
+        'Bagian II (/15)',
+        'Bagian III (/65)',
+        'Polinomial (/22)',
+        'Operasi Matriks (/59)',
+        'Translasi (/19)',
+        'Total Skor (/100)',
+        'Waktu Update'
+      ];
+      const csvEscape = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const lines = [headers.map(csvEscape).join(',')];
+      rows.forEach((r) => {
+        lines.push([
+          r.kelas || '',
+          r.no_absen ?? '',
+          r.nama_lengkap || '',
+          r.mode_latihan === 'simulasi' ? 'Simulasi SAS (Paket B)' : 'Mode Belajar (Paket A)',
+          r.is_submitted ? 'Selesai' : 'Sedang Mengerjakan',
+          Number(r.skor_bagian_1) || 0,
+          Number(r.skor_bagian_2) || 0,
+          Number(r.skor_bagian_3) || 0,
+          Number(r.skor_polinomial) || 0,
+          Number(r.skor_matriks) || 0,
+          Number(r.skor_translasi) || 0,
+          Number(r.total_skor) || 0,
+          r.waktu_selesai || ''
+        ].map(csvEscape).join(','));
+      });
+      const csvContent = '\uFEFF' + lines.join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const dateStr = new Date().toISOString().slice(0, 10);
+      link.href = url;
+      link.download = `Rekap_SAS_MatLanjut_XI_DonBoscoII_${dateStr}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     }
 
     function escapeHtml(str) {
