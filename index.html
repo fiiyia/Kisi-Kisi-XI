@@ -660,7 +660,7 @@
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
           </svg>
-          <span class="flex-1 truncate">Rangkuman Rumus</span>
+          <span class="flex-1 truncate">Ringkasan Materi</span>
           <span id="badgeRumusLock" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-brand-600/30 text-brand-100">Belajar</span>
         </button>
 
@@ -917,21 +917,39 @@
             </button>
           </div>
 
-          <!-- Quick Simulasi SAS CTA (Visible in Mode Belajar) -->
-          <div id="dashSimulasiCta" class="rounded-2xl bg-amber-50/90 border border-amber-200 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <div class="text-sm font-extrabold text-amber-950">Siap uji kemampuan dengan soal berbeda?</div>
-              <p class="text-xs text-amber-900 mt-0.5">
-                Coba <strong>Mode Simulasi SAS (Paket B)</strong> — 20 soal baru setipe dengan waktu hitung mundur 120 menit tanpa petunjuk.
-              </p>
+          <!-- Quick Study & Simulasi Banners (Visible in Mode Belajar) -->
+          <div id="dashSimulasiCta" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-brand-50/90 border border-brand-200 p-4 sm:p-5 flex flex-col justify-between gap-3">
+              <div>
+                <div class="text-sm font-extrabold text-brand-950">Ringkasan Materi &amp; Rumus SAS</div>
+                <p class="text-xs text-brand-900/90 mt-0.5">
+                  Pelajari ulang konsep inti Polinomial, Operasi Matriks ($2\times 2$ &amp; $3\times 3$), Translasi, contoh singkat, dan jebakan umum sebelum latihan.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="navigateLMS('rumus')"
+                class="self-start px-4 py-2.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-xs sm:text-sm font-bold transition"
+              >
+                Buka Ringkasan Materi
+              </button>
             </div>
-            <button
-              type="button"
-              onclick="switchToSimulasiPackage()"
-              class="px-4 py-2.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs sm:text-sm font-bold transition shrink-0"
-            >
-              Coba Simulasi SAS (Paket B)
-            </button>
+
+            <div class="rounded-2xl bg-amber-50/90 border border-amber-200 p-4 sm:p-5 flex flex-col justify-between gap-3">
+              <div>
+                <div class="text-sm font-extrabold text-amber-950">Siap uji kemampuan dengan soal berbeda?</div>
+                <p class="text-xs text-amber-900 mt-0.5">
+                  Coba <strong>Mode Simulasi SAS (Paket B)</strong> — 20 soal baru setipe dengan waktu hitung mundur 120 menit tanpa petunjuk.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="switchToSimulasiPackage()"
+                class="self-start px-4 py-2.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs sm:text-sm font-bold transition"
+              >
+                Coba Simulasi SAS (Paket B)
+              </button>
+            </div>
           </div>
 
           <!-- Topic Distribution Breakdown -->
@@ -1078,7 +1096,7 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- VIEW 2B: RANGKUMAN RUMUS (MODE BELAJAR)    -->
+        <!-- VIEW 2B: RINGKASAN MATERI & RUMUS (BELAJAR)-->
         <!-- ========================================== -->
         <section id="view-rumus" class="hidden space-y-6 no-print">
           <!-- Locked State (Mode Simulasi SAS) -->
@@ -1088,78 +1106,212 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
               </svg>
             </div>
-            <h3 class="text-lg font-extrabold text-amber-950">Rangkuman Rumus Terkunci di Mode Simulasi SAS</h3>
+            <h3 class="text-lg font-extrabold text-amber-950">Ringkasan Materi Terkunci di Mode Simulasi SAS</h3>
             <p class="text-sm text-amber-900 max-w-lg mx-auto">
-              Agar simulasi 120 menit ini melatih kesiapan ujian secara autentik, halaman Rangkuman Rumus hanya dapat dibuka pada <strong>Mode Belajar Mandiri</strong>.
+              Agar simulasi 120 menit ini melatih kesiapan ujian secara autentik, halaman Ringkasan Materi &amp; Rumus hanya dapat dibuka pada <strong>Mode Belajar Mandiri</strong>.
             </p>
             <button type="button" onclick="navigateLMS('bagian1')" class="px-5 py-2.5 rounded-xl bg-amber-900 hover:bg-amber-950 text-white text-sm font-bold transition">
               Kembali ke Soal Simulasi
             </button>
           </div>
 
-          <!-- Formula Cards (Mode Belajar) -->
+          <!-- Ringkasan Materi & Rumus (Mode Belajar) -->
           <div id="rumusContentCards" class="space-y-6">
             <div class="bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-7 shadow-card">
-              <h2 class="text-xl font-extrabold text-slate-900">Rangkuman Rumus &amp; Trik Cepat SAS Kelas XI</h2>
-              <p class="mt-1 text-sm text-slate-600">
-                Gunakan ringkasan konsep inti berikut saat berlatih di <strong>Mode Belajar</strong>. Pastikan kamu menghafal rumus-rumus ini sebelum mencoba <strong>Mode Simulasi SAS (Paket B)</strong>.
-              </p>
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-200">
+                <div>
+                  <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Ringkasan Materi &amp; Rumus SAS Kelas XI</h2>
+                  <p class="mt-1 text-sm text-slate-600">
+                    Materi inti Matematika Tingkat Lanjut (<strong>Polinomial</strong>, <strong>Operasi Matriks</strong>, dan <strong>Translasi</strong>) lengkap dengan rumus, contoh singkat, dan tips menghindari kesalahan umum.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onclick="navigateLMS('bagian1')"
+                  class="self-start md:self-auto px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-bold transition shrink-0"
+                >
+                  Langsung Latihan Soal
+                </button>
+              </div>
 
-              <div class="mt-6 space-y-5">
-                <!-- 1. Polinomial -->
-                <div class="p-5 rounded-2xl border border-poli-200 bg-poli-50/40 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">1. Polinomial (Suku Banyak) &bull; 30%</span>
-                    <span class="text-xs font-mono font-bold text-poli-900">No. 1–3, 11–12, 16</span>
+              <!-- Filter Tab Topik Materi -->
+              <div class="mt-5 flex flex-wrap items-center gap-2">
+                <button type="button" data-materi-tab="ALL" onclick="filterMateriTopic('ALL')" class="materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-600 text-white transition">
+                  Semua Materi (3 Bab)
+                </button>
+                <button type="button" data-materi-tab="polinomial" onclick="filterMateriTopic('polinomial')" class="materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                  1. Polinomial (30%)
+                </button>
+                <button type="button" data-materi-tab="matriks" onclick="filterMateriTopic('matriks')" class="materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                  2. Operasi Matriks (50%)
+                </button>
+                <button type="button" data-materi-tab="translasi" onclick="filterMateriTopic('translasi')" class="materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                  3. Translasi (20%)
+                </button>
+              </div>
+
+              <div class="mt-6 space-y-6">
+                <!-- ===================================== -->
+                <!-- BAB 1: POLINOMIAL (SUKU BANYAK)       -->
+                <!-- ===================================== -->
+                <div data-materi-section="polinomial" class="p-5 sm:p-6 rounded-2xl border border-poli-200 bg-poli-50/40 space-y-4">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="px-3 py-1 rounded-lg bg-poli-600 text-white text-xs font-bold">Bab 1 &bull; Polinomial (Suku Banyak) &bull; Bobot 30%</span>
+                    <span class="text-xs font-mono font-bold text-poli-900">Kisi-Kisi No. 1–3, 11–12, 16</span>
                   </div>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
-                    <div class="p-3.5 rounded-xl bg-white border border-poli-200/70">
-                      <div class="font-bold text-poli-900 mb-1">Teorema Sisa</div>
-                      <p class="text-xs leading-relaxed">Jika polinomial $P(x)$ dibagi oleh $(x - a)$, maka sisanya adalah $S = P(a)$. Jika dibagi $(x + a)$, maka sisanya $S = P(-a)$.</p>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-sm text-slate-800">
+                    <div class="p-4 rounded-xl bg-white border border-poli-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-poli-900">A. Bentuk Umum, Derajat &amp; Operasi Aljabar</div>
+                      <p class="text-xs leading-relaxed">
+                        Polinomial berderajat $n$ berbentuk: $$P(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0$$
+                        dengan $a_n \neq 0$ dan pangkat variabel $n$ adalah bilangan cacah ($0, 1, 2, \dots$).
+                      </p>
+                      <ul class="text-xs list-disc pl-4 space-y-1 text-slate-700">
+                        <li><strong>Penjumlahan/Pengurangan:</strong> gabungkan suku-suku sejenis (pangkat $x$ sama).</li>
+                        <li><strong>Perkalian:</strong> gunakan sifat distributif, misal $(2x+1)(x-1) = 2x^2 - x - 1$.</li>
+                        <li><strong>Nilai Polinomial $P(k)$:</strong> substitusi langsung $x = k$ ke setiap suku.</li>
+                      </ul>
                     </div>
-                    <div class="p-3.5 rounded-xl bg-white border border-poli-200/70">
-                      <div class="font-bold text-poli-900 mb-1">Teorema Faktor &amp; Skema Horner</div>
-                      <p class="text-xs leading-relaxed">$(x - a)$ adalah faktor dari $P(x)$ jika dan hanya jika $P(a) = 0$. Gunakan skema Horner untuk mencari hasil bagi $H(x)$ lalu faktorkan kuadratnya untuk menemukan semua akar.</p>
+
+                    <div class="p-4 rounded-xl bg-white border border-poli-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-poli-900">B. Teorema Sisa &amp; Teorema Faktor</div>
+                      <ul class="text-xs list-disc pl-4 space-y-1.5 text-slate-700 leading-relaxed">
+                        <li><strong>Teorema Sisa:</strong> Sisa pembagian $P(x)$ oleh $(x - a)$ adalah $S = P(a)$, sedangkan oleh $(x + a)$ adalah $S = P(-a)$.</li>
+                        <li><strong>Pembagi $(ax - b)$:</strong> Sisa pembagian adalah $S = P\!\left(\frac{b}{a}\right)$.</li>
+                        <li><strong>Teorema Faktor:</strong> $(x - a)$ merupakan faktor dari $P(x)$ jika dan hanya jika sisa pembagiannya nol, yaitu <strong>$P(a) = 0$</strong>.</li>
+                      </ul>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border border-poli-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-poli-900">C. Skema Horner &amp; Akar Polinomial</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Algoritma pembagian: $P(x) = (x - a) \cdot H(x) + S$. Untuk mencari semua akar kubik $P(x) = 0$:
+                      </p>
+                      <ol class="text-xs list-decimal pl-4 space-y-1 text-slate-700">
+                        <li>Susun koefisien $P(x)$ dari pangkat tertinggi hingga konstanta (isi $0$ bila ada pangkat yang hilang).</li>
+                        <li>Jalankan skema Horner dengan pembuat nol pembagi $x = a$ untuk memperoleh hasil bagi kuadrat $H(x)$.</li>
+                        <li>Faktorkan $H(x) = 0$ untuk mendapatkan dua akar lainnya.</li>
+                      </ol>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border border-poli-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-poli-900">Contoh Singkat &amp; Jebakan Umum</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        <strong>Contoh:</strong> Sisa $P(x) = x^3 + 2x^2 - 5$ dibagi $(x + 1)$ adalah $P(-1) = (-1)^3 + 2(-1)^2 - 5 = -1 + 2 - 5 = -4$.
+                      </p>
+                      <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                        <strong>Waspada:</strong> Pangkat ganjil dari bilangan negatif tetap negatif (misal $(-2)^3 = -8$), sedangkan pangkat genap menjadi positif (misal $(-2)^2 = 4$).
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- 2. Operasi Matriks -->
-                <div class="p-5 rounded-2xl border border-matriks-200 bg-matriks-50/50 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">2. Operasi Matriks ($2\times 2$ &amp; $3\times 3$) &bull; 50%</span>
-                    <span class="text-xs font-mono font-bold text-matriks-900">No. 4–8, 13–14, 17, 18, 20</span>
+                <!-- ===================================== -->
+                <!-- BAB 2: OPERASI MATRIKS (2x2 & 3x3)    -->
+                <!-- ===================================== -->
+                <div data-materi-section="matriks" class="p-5 sm:p-6 rounded-2xl border border-matriks-200 bg-matriks-50/50 space-y-4">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="px-3 py-1 rounded-lg bg-matriks-700 text-white text-xs font-bold">Bab 2 &bull; Operasi Matriks ($2\times 2$ &amp; $3\times 3$) &bull; Bobot 50%</span>
+                    <span class="text-xs font-mono font-bold text-matriks-900">Kisi-Kisi No. 4–8, 13–14, 17, 18, 20</span>
                   </div>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
-                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 overflow-x-auto">
-                      <div class="font-bold text-matriks-900 mb-1">Determinan &amp; Invers Matriks $2 \times 2$</div>
-                      <p class="text-xs leading-relaxed">Jika $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, maka $\det(A) = ad - bc$ dan $$A^{-1} = \frac{1}{ad - bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$</p>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-sm text-slate-800">
+                    <div class="p-4 rounded-xl bg-white border border-matriks-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-matriks-900">A. Ordo, Kesamaan &amp; Operasi Dasar</div>
+                      <ul class="text-xs list-disc pl-4 space-y-1.5 text-slate-700 leading-relaxed">
+                        <li><strong>Ordo $m \times n$:</strong> $m$ baris dan $n$ kolom. Elemen $a_{ij}$ terletak pada baris ke-$i$, kolom ke-$j$.</li>
+                        <li><strong>Kesamaan Matriks:</strong> dua matriks sama jika ordonya sama dan elemen-elemen seletak bernilai sama.</li>
+                        <li><strong>Penjumlahan &amp; Pengurangan:</strong> hanya bisa jika ordonya sama (jumlahkan/kurangkan elemen seletak).</li>
+                        <li><strong>Perkalian Skalar $kA$:</strong> kalikan seluruh elemen matriks $A$ dengan bilangan $k$.</li>
+                      </ul>
                     </div>
-                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 overflow-x-auto">
-                      <div class="font-bold text-matriks-900 mb-1">Persamaan Matriks &amp; Sifat Non-Komutatif</div>
-                      <p class="text-xs leading-relaxed">Perkalian matriks <strong>tidak komutatif</strong> ($A\cdot B \neq B\cdot A$). Perhatikan posisi invers: $$A \cdot X = B \implies X = A^{-1} \cdot B, \quad X \cdot A = B \implies X = B \cdot A^{-1}$$</p>
+
+                    <div class="p-4 rounded-xl bg-white border border-matriks-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-matriks-900">B. Perkalian Matriks &amp; Sifat Non-Komutatif</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Syarat perkalian matriks: $$A_{m \times \mathbf{p}} \cdot B_{\mathbf{p} \times n} = C_{m \times n}$$
+                        Jumlah kolom matriks kiri harus sama dengan jumlah baris matriks kanan. Hitung dengan pola <strong>Baris $\times$ Kolom</strong>.
+                      </p>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Perkalian matriks <strong>tidak komutatif</strong> ($A\cdot B \neq B\cdot A$).
+                      </p>
                     </div>
-                    <div class="p-3.5 rounded-xl bg-white border border-matriks-200/70 md:col-span-2 overflow-x-auto">
-                      <div class="font-bold text-matriks-900 mb-1">Invers Matriks $3 \times 3$ (Kofaktor &amp; Adjoin)</div>
-                      <p class="text-xs leading-relaxed">Tanda papan catur kofaktor: $\begin{bmatrix} + & - & + \\ - & + & - \\ + & - & + \end{bmatrix}$. Ingat: $\text{Adj}(M) = (\text{Kof}(M))^T$ (jangan lupa di-<strong>transpos</strong>!), lalu $M^{-1} = \frac{1}{\det(M)}\text{Adj}(M)$ dan dekripsi sandi $P = M^{-1} \cdot C$.</p>
+
+                    <div class="p-4 rounded-xl bg-white border border-matriks-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-matriks-900">C. Determinan, Invers $2 \times 2$ &amp; SPLDV</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Untuk $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $\det(A) = ad - bc$ dan:
+                        $$A^{-1} = \frac{1}{ad - bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$$
+                      </p>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Persamaan matriks &amp; SPLDV ($A\cdot X = B$): $$A \cdot X = B \implies X = A^{-1} \cdot B \quad\text{dan}\quad X \cdot A = B \implies X = B \cdot A^{-1}$$
+                      </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border border-matriks-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-matriks-900">D. Invers Matriks $3 \times 3$ (Kofaktor &amp; Adjoin)</div>
+                      <ol class="text-xs list-decimal pl-4 space-y-1 text-slate-700 leading-relaxed">
+                        <li>Hitung $\det(M)$ dengan aturan Sarrus atau ekspansi kofaktor.</li>
+                        <li>Cari 9 minor $M_{ij}$, lalu beri tanda papan catur $\begin{bmatrix} + & - & + \\ - & + & - \\ + & - & + \end{bmatrix}$ untuk mendapatkan $\text{Kof}(M)$.</li>
+                        <li><strong>Transpos</strong> matriks kofaktor: $\text{Adj}(M) = (\text{Kof}(M))^T$.</li>
+                        <li>Hitung $M^{-1} = \frac{1}{\det(M)}\text{Adj}(M)$, lalu dekripsi pesan $P = M^{-1} \cdot C$.</li>
+                      </ol>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 md:col-span-2 text-xs text-amber-950 leading-relaxed">
+                      <strong>Waspada Jebakan Umum Matriks:</strong> (1) Saat membuat $\text{Adj}(M)$ pada matriks $3\times 3$, jangan lupa <strong>men-transpos</strong> $\text{Kof}(M)$ (baris jadi kolom). (2) Pada $A \cdot X = B$, invers $A^{-1}$ <strong>wajib dikalikan dari sebelah kiri</strong> ($X = A^{-1}B$), bukan dari kanan.
                     </div>
                   </div>
                 </div>
 
-                <!-- 3. Translasi -->
-                <div class="p-5 rounded-2xl border border-translasi-200 bg-translasi-50/50 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">3. Transformasi Geometri: Translasi &bull; 20%</span>
-                    <span class="text-xs font-mono font-bold text-translasi-900">No. 9–10, 15, 19</span>
+                <!-- ===================================== -->
+                <!-- BAB 3: TRANSFORMASI GEOMETRI TRANSLASI-->
+                <!-- ===================================== -->
+                <div data-materi-section="translasi" class="p-5 sm:p-6 rounded-2xl border border-translasi-200 bg-translasi-50/50 space-y-4">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="px-3 py-1 rounded-lg bg-translasi-700 text-white text-xs font-bold">Bab 3 &bull; Transformasi Geometri: Translasi &bull; Bobot 20%</span>
+                    <span class="text-xs font-mono font-bold text-translasi-900">Kisi-Kisi No. 9–10, 15, 19</span>
                   </div>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-800">
-                    <div class="p-3.5 rounded-xl bg-white border border-translasi-200/70 overflow-x-auto">
-                      <div class="font-bold text-translasi-900 mb-1">Translasi Titik &amp; Komposisi</div>
-                      <p class="text-xs leading-relaxed">Titik $A(x,y)$ oleh $T = \begin{pmatrix} a \\ b \end{pmatrix}$ menghasilkan $A'(x+a, y+b)$. Komposisi $T_1$ lalu $T_2$ cukup dijumlahkan: $T = T_1 + T_2$. Translasi bersifat <strong>isometri</strong> (luas bangun tetap).</p>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-sm text-slate-800">
+                    <div class="p-4 rounded-xl bg-white border border-translasi-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-translasi-900">A. Translasi Titik &amp; Komposisi Translasi</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Translasi (pergeseran) memindahkan titik $A(x, y)$ sejauh vektor $T = \begin{pmatrix} a \\ b \end{pmatrix}$ ke bayangan $A'(x', y')$:
+                        $$\begin{pmatrix} x' \\ y' \end{pmatrix} = \begin{pmatrix} x \\ y \end{pmatrix} + \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} x + a \\ y + b \end{pmatrix}$$
+                      </p>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        <strong>Komposisi $T_1$ dilanjutkan $T_2$:</strong> cukup jumlahkan vektornya: $T = T_1 + T_2 = \begin{pmatrix} a_1 + a_2 \\ b_1 + b_2 \end{pmatrix}$.
+                      </p>
                     </div>
-                    <div class="p-3.5 rounded-xl bg-white border border-translasi-200/70 overflow-x-auto">
-                      <div class="font-bold text-translasi-900 mb-1">Trik Anti-Salah Translasi Garis</div>
-                      <p class="text-xs leading-relaxed">Karena $x' = x + a$ dan $y' = y + b$, maka untuk persamaan garis substitusikan <strong>tanda berlawanan</strong>: $$x = x' - a \quad \text{dan} \quad y = y' - b$$</p>
+
+                    <div class="p-4 rounded-xl bg-white border border-translasi-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-translasi-900">B. Sifat Isometri &amp; Translasi Bangun Datar</div>
+                      <ul class="text-xs list-disc pl-4 space-y-1.5 text-slate-700 leading-relaxed">
+                        <li>Translasi adalah transformasi <strong>isometri</strong>: hanya mengubah posisi, <strong>tidak mengubah bentuk, panjang sisi, sudut, maupun luas</strong> bangun datar.</li>
+                        <li>Untuk menggeser segitiga $PQR$, cukup geser ketiga titik sudutnya ($P', Q', R'$). Luas segitiga bayangan selalu sama dengan luas segitiga awal ($L' = L$).</li>
+                      </ul>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border border-translasi-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-translasi-900">C. Translasi Persamaan Garis Lurus</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        Karena $x' = x + a$ dan $y' = y + b$, nyatakan $x$ dan $y$ dalam bentuk bayangan (<strong>tanda berlawanan</strong>):
+                        $$x = x' - a \quad \text{dan} \quad y = y' - b$$
+                        Substitusikan ke persamaan garis awal $Ax + By + C = 0$, lalu sederhanakan dan hilangkan tanda aksen.
+                      </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white border border-translasi-200/80 space-y-1.5 overflow-x-auto">
+                      <div class="font-extrabold text-translasi-900">Contoh Singkat &amp; Jebakan Umum</div>
+                      <p class="text-xs leading-relaxed text-slate-700">
+                        <strong>Contoh:</strong> Garis $2x - y + 3 = 0$ oleh $T = \begin{pmatrix} 1 \\ -2 \end{pmatrix}$. Substitusi $x = x' - 1$ dan $y = y' + 2$:
+                        $$2(x' - 1) - (y' + 2) + 3 = 0 \implies 2x - y - 1 = 0$$
+                      </p>
+                      <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950">
+                        <strong>Waspada:</strong> Untuk <strong>titik</strong> tandanya tetap ($x+a, y+b$), sedangkan untuk <strong>garis/kurva</strong> tandanya dibalik ($x'-a, y'-b$).
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1681,8 +1833,8 @@
         subtitle: 'Peta indikator kompetensi, level kognitif, dan bobot poin resmi'
       },
       rumus: {
-        title: 'Rangkuman Rumus & Trik Cepat',
-        subtitle: 'Ringkasan konsep Polinomial, Operasi Matriks, dan Translasi (Khusus Mode Belajar)'
+        title: 'Ringkasan Materi & Rumus SAS',
+        subtitle: 'Konsep inti, rumus cepat, contoh singkat & tips Polinomial, Matriks, dan Translasi (Mode Belajar)'
       },
       bagian1: {
         title: 'Bagian I — Isian Singkat LKPD (No. 1–10)',
@@ -2810,6 +2962,21 @@
           cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 120);
+    }
+
+    function filterMateriTopic(topic) {
+      document.querySelectorAll('[data-materi-section]').forEach((sec) => {
+        const secKey = sec.getAttribute('data-materi-section');
+        if (topic === 'ALL' || secKey === topic) sec.classList.remove('hidden');
+        else sec.classList.add('hidden');
+      });
+      document.querySelectorAll('.materi-tab-btn').forEach((btn) => {
+        const isCurrent = btn.getAttribute('data-materi-tab') === topic;
+        btn.className = isCurrent
+          ? 'materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-brand-600 text-white transition'
+          : 'materi-tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+      });
+      triggerMathRender(document.getElementById('view-rumus'));
     }
 
     // 12. RENDER & HANDLE BAGIAN I, II, III
